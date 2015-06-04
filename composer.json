@@ -1,0 +1,21 @@
+{
+	"name": "cbs/aktietavling",
+	"description": "Chalmers B&ouml;rss&auml;llskaps &aring;rliga aktiet&auml;vling.",
+	"keywords": ["aktier", "chalmers"],
+	"license": "",
+	"type": "project",
+	"require": {
+		"laravel/framework": "5.0.*"
+	},
+	"autoload": {
+		"classmap": [
+			"database"
+		],
+		"psr-4": {
+			"App\\": "app/"
+		}
+	},
+	"config": {
+		"preferred-install": "dist"
+	}
+}
