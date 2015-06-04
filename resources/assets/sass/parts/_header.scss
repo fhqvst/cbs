@@ -1,14 +1,29 @@
 .topbar {
-  background: $color-white;
+  background: $color-almost-black;
   box-shadow: $box-shadow;
-  padding: $vertical-spacing 0;
+  color: $color-almost-white;
+  height: 6rem;
 
   @include element('logotype') {
     @include span-columns(2);
+    h1 {
+      line-height: 6rem;
+    }
   }
 
   @include element('navigation') {
     @include span-columns(10);
+    nav {
+      float: right;
+      line-height: 6rem;
+      a {
+        margin-left: $horizontal-spacing;
+        color: $color-white;
+        &:hover {
+          color: $color-main;
+        }
+      }
+    }
   }
 
 }

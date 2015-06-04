@@ -1,32 +1,85 @@
 body {
+  font-family: $font-family;
   font-weight: $font-weight;
   color: $color-almost-black;
 }
 
+// Headings
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family;
 }
 
 h1 {
-  font-size: 2rem;
-}
-
-h2 {
-  font-size: 1.75rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-h4 {
   font-size: 1.25rem;
 }
-
-h5 {
+h2 {
   font-size: 1rem;
 }
-
-h6 {
+h3 {
+  font-size: 0.875rem;
+}
+h4 {
   font-size: 0.75rem;
 }
+h5 {
+  font-size: 0.625rem;
+}
+h6 {
+  font-size: 0.5rem;
+}
+
+// Links
+
+a {
+  color: $color-main;
+  text-decoration: none;
+  transition: .125s;
+}
+
+// Buttons
+
+button {
+  background: transparent;
+  border: 1px solid $color-almost-black;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: .125s;
+  &:hover {
+    background: $color-almost-black;
+    color: $color-almost-white;
+  }
+}
+
+// Table
+
+table {
+  font-size: .75rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  width: 100%;
+
+  tr:nth-child(even) {
+    background: $color-almost-white;
+  }
+
+  th {
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: 0.5rem 0;
+    text-align: center;
+    vertical-align: bottom;
+  }
+
+  td:first-child {
+    padding-left: 0.5rem;
+  }
+  td:last-child {
+    padding-right: 0.5rem;
+  }
+
+}
+

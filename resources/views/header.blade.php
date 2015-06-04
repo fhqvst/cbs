@@ -1,7 +1,6 @@
 <header class="topbar">
 
     <div class="container">
-
         <div class="row">
 
             <div class="topbar__logotype">
@@ -17,7 +16,6 @@
             </div>
 
         </div>
-
     </div>
 
 </header>

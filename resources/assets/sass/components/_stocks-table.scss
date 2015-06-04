@@ -1,0 +1,26 @@
+.table__stocks {
+
+  td {
+    text-transform: uppercase;
+  }
+
+  th:first-child,
+  th:nth-child(2),
+  td:first-child,
+  td:nth-child(2) {
+    text-align: left;
+  }
+
+  td:nth-child(2) {
+    width: 50%;
+  }
+
+  td:last-child {
+    text-align: right;
+    width: 100px;
+  }
+
+  td:last-child button + button {
+    margin-left: 0.5rem;
+  }
+}

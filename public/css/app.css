@@ -212,7 +212,8 @@ input[type=button] {
 .container {
   max-width: 1200px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding: 0 2.35765%; }
   .container::after {
     clear: both;
     content: "";
@@ -226,34 +227,90 @@ input[type=button] {
     display: table; }
 
 body {
+  font-family: "DIN Pro", "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 300;
   color: #333; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", Helvetica, Arial, sans-serif; }
-
 h1 {
-  font-size: 2rem; }
-
-h2 {
-  font-size: 1.75rem; }
-
-h3 {
-  font-size: 1.5rem; }
-
-h4 {
   font-size: 1.25rem; }
 
-h5 {
+h2 {
   font-size: 1rem; }
 
-h6 {
+h3 {
+  font-size: 0.875rem; }
+
+h4 {
   font-size: 0.75rem; }
 
+h5 {
+  font-size: 0.625rem; }
+
+h6 {
+  font-size: 0.5rem; }
+
+a {
+  color: #38BB84;
+  text-decoration: none;
+  transition: .125s; }
+
+button {
+  background: transparent;
+  border: 1px solid #333;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: .125s; }
+  button:hover {
+    background: #333;
+    color: #F6F6F6; }
+
+table {
+  font-size: .75rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  width: 100%; }
+  table tr:nth-child(even) {
+    background: #F6F6F6; }
+  table th {
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase; }
+  table td {
+    padding: 0.5rem 0;
+    text-align: center;
+    vertical-align: bottom; }
+  table td:first-child {
+    padding-left: 0.5rem; }
+  table td:last-child {
+    padding-right: 0.5rem; }
+
+.main-content {
+  margin-top: 1.5625rem; }
+  @media screen and (min-width: 961px) {
+    .main-content {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 74.41059%; }
+      .main-content:last-child {
+        margin-right: 0; } }
+
+.sidebar {
+  margin-top: 1.5625rem; }
+  @media screen and (min-width: 961px) {
+    .sidebar {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 23.23176%; }
+      .sidebar:last-child {
+        margin-right: 0; } }
+
 .topbar {
-  background: #FFF;
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
-  padding: 20px 0; }
+  background: #333;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.05);
+  color: #F6F6F6;
+  height: 6rem; }
   .topbar__logotype {
     float: left;
     display: block;
@@ -261,6 +318,8 @@ h6 {
     width: 14.70196%; }
     .topbar__logotype:last-child {
       margin-right: 0; }
+    .topbar__logotype h1 {
+      line-height: 6rem; }
   .topbar__navigation {
     float: left;
     display: block;
@@ -268,6 +327,64 @@ h6 {
     width: 82.94039%; }
     .topbar__navigation:last-child {
       margin-right: 0; }
+    .topbar__navigation nav {
+      float: right;
+      line-height: 6rem; }
+      .topbar__navigation nav a {
+        margin-left: 1.5625rem;
+        color: #FFF; }
+        .topbar__navigation nav a:hover {
+          color: #38BB84; }
+
+.block {
+  background: #FFF;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.05); }
+  .block + .block {
+    margin-top: 1.5625rem; }
+  .block__header {
+    border-bottom: 1px solid #F6F6F6;
+    padding: 1.5625rem 1.5625rem; }
+    .block__header--borderless {
+      border-bottom: none;
+      padding: 1.5625rem 1.5625rem 0; }
+  .block__content {
+    padding: 1.5625rem 1.5625rem; }
+
+.table__stocks td {
+  text-transform: uppercase; }
+
+.table__stocks th:first-child,
+.table__stocks th:nth-child(2),
+.table__stocks td:first-child,
+.table__stocks td:nth-child(2) {
+  text-align: left; }
+
+.table__stocks td:nth-child(2) {
+  width: 50%; }
+
+.table__stocks td:last-child {
+  text-align: right;
+  width: 100px; }
+
+.table__stocks td:last-child button + button {
+  margin-left: 0.5rem; }
+
+.button {
+  border: 1px solid #333; }
+  .button--small {
+    font-size: 0.625rem; }
+  .button--red {
+    color: #FF5F38;
+    border-color: #FF5F38; }
+    .button--red:hover {
+      background: #FF5F38;
+      color: #EEE; }
+  .button--green {
+    color: #38BB84;
+    border-color: #38BB84; }
+    .button--green:hover {
+      background: #38BB84;
+      color: #EEE; }
 
 body {
   background: #EEE; }

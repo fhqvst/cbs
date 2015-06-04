@@ -1,0 +1,27 @@
+.button {
+
+  border: 1px solid $color-almost-black;
+
+  @include modifier('small') {
+    font-size: 0.625rem;
+  }
+
+  @include modifier('red') {
+     color: $color-red;
+     border-color: $color-red;
+     &:hover {
+       background: $color-red;
+       color: $color-off-white;
+     }
+   }
+
+  @include modifier('green') {
+    color: $color-green;
+    border-color: $color-green;
+    &:hover {
+      background: $color-green;
+      color: $color-off-white;
+    }
+  }
+
+}

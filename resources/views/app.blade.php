@@ -21,7 +21,7 @@
 </head>
 <body>
 
-    <div style="position: fixed; z-index: -1; width: 100%; height: 10rem; background: mediumaquamarine"></div>
+    <div style="position: fixed; z-index: -1; width: 100%; height: 12rem; background: #38BB84"></div>
 
     @include('header')
 

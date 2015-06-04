@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Stock;
+
 class DashboardController extends Controller {
 
 	/*
@@ -30,7 +32,7 @@ class DashboardController extends Controller {
 	 */
 	public function index()
 	{
-		return view('dashboard');
+		return view('dashboard')->with('stocks', Stock::all());
 	}
 
 }

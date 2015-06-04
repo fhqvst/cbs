@@ -1,0 +1,13 @@
+.main-content {
+  @include media($desktop) {
+    @include span-columns(9);
+  }
+  margin-top: $vertical-spacing;
+}
+
+.sidebar {
+  @include media($desktop) {
+    @include span-columns(3);
+  }
+  margin-top: $vertical-spacing;
+}

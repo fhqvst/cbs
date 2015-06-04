@@ -7,12 +7,17 @@
 @import 'reset';
 @import 'mixins';
 @import 'settings';
-
 @import 'typography';
+@import 'layout';
 
 // Parts
 @import 'parts/header';
+@import 'parts/block';
+
+// Components
+@import 'components/stocks-table';
+@import 'components/buttons';
 
 body {
-  background: $color-almost-white;
+  background: $color-off-white;
 }
