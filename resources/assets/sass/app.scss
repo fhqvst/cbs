@@ -1,6 +1,11 @@
-$btn-font-weight: 300;
-$font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+// Grid
+@import '../../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss';
+@import '../../../bower_components/neat/app/assets/stylesheets/_neat.scss';
 
-body, label, .checkbox label {
-	font-weight: 300;
+// Imports
+@import 'settings';
+@import 'typography';
+
+body {
+  background: $color-off-white;
 }

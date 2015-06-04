@@ -21,11 +21,11 @@
 </head>
 <body>
 
-    @yield('header')
+    @include('header')
 
 	@yield('content')
 
-    @yield('footer')
+    @include('footer')
 
 </body>
 </html>

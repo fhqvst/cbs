@@ -1,4 +1,15 @@
-body, label, .checkbox label {
+html {
+  box-sizing: border-box; }
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit; }
+
+body {
   font-weight: 300; }
+
+body {
+  background: #EEE; }
 
 /*# sourceMappingURL=app.css.map */
