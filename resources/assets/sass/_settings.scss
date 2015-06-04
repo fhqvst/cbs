@@ -1,6 +1,32 @@
+// Grid
+$column: 80px;
+$gutter: 20px;
+$grid-columns: 12;
+$max-width: 1200px;
+
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
+.container {
+  @include outer-container();
+}
+.row {
+  @include row();
+}
+
+// Spacing
+$vertical-spacing: 20px;
+$horizontal-spacing: 1rem;
+
 // Typography
 $font-weight: 300;
 $font-family: "Roboto", Helvetica, Arial, sans-serif;
 
 // Colors
-$color-off-white: #EEE;
+$color-almost-white: #EEE;
+$color-white: #FFF;
+$color-gray: #CCC;
+$color-almost-black: #333;
+
+// Box shadow
+$box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);

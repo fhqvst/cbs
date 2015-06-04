@@ -1,0 +1,14 @@
+.topbar {
+  background: $color-white;
+  box-shadow: $box-shadow;
+  padding: $vertical-spacing 0;
+
+  @include element('logotype') {
+    @include span-columns(2);
+  }
+
+  @include element('navigation') {
+    @include span-columns(10);
+  }
+
+}

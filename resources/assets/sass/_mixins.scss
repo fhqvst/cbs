@@ -1,0 +1,13 @@
+// Generates a BEM-element class extension.
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+// Generates a BEM-modifier class extension.
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}

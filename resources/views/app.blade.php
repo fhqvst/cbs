@@ -21,6 +21,8 @@
 </head>
 <body>
 
+    <div style="position: fixed; z-index: -1; width: 100%; height: 10rem; background: mediumaquamarine"></div>
+
     @include('header')
 
 	@yield('content')

@@ -1,11 +1,18 @@
 // Grid
 @import '../../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss';
 @import '../../../bower_components/neat/app/assets/stylesheets/_neat.scss';
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,400italic,300);
 
 // Imports
+@import 'reset';
+@import 'mixins';
 @import 'settings';
+
 @import 'typography';
 
+// Parts
+@import 'parts/header';
+
 body {
-  background: $color-off-white;
+  background: $color-almost-white;
 }
