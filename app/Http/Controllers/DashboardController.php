@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class WelcomeController extends Controller {
+class DashboardController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		return view('dashboard');
 	}
 
 }
