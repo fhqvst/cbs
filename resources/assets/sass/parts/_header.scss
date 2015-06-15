@@ -1,7 +1,7 @@
 .topbar {
   background: $color-almost-black;
-  box-shadow: $box-shadow;
-  color: $color-almost-white;
+  border-bottom: 1px solid $color-gray;
+  color: $color-almost-white;
   height: 6rem;
 
   @include element('logotype') {

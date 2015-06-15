@@ -1,6 +1,5 @@
 .block {
   background: $color-white;
-  box-shadow: $box-shadow;
   & + .block {
     margin-top: $vertical-spacing;
   }

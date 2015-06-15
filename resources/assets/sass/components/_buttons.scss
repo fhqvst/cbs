@@ -15,6 +15,15 @@
      }
    }
 
+  @include modifier('orange') {
+    color: $color-orange;
+    border-color: $color-orange;
+    &:hover {
+      background: $color-orange;
+      color: $color-off-white;
+    }
+  }
+
   @include modifier('green') {
     color: $color-green;
     border-color: $color-green;
