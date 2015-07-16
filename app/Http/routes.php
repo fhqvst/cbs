@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', function () {
+    return view('dashboard')->with('stocks',\App\Stock::all());
+});
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::controller('/', 'Auth\AuthController');

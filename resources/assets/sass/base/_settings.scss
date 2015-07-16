@@ -11,6 +11,8 @@ $mobile: new-breakpoint(max-width 480px 12);
 // Spacing
 $vertical-spacing: 1.5625rem;
 $horizontal-spacing: 1.5625rem;
+$padding-large: 1rem;
+$padding-small: 0.5rem;
 
 // Typography
 $font-weight: 300;
@@ -20,6 +22,7 @@ $font-family: "DIN Pro", "Roboto", Helvetica, Arial, sans-serif;
 $color-white: #FFF;
 $color-almost-white: #F6F6F6;
 $color-off-white: #EEE;
+$color-light-gray: #DDD;
 $color-gray: #CCC;
 $color-green: #38BB84;
 $color-orange: #FF5F38;

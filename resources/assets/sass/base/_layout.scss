@@ -1,6 +1,6 @@
 .main-content {
   @include media($desktop) {
-    @include span-columns(9);
+    @include span-columns(12);
   }
   margin-top: $vertical-spacing;
 }
@@ -10,4 +10,11 @@
     @include span-columns(3);
   }
   margin-top: $vertical-spacing;
+}
+
+.register-form {
+  @include media($desktop) {
+    @include span-columns(6);
+    @include shift(3);
+  }
 }

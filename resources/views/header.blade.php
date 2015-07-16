@@ -9,9 +9,9 @@
 
             <div class="topbar__navigation">
                 <nav>
-                    <a href="">Link</a>
-                    <a href="">Link</a>
-                    <a href="">Link</a>
+                    <a href="/register">Registrera</a>
+                    <a href="/login">Logga in</a>
+                    <a href="/logout">Logga ut</a>
                 </nav>
             </div>
 

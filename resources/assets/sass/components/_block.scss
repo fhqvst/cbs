@@ -1,0 +1,21 @@
+.block {
+  background: $color-white;
+  & + .block {
+    margin-top: $vertical-spacing;
+  }
+
+  &--borderless {
+    border-bottom: none;
+    padding: $vertical-spacing $horizontal-spacing 0;
+  }
+}
+
+.block__header {
+  border-bottom: 1px solid $color-almost-white;
+  padding: $vertical-spacing $horizontal-spacing;
+}
+
+.block__content {
+  padding: $vertical-spacing $horizontal-spacing;
+
+}

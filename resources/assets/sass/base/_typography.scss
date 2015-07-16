@@ -5,7 +5,6 @@ body {
 }
 
 // Headings
-
 h1, h2, h3, h4, h5, h6 {
 }
 
@@ -29,7 +28,6 @@ h6 {
 }
 
 // Links
-
 a {
   color: $color-main;
   text-decoration: none;
@@ -37,13 +35,13 @@ a {
 }
 
 // Buttons
-
 button {
   background: transparent;
-  border: 1px solid $color-almost-black;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: .125s;
+  transition: .075s;
+  padding: $padding-small $padding-large;
+  outline: 0;
   &:hover {
     background: $color-almost-black;
     color: $color-almost-white;
@@ -51,7 +49,6 @@ button {
 }
 
 // Table
-
 table {
   font-size: .75rem;
   line-height: 1.5;
@@ -83,3 +80,16 @@ table {
 
 }
 
+// Inputs
+input {
+  border: 2px solid $color-off-white;
+  outline: 0;
+  padding: $padding-small;
+  transition: border-color .125s, color .125s;
+  &:hover {
+    border-color: $color-light-gray;
+  }
+  &:focus {
+    border-color: $color-blue;
+  }
+}

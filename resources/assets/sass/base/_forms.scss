@@ -1,0 +1,26 @@
+.form--full-width {
+  width: 100%;
+
+  .form__label,
+  .form__control {
+    width: 100%;
+  }
+}
+
+.form__group {
+  display: block;
+
+  & + .form__group {
+    margin-top: $vertical-spacing;
+  }
+
+}
+
+.form__label {
+  display: block;
+
+  & + .form__control {
+    margin-top: $padding-small;
+  }
+
+}

@@ -4,19 +4,20 @@
 //@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,400italic,300);
 
 // Imports
-@import 'reset';
-@import 'mixins';
-@import 'settings';
-@import 'typography';
-@import 'layout';
+@import 'base/reset';
+@import 'base/mixins';
+@import 'base/settings';
+@import 'base/typography';
+@import 'base/buttons';
+@import 'base/forms';
+@import 'base/layout';
 
 // Parts
 @import 'parts/header';
-@import 'parts/block';
+@import 'components/block';
 
 // Components
 @import 'components/stocks-table';
-@import 'components/buttons';
 @import 'components/modal';
 
 body {

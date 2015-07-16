@@ -1,9 +1,27 @@
 .button {
 
-  border: 1px solid $color-almost-black;
+  @extend button;
+  border: 2px solid $color-almost-black;
+  font-weight: bold;
 
   @include modifier('small') {
     font-size: 0.625rem;
+    padding: $padding-small;
+  }
+
+  @include modifier('big') {
+    font-size: 0.875rem;
+    padding: $padding-small $padding-large;
+  }
+
+  @include modifier('huge') {
+    font-size: 1rem;
+    padding: $padding-large;
+    width: 100%;
+  }
+
+  @include modifier('full-width') {
+    width: 100%;
   }
 
   @include modifier('red') {
