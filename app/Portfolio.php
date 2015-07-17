@@ -9,9 +9,4 @@ class Portfolio extends Model {
         return $this->hasMany('App\Positions');
     }
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
-
 }

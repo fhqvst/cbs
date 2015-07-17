@@ -1,8 +1,11 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model {
+class Transaction extends Model
+{
 
     public function instrument()
     {
