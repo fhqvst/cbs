@@ -1,5 +1,13 @@
 .table__stocks {
 
+  tr {
+    transition: .075s;
+  }
+
+  tr:hover {
+    background: $color-off-white;
+  }
+
   td {
     text-transform: uppercase;
   }
@@ -12,15 +20,15 @@
   }
 
   td:nth-child(2) {
-    width: 50%;
+    width: 70%;
   }
 
-  td:last-child {
+  td.buy-sell-buttons {
+    button {
+      @extend .button--tiny;
+      border-width: 0;
+    }
     text-align: right;
-    width: 100px;
-  }
-
-  td:last-child button + button {
-    margin-left: 0.5rem;
+    white-space: nowrap;
   }
 }

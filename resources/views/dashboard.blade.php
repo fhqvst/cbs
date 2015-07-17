@@ -29,6 +29,7 @@
                                     <th>+/-</th>
                                     <th>Köp</th>
                                     <th>Sälj</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +41,7 @@
                                         <td>{{ $stock->change_percent }}</td>
                                         <td>{{ $stock->buy }}</td>
                                         <td>{{ $stock->sell }}</td>
-                                        <td><button class="button button--small button--green">Köp</button><button class="button button--small button--orange" data-stock="{{ $stock->symbol }}" data-event="sell">Sälj</button></td>
+                                        <td class="buy-sell-buttons"><button class="button button--small button--green">Köp</button><button class="button button--small button--orange" data-stock="{{ $stock->symbol }}" data-event="sell">Sälj</button></td>
                                     </tr>
                                 @endforeach
                             </tbody>

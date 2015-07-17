@@ -4,6 +4,10 @@
   border: 2px solid $color-almost-black;
   font-weight: bold;
 
+  @include modifier('tiny') {
+    padding: $padding-small/2;
+  }
+
   @include modifier('small') {
     font-size: 0.625rem;
     padding: $padding-small;

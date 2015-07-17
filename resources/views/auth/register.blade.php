@@ -44,7 +44,7 @@
 
 						<div class="form__group">
 							<label class="form__label">Bekräfta lösenord</label>
-							<input class="form__control" type="password" name="password-confirmation">
+							<input class="form__control" type="password" name="password_confirmation">
 						</div>
 
 						<div class="form__group">

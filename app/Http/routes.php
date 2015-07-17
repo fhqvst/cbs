@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('dashboard')->with('stocks',\App\Stock::all());
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard')->with('stocks',\App\Stock::all());
+});
+
 Route::controller('/', 'Auth\AuthController');
