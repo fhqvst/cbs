@@ -27,6 +27,16 @@ h6 {
   font-size: 0.5rem;
 }
 
+.logotype {
+  font-weight: bold;
+  color: $color-green;
+  &:after {
+    display: inline-block;
+    content: ' ';
+    font-family: "Ionicons", sans-serif;
+  }
+}
+
 // Links
 a {
   color: $color-main;
@@ -39,9 +49,12 @@ button {
   background: transparent;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: .075s;
+  transition: .125s;
   padding: $padding-small $padding-large;
   outline: 0;
+  border: 2px solid $color-almost-black;
+  font-weight: bold;
+  transform: translateZ(0);
   &:hover {
     background: $color-almost-black;
     color: $color-almost-white;
@@ -50,9 +63,6 @@ button {
 
 // Table
 table {
-  font-size: .75rem;
-  line-height: 1.5;
-  letter-spacing: 0.1em;
   width: 100%;
 
   tr:nth-child(even) {
@@ -70,14 +80,6 @@ table {
     text-align: center;
     vertical-align: bottom;
   }
-
-  td:first-child {
-    padding-left: 0.5rem;
-  }
-  td:last-child {
-    padding-right: 0.5rem;
-  }
-
 }
 
 // Inputs

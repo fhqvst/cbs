@@ -9,7 +9,7 @@
 
 			<section class="block register-form">
 				<header class="block__header">
-					<h1>Registrera användare</h1>
+					<h1>Logga in</h1>
 				</header>
 				<main class="block__content">
 					@if (count($errors) > 0)
@@ -38,12 +38,12 @@
 						</div>
 
 						<div class="form__group">
-							<input type="checkbox" name="remember"> Remember Me
+							<input type="checkbox" name="remember"> Kom ihåg mig
 						</div>
 
 						<div class="form__group">
 							<button type="submit" class="button button--huge button--green">
-								Registrera
+								Logga in
 							</button>
 						</div>
 					</form>

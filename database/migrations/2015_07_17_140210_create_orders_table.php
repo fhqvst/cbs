@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->date('valid_to');
             $table->string('type');
             $table->string('status');
-            $table->timestamp('timestamp');
+            $table->timestamps();
         });
     }
 

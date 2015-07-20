@@ -19,7 +19,7 @@ class CreateTradesTable extends Migration
             $table->integer('seller_id'); // user_id
             $table->bigInteger('volume');
             $table->decimal('price', 19, 4);
-            $table->timestamp('timestamp');
+            $table->timestamps();
         });
     }
 

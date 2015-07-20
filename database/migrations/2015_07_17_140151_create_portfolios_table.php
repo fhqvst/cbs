@@ -19,6 +19,7 @@ class CreatePortfoliosTable extends Migration
             $table->decimal('balance', 19, 4);
             $table->decimal('profit', 19, 4);
             $table->decimal('total_value', 19, 4);
+            $table->timestamps();
         });
     }
 

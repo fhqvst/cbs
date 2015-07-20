@@ -7,7 +7,11 @@
 
 	<title><?php #TODO: Add title ?> </title>
 
-    <link href="{{ asset('/css/animate.min.css') }}" rel="stylesheet">
+    <!-- bower:css -->
+    <link rel='stylesheet' href='/bower_components/ionicons/css/ionicons.css' />
+    <!-- endbower -->
+
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
@@ -32,6 +36,11 @@
 
     @include('modal')
 
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/velocity/velocity.js"></script>
+    <script src="/bower_components/velocity/velocity.ui.js"></script>
+    <!-- endbower -->
     <script src="{{ asset('/js/app.js') }}"></script>
 
 </body>

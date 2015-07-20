@@ -1,0 +1,40 @@
+.setting__group {
+
+  & + .setting__group {
+    margin-top: $vertical-spacing;
+  }
+
+  .setting__group__header {
+    @include span-columns(12);
+    margin-bottom: $vertical-spacing/2;
+    padding-bottom: $vertical-spacing/2;
+    h2 {
+      font-size: 1rem;
+    }
+  }
+
+}
+
+.setting {
+  @include row;
+
+  & + .setting {
+    margin-top: $vertical-spacing;
+  }
+
+  .setting__header {
+    h3 {
+      font-size: 0.875rem;
+      font-weight: bold;
+      margin-bottom: $vertical-spacing/4;
+    }
+  }
+
+  .setting__description {
+    @include span-columns(10);
+  }
+  .setting__actions {
+    @include span-columns(2);
+    text-align: right;
+  }
+}

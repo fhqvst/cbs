@@ -14,9 +14,12 @@ class CreateInstrumentsTable extends Migration
     {
         Schema::create('instruments', function($table) {
             $table->increments('id');
+            $table->string('symbol');
             $table->string('name')->unique();
             $table->text('label');
-            Start from here...
+            $table->integer('nordnet_id');
+            $table->integer('market_id');
+            $table->timestamps();
         });
     }
 

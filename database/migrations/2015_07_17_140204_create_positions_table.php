@@ -19,6 +19,7 @@ class CreatePositionsTable extends Migration
             $table->decimal('price', 19, 4);
             $table->decimal('profit', 19, 4);
             $table->decimal('market_value', 19, 4);
+            $table->timestamps();
         });
     }
 

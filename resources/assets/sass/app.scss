@@ -1,7 +1,6 @@
 // Grid
-@import '../../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss';
-@import '../../../bower_components/neat/app/assets/stylesheets/_neat.scss';
-//@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,400italic,300);
+@import '../../../public/bower_components/bourbon/app/assets/stylesheets/_bourbon.scss';
+@import '../../../public/bower_components/neat/app/assets/stylesheets/_neat.scss';
 
 // Imports
 @import 'base/reset';
@@ -18,10 +17,15 @@
 
 // Components
 @import 'components/stocks-table';
+@import 'components/settings';
 @import 'components/modal';
 
-body {
+html, body {
   background: $color-off-white;
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+body {
+  padding-bottom: $vertical-spacing;
 }

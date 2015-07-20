@@ -14,9 +14,10 @@
     "tests"
   ],
   "dependencies": {
-    "bourbon": "~4.2.3"
-  },
-  "devDependencies": {
-    "neat": "~1.7.2"
+    "bourbon": "~4.2.3",
+    "neat": "~1.7.2",
+    "jquery": "~2.1.4",
+    "ionicons": "~2.0.1",
+    "velocity": "~1.2.2"
   }
 }

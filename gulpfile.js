@@ -1,12 +1,11 @@
 process.env.DISABLE_NOTIFIER = true;
 var elixir = require('laravel-elixir');
-require('laravel-elixir-bower');
+require('laravel-elixir-wiredep');
 
 elixir(function(mix) {
-
     mix
-        //.bower('vendor.css', 'resources/assets/', 'vendor.js', 'resources/assets/js')
         .sass('app.scss')
-        .scripts(['main.js'], 'public/js/app.js');
+        .scripts(['main.js'], 'public/js/app.js')
+        .wiredep({src: 'app.blade.php'});
 });
 

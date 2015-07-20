@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,11 +13,11 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard')->with('stocks',\App\Stock::all());
+    return view('dashboard')->with('instruments', \App\Instrument::all());
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard')->with('stocks',\App\Stock::all());
-});
+Route::get('/nordnet', 'NordnetController@index');
+
+Route::get('/dashboard', 'DashboardController@index');
 
 Route::controller('/', 'Auth\AuthController');

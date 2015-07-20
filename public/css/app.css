@@ -250,6 +250,14 @@ h5 {
 h6 {
   font-size: 0.5rem; }
 
+.logotype {
+  font-weight: bold;
+  color: #38BB84; }
+  .logotype:after {
+    display: inline-block;
+    content: ' ';
+    font-family: "Ionicons", sans-serif; }
+
 a {
   color: #38BB84;
   text-decoration: none;
@@ -259,17 +267,18 @@ button, .button {
   background: transparent;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: .075s;
+  transition: .125s;
   padding: 0.5rem 1rem;
-  outline: 0; }
+  outline: 0;
+  border: 2px solid #333;
+  font-weight: bold;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0); }
   button:hover, .button:hover {
     background: #333;
     color: #F6F6F6; }
 
 table {
-  font-size: .75rem;
-  line-height: 1.5;
-  letter-spacing: 0.1em;
   width: 100%; }
   table tr:nth-child(even) {
     background: #F6F6F6; }
@@ -281,10 +290,6 @@ table {
     padding: 0.5rem 0;
     text-align: center;
     vertical-align: bottom; }
-  table td:first-child {
-    padding-left: 0.5rem; }
-  table td:last-child {
-    padding-right: 0.5rem; }
 
 input {
   border: 2px solid #EEE;
@@ -299,7 +304,7 @@ input {
 .button {
   border: 2px solid #333;
   font-weight: bold; }
-  .button--tiny, .table__stocks td.buy-sell-buttons button, .table__stocks td.buy-sell-buttons .button {
+  .button--tiny, .stocks-table td.buy-sell-buttons button, .stocks-table td.buy-sell-buttons .button {
     padding: 0.25rem; }
   .button--small {
     font-size: 0.625rem;
@@ -383,6 +388,7 @@ input {
 .topbar {
   background: #333;
   border-bottom: 1px solid #CCC;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.025);
   color:   #F6F6F6;
   height: 6rem; }
   .topbar__logotype {
@@ -411,43 +417,115 @@ input {
           color: #38BB84; }
 
 .block {
-  background: #FFF; }
+  background: #FFF;
+  overflow: hidden;
+  border-bottom: 1px solid #DDD;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.025); }
   .block + .block {
     margin-top: 1.5625rem; }
   .block--borderless {
     border-bottom: none;
     padding: 1.5625rem 1.5625rem 0; }
+  .block.is-minimized .block__content {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; }
+  .block .block__header  {
+    border-width: 0; }
 
 .block__header {
   border-bottom: 1px solid #F6F6F6;
-  padding: 1.5625rem 1.5625rem; }
+  padding: 1.5625rem 1.5625rem;
+  position: relative; }
 
 .block__content {
   padding: 1.5625rem 1.5625rem; }
 
-.table__stocks tr {
-  transition: .075s; }
+.block__toggle {
+  border: 0;
+  color: #333;
+  display: inline;
+  font-size: 2rem;
+  opacity: 0.5;
+  padding: 0;
+  position: absolute;
+  right: 1.5625rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  vertical-align: middle; }
+  .block__toggle:hover {
+    background: none;
+    color: initial;
+    opacity: 1; }
 
-.table__stocks tr:hover {
-  background: #EEE; }
+.stocks-table {
+  font-size: .75rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em; }
+  .stocks-table tr {
+    transition: .075s; }
+  .stocks-table tr:hover {
+    background: #EEE; }
+  .stocks-table td {
+    text-transform: uppercase; }
+  .stocks-table th:first-child,
+  .stocks-table th:nth-child(2),
+  .stocks-table td:first-child,
+  .stocks-table td:nth-child(2) {
+    text-align: left; }
+  .stocks-table td:nth-child(2) {
+    width: 70%; }
+  .stocks-table td.buy-sell-buttons {
+    text-align: right;
+    white-space: nowrap; }
+    .stocks-table td.buy-sell-buttons button, .stocks-table td.buy-sell-buttons .button {
+      border-width: 0; }
 
-.table__stocks td {
-  text-transform: uppercase; }
+.setting__group + .setting__group {
+  margin-top: 1.5625rem; }
 
-.table__stocks th:first-child,
-.table__stocks th:nth-child(2),
-.table__stocks td:first-child,
-.table__stocks td:nth-child(2) {
-  text-align: left; }
+.setting__group .setting__group__header {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-bottom: 0.78125rem;
+  padding-bottom: 0.78125rem; }
+  .setting__group .setting__group__header:last-child {
+    margin-right: 0; }
+  .setting__group .setting__group__header h2 {
+    font-size: 1rem; }
 
-.table__stocks td:nth-child(2) {
-  width: 70%; }
-
-.table__stocks td.buy-sell-buttons {
-  text-align: right;
-  white-space: nowrap; }
-  .table__stocks td.buy-sell-buttons button, .table__stocks td.buy-sell-buttons .button {
-    border-width: 0; }
+.setting {
+  display: block; }
+  .setting::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .setting + .setting {
+    margin-top: 1.5625rem; }
+  .setting .setting__header h3 {
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 0.39062rem; }
+  .setting .setting__description {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 82.94039%; }
+    .setting .setting__description:last-child {
+      margin-right: 0; }
+  .setting .setting__actions {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 14.70196%;
+    text-align: right; }
+    .setting .setting__actions:last-child {
+      margin-right: 0; }
 
 .overlay {
   background: rgba(0, 0, 0, 0.75);
@@ -480,9 +558,12 @@ input {
     top: 50%;
     opacity: 1; }
 
-body {
+html, body {
   background: #EEE;
-  width: 100%;
-  height: 100%; }
+  min-width: 100%;
+  min-height: 100%; }
+
+body {
+  padding-bottom: 1.5625rem; }
 
 /*# sourceMappingURL=app.css.map */

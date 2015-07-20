@@ -47,6 +47,13 @@
 							<input class="form__control" type="password" name="password_confirmation">
 						</div>
 
+                        <div class="form__group">
+                            <label class="form__label">Välj sektion</label>
+                            <select class="form__control" name="section">
+                                <option value="IT">IT</option>
+                            </select>
+                        </div>
+
 						<div class="form__group">
 							<button type="submit" class="button button--huge button--green">
 								Registrera

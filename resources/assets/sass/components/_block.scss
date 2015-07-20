@@ -1,5 +1,8 @@
 .block {
   background: $color-white;
+  overflow: hidden;
+  border-bottom: 1px solid $color-light-gray;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, .025);
   & + .block {
     margin-top: $vertical-spacing;
   }
@@ -8,14 +11,45 @@
     border-bottom: none;
     padding: $vertical-spacing $horizontal-spacing 0;
   }
+
+  &.is-minimized {
+    .block__content {
+      height: 0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  }
+  .block__header {
+    border-width: 0;
+  }
 }
 
 .block__header {
   border-bottom: 1px solid $color-almost-white;
   padding: $vertical-spacing $horizontal-spacing;
+  position: relative;
 }
 
 .block__content {
   padding: $vertical-spacing $horizontal-spacing;
+}
 
+.block__toggle {
+  border: 0;
+  color: $color-almost-black;
+  display: inline;
+  font-size: 2rem;
+  opacity: 0.5;
+  padding: 0;
+  position: absolute;
+  right: $horizontal-spacing;
+  top: 50%;
+  transform: translateY(-50%);
+  vertical-align: middle;
+  &:hover {
+    background: none;
+    color: initial;
+    opacity: 1;
+  }
 }
