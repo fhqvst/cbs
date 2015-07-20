@@ -16,8 +16,8 @@ Route::get('/', function () {
     return view('dashboard')->with('instruments', \App\Instrument::all());
 });
 
-Route::get('/nordnet', 'NordnetController@index');
+Route::controller('nordnet', 'NordnetController');
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('dashboard', 'DashboardController@index');
 
 Route::controller('/', 'Auth\AuthController');

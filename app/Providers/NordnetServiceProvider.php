@@ -1,8 +1,11 @@
 <?php
 
-namespace Fhqvst\Nordnet;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Instrument;
+use App\Events\InstrumentUpdated;
+use Event;
 
 class NordnetServiceProvider extends ServiceProvider
 {
@@ -13,6 +16,9 @@ class NordnetServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Instrument::updated(function($instrument) {
+            Event::fire(new InstrumentUpdated($instrument));
+        });
     }
 
     /**

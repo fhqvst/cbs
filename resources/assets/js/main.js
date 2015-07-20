@@ -21,6 +21,10 @@
             $(this).find('i').toggleClass('ion-ios-plus-empty');
         });
 
+        $('.notice__close').click(function() {
+            $(this).parents('.notice').remove();
+        });
+
     });
 
 })(jQuery);

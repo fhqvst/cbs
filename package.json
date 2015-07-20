@@ -5,7 +5,9 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.0.0",
+    "ioredis": "^1.6.1",
     "laravel-elixir": "^2.0.0",
-    "laravel-elixir-wiredep": "^0.1.2"
+    "laravel-elixir-wiredep": "^0.1.2",
+    "socket.io": "*"
   }
 }

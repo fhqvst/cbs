@@ -13,12 +13,13 @@
 
 // Parts
 @import 'parts/header';
-@import 'components/block';
 
 // Components
+@import 'components/block';
 @import 'components/stocks-table';
 @import 'components/settings';
 @import 'components/modal';
+@import 'components/notice';
 
 html, body {
   background: $color-off-white;

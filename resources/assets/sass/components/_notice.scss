@@ -1,0 +1,55 @@
+.notice {
+  border-width: 1px;
+  border-style: solid;
+  color: $color-white;
+  margin-bottom: $vertical-spacing;
+  position: relative;
+
+  &--info {
+    background: $color-blue;
+    border-color: darken($color-blue, 5);
+  }
+
+  &--success {
+    background: $color-green;
+    border-color: darken($color-green, 5);
+  }
+
+  &--warning {
+    background: lighten($color-orange, 10);
+    border-color: darken($color-orange, 5);
+  }
+
+  &--danger {
+    background: lighten($color-red, 10);
+    border-color: darken($color-red, 5);
+  }
+
+}
+
+.notice__content {
+  padding: $vertical-spacing $horizontal-spacing;
+  @include clearfix;
+}
+
+.notice__description {
+  float: left;
+}
+
+.notice__close {
+  border: 0;
+  color: $color-almost-white;
+  display: inline;
+  font-size: 2rem;
+  opacity: 0.5;
+  padding: 0;
+  position: absolute;
+  right: 1.5625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  vertical-align: middle;
+  &:hover {
+    background: none;
+    opacity: 1;
+  }
+}

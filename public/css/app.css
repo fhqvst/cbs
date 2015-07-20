@@ -252,14 +252,14 @@ h6 {
 
 .logotype {
   font-weight: bold;
-  color: #38BB84; }
+  color: #38bba5; }
   .logotype:after {
     display: inline-block;
     content: ' ';
     font-family: "Ionicons", sans-serif; }
 
 a {
-  color: #38BB84;
+  color: #38bba5;
   text-decoration: none;
   transition: .125s; }
 
@@ -299,7 +299,7 @@ input {
   input:hover {
     border-color: #DDD; }
   input:focus {
-    border-color: steelblue; }
+    border-color: #38a5bb; }
 
 .button {
   border: 2px solid #333;
@@ -331,10 +331,10 @@ input {
       background: #FF5F38;
       color: #EEE; }
   .button--green {
-    color: #38BB84;
-    border-color: #38BB84; }
+    color: #38bba5;
+    border-color: #38bba5; }
     .button--green:hover {
-      background: #38BB84;
+      background: #38bba5;
       color: #EEE; }
 
 .form--full-width {
@@ -414,7 +414,7 @@ input {
         margin-left: 1.5625rem;
         color: #FFF; }
         .topbar__navigation nav a:hover {
-          color: #38BB84; }
+          color: #38bba5; }
 
 .block {
   background: #FFF;
@@ -556,6 +556,53 @@ input {
   transition: .25s ease; }
   .modal.is-open {
     top: 50%;
+    opacity: 1; }
+
+.notice {
+  border-width: 1px;
+  border-style: solid;
+  color: #FFF;
+  margin-bottom: 1.5625rem;
+  position: relative; }
+  .notice--info {
+    background: #38a5bb;
+    border-color: #3294a7; }
+  .notice--success {
+    background: #38bba5;
+    border-color: #32a794; }
+  .notice--warning {
+    background: #ff886b;
+    border-color: #ff4a1f; }
+  .notice--danger {
+    background: #fc4056;
+    border-color: #ec041e; }
+
+.notice__content {
+  padding: 1.5625rem 1.5625rem; }
+  .notice__content::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.notice__description {
+  float: left; }
+
+.notice__close {
+  border: 0;
+  color: #F6F6F6;
+  display: inline;
+  font-size: 2rem;
+  opacity: 0.5;
+  padding: 0;
+  position: absolute;
+  right: 1.5625rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  vertical-align: middle; }
+  .notice__close:hover {
+    background: none;
     opacity: 1; }
 
 html, body {

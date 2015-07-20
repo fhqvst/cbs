@@ -16,7 +16,10 @@ class Nordnet {
         $this->password = $password;
     }
 
-    private static function query($endpoint, $post = false, $data = array(), $auth = null) {
+    private function query($endpoint, $post = false, $data = array()) {
+
+        $auth = $this->getSessionKey();
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
@@ -43,7 +46,6 @@ class Nordnet {
         curl_close($ch);
 
         if(is_string($result)){
-            print_r($result);
             return json_decode($result);
         }
         return "No response.";
@@ -88,11 +90,14 @@ class Nordnet {
 
     function getInstrumentList($market_id = '') {
         $key = $this->getSessionKey();
-        print_r($key);
-        return Nordnet::query('lists/' . $market_id, false, array(), $key);
+        return $this->query('lists/' . $market_id, false, array());
     }
 
     function getInstruments($instruments) {
 
+    }
+
+    function getInstrument($instrument_id) {
+        return $this->query('instruments/' . $instrument_id, false, array());
     }
 }
