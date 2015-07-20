@@ -9,8 +9,11 @@ use Event;
 
 class NordnetController extends Controller {
 
+    protected $nordnet;
+
     public function __construct() {
         $this->middleware('auth');
+        $this->nordnet = new Nordnet("fhqvst", "ib2KRor4");
     }
 
     /**
@@ -20,11 +23,9 @@ class NordnetController extends Controller {
      */
     public function getSynchronize()
     {
-        $nordnet = new Nordnet('fhqvst', 'ib2KRor4');
-        $results = json_decode($nordnet->getInstrumentList(16314763));
+        $results = $this->nordnet->getInstrumentList(16314763);
 
         foreach($results as $result) {
-            print_r($result);
             if(!Instrument::firstOrCreate([
                 'symbol' => $result->symbol,
                 'name' => $result->name,
@@ -37,16 +38,14 @@ class NordnetController extends Controller {
                 return "An error occured";
             };
         }
-        return "OK";
+        return response()->json(Instrument::all());
 
     }
 
     public function getUpdate($instrument_id) {
-        $nordnet = new Nordnet('fhqvst', 'ib2KRor4');
 
         $instrument = Instrument::where('nordnet_id', $instrument_id)->first();
-        print_r($instrument);
-        $updated = $nordnet->getInstrument($instrument_id);
+        $updated = $this->nordnet->getInstrument($instrument_id);
 
         if(is_array($updated)) {
             $updated = $updated[0];
@@ -62,10 +61,17 @@ class NordnetController extends Controller {
                 'isin_code' => property_exists($updated, 'isin_code') ? $updated->isin_code : ''
             )
         )) {
-            $instrument = Instrument::where('nordnet_id', $instrument_id)->first();
-            return json_encode($instrument);
+            return Instrument::where('nordnet_id', $instrument_id)->first();
         }
         return "{}";
+    }
+
+    public function getOrders($instrument_id) {
+        return $this->nordnet->getOrders($instrument_id);
+    }
+
+    public function getStatus() {
+        return $this->nordnet->getSessionKey();
     }
 
 }

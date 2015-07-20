@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Instrument;
 use App\Events\InstrumentUpdated;
 use Event;
+use App\Services\Nordnet;
 
 class NordnetServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,9 @@ class NordnetServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('Nordnet', function($app)
+        {
+            return new Nordnet("fhqvst", "ib2KRor4");
+        });
     }
 }

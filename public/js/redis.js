@@ -1,5 +1,6 @@
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
+var feed = require('socket.io');
 
 var Redis = require('ioredis');
 var redis = new Redis();

@@ -85,6 +85,8 @@ class Nordnet {
         $response = curl_exec($ch);
         curl_close($ch);
 
+        print_r($response);
+
         return json_decode($response)->session_key;
     }
 
@@ -99,5 +101,12 @@ class Nordnet {
 
     function getInstrument($instrument_id) {
         return $this->query('instruments/' . $instrument_id, false, array());
+    }
+
+    function getOrders($instrument_id) {
+        $instrument = $this->getInstrument($instrument_id);
+        print_r($instrument);
+//        return $this->query('')
+        return "";
     }
 }
