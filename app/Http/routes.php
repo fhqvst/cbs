@@ -12,11 +12,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard')->with('instruments', \App\Instrument::all());
-});
-
-Route::controller('nordnet', 'NordnetController');
+Route::controller('nordnet', '\App\Nordnet\Controllers\NordnetController');
 
 Route::get('dashboard', 'DashboardController@index');
 

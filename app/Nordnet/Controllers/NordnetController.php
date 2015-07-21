@@ -1,29 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Nordnet\Controllers;
 
-use App\Services\Nordnet;
 use App\Instrument;
-use App\Events\InstrumentUpdated;
-use Event;
+use App\Http\Controllers\Controller;
+use Cache;
+use App\Nordnet\Contracts\NordnetContract as Nordnet;
 
 class NordnetController extends Controller {
 
-    protected $nordnet;
-
     public function __construct() {
         $this->middleware('auth');
-        $this->nordnet = new Nordnet("fhqvst", "ib2KRor4");
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function getSynchronize()
+    public function getSynchronize(Nordnet $nordnet)
     {
-        $results = $this->nordnet->getInstrumentList(16314763);
+        $results = $nordnet->getInstrumentList(16314763);
 
         foreach($results as $result) {
             if(!Instrument::firstOrCreate([
@@ -42,10 +34,10 @@ class NordnetController extends Controller {
 
     }
 
-    public function getUpdate($instrument_id) {
+    public function getUpdate($instrument_id, Nordnet $nordnet) {
 
         $instrument = Instrument::where('nordnet_id', $instrument_id)->first();
-        $updated = $this->nordnet->getInstrument($instrument_id);
+        $updated = $nordnet->getInstrument($instrument_id);
 
         if(is_array($updated)) {
             $updated = $updated[0];
@@ -66,12 +58,16 @@ class NordnetController extends Controller {
         return "{}";
     }
 
-    public function getOrders($instrument_id) {
-        return $this->nordnet->getOrders($instrument_id);
+    public function getOrders($instrument_id, Nordnet $nordnet) {
+        return $nordnet->getOrders($instrument_id);
     }
 
-    public function getStatus() {
-        return $this->nordnet->getSessionKey();
+    public function getLogin(Nordnet $nordnet) {
+        return $nordnet->authenticate();
+    }
+
+    public function getKey() {
+        return Cache::get('nordnet_session');
     }
 
 }

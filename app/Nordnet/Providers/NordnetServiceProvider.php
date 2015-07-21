@@ -1,15 +1,19 @@
 <?php
 
-namespace App\Providers;
+namespace App\Nordnet\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Instrument;
 use App\Events\InstrumentUpdated;
 use Event;
-use App\Services\Nordnet;
+use Session;
+use App\Nordnet\Nordnet;
 
 class NordnetServiceProvider extends ServiceProvider
 {
+
+    protected $defer = true;
+
     /**
      * Bootstrap the application services.
      *
@@ -29,9 +33,15 @@ class NordnetServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Nordnet', function($app)
-        {
-            return new Nordnet("fhqvst", "ib2KRor4");
+        $this->app->singleton('App\Nordnet\Contracts\NordnetContract', function() {
+            return new Nordnet(
+                config('nordnet.username'),
+                config('nordnet.password')
+            );
         });
+    }
+
+    public function provides() {
+        return ['App\Nordnet\Contracts\NordnetContract'];
     }
 }

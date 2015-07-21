@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Auth;
 use Validator;
+use Redirect;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -65,5 +68,11 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'section' => $data['section']
         ]);
+    }
+
+    public function getLogout(Request $request) {
+        Auth::logout();
+        $request->session()->flush();
+        Redirect::to('dashboard');
     }
 }

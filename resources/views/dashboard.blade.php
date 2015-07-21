@@ -79,8 +79,8 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis pellentesque eleifend. Sed porttitor enim non iaculis fringilla dolor sit amet, consectetur adipiscing elit.</p>
                                 </div>
                                 <div class="setting__actions">
-                                    <button class="button--red">
-                                        Stoppa handel
+                                    <button class="button--green" id="action__connect-to-feed">
+                                        Anslut feed
                                     </button>
                                 </div>
                             </section>

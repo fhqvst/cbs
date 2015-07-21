@@ -32,25 +32,31 @@
     document).ready(function(){
 
         $('#action__synchronize').click(function() {
-
             $.ajax(window.location.origin + '/nordnet/synchronize', {
                 method: 'GET',
                 success: function(data) {
                     console.log(data);
                 }
             });
-
         });
 
         $('#action__update-instrument').click(function() {
-
             $.ajax(window.location.origin + '/nordnet/update/16281393', {
                 method: 'GET',
                 success: function(data) {
                     console.log(data);
                 }
             });
+        });
 
+        $('#action__connect-to-feed').click(function() {
+            $.ajax(window.location.origin + '/nordnet/status', {
+                method: 'GET',
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+            //{"session_key":"e3c550cdcda380b997a818f3cd3e8d739fe02ef0","expires_in":300,"environment":"exttest","country":"SE","private_feed":{"hostname":"priv.api.test.nordnet.se","port":443,"encrypted":true},"public_feed":{"hostname":"pub.api.test.nordnet.se","port":443,"encrypted":true}}
         });
 
     });

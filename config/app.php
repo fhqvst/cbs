@@ -137,7 +137,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        App\Providers\NordnetServiceProvider::class,
+        App\Nordnet\Providers\NordnetServiceProvider::class,
 
         /*
          * Application Service Providers...
