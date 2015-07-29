@@ -122,6 +122,10 @@ class Nordnet implements NordnetContract {
         return $this->get('lists/' . $market_id);
     }
 
+    public function getTradables($identifier) {
+        return $this->get('tradables/intraday/' . $identifier);
+    }
+
     /**
      * Authenticates the app to the Nordnet nEXT API and caches the
      * returned session key for 4 minutes. The session key itself is valid

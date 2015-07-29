@@ -136,7 +136,7 @@
                                 @foreach($instruments as $instrument)
                                     <tr>
                                         <td>{{ $instrument->symbol }}</td>
-                                        <td>{{ $instrument->label }}</td>
+                                        <td><a href="/instrument/{{ $instrument->id }}">{{ $instrument->label }}</a></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

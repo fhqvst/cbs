@@ -58,6 +58,10 @@ class NordnetController extends Controller {
         return "{}";
     }
 
+    public function getTradables($identifier, Nordnet $nordnet) {
+        return $nordnet->getTradables($identifier);
+    }
+
     public function getOrders($instrument_id, Nordnet $nordnet) {
         return $nordnet->getOrders($instrument_id);
     }

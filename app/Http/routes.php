@@ -16,4 +16,5 @@ Route::controller('nordnet', '\App\Nordnet\Controllers\NordnetController');
 
 Route::get('dashboard', 'DashboardController@index');
 
-Route::controller('/', 'Auth\AuthController');
+//Route::controller('/', 'Auth\AuthController');
+Route::resource('instrument', 'InstrumentController');
