@@ -4,6 +4,17 @@ body {
   color: $color-almost-black;
 }
 
+// Paragraphs and spans
+p {
+
+}
+
+.unit {
+  vertical-align: bottom;
+  line-height: 1.25em;
+  font-size: 0.75em;
+}
+
 // Headings
 h1, h2, h3, h4, h5, h6 {
 }

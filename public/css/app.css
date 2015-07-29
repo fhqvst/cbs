@@ -19,7 +19,7 @@ html {
 -------------------------------------------------------------------------------*/
 /* Let's default this puppy out
 -------------------------------------------------------------------------------*/
-html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+html, body, body div, span, object, iframe, h1, h2, h3, h4, .portfolio-meta dt, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
   margin: 0;
   padding: 0;
   border: 0;
@@ -232,6 +232,11 @@ body {
   font-weight: 300;
   color: #333; }
 
+.unit {
+  vertical-align: bottom;
+  line-height: 1.25em;
+  font-size: 0.75em; }
+
 h1 {
   font-size: 1.25rem; }
 
@@ -241,7 +246,7 @@ h2 {
 h3 {
   font-size: 0.875rem; }
 
-h4 {
+h4, .portfolio-meta dt {
   font-size: 0.75rem; }
 
 h5 {
@@ -484,18 +489,33 @@ input {
     .stocks-table td.buy-sell-buttons button, .stocks-table td.buy-sell-buttons .button {
       border-width: 0; }
 
+.portfolio-meta {
+  display: block;
+  text-align: right; }
+  .portfolio-meta::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .portfolio-meta dl {
+    float: right;
+    display: block;
+    margin-left: 2.35765%;
+    width: 14.70196%; }
+    .portfolio-meta dl:last-child {
+      margin-left: 0; }
+
 .setting__group + .setting__group {
   margin-top: 1.5625rem; }
 
 .setting__group .setting__group__header {
-  float: left;
+  float: right;
   display: block;
-  margin-right: 2.35765%;
+  margin-left: 2.35765%;
   width: 100%;
   margin-bottom: 0.78125rem;
   padding-bottom: 0.78125rem; }
   .setting__group .setting__group__header:last-child {
-    margin-right: 0; }
+    margin-left: 0; }
   .setting__group .setting__group__header h2 {
     font-size: 1rem; }
 

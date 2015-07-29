@@ -96,32 +96,21 @@
                         <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
                     </header>
                     <main class="block__content">
-                        <table class="stocks-table">
-                            <thead>
-                            <tr>
-                                <th>Namn</th>
-                                <th></th>
-                                <th>+/-%</th>
-                                <th>+/-</th>
-                                <th>Köp</th>
-                                <th>Sälj</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($instruments as $instrument)
-                                <tr>
-                                    <td>{{ $instrument->symbol }}</td>
-                                    <td>{{ $instrument->label }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="buy-sell-buttons"><button class="button button--small button--green">Köp</button><button class="button button--small button--orange" data-stock="{{ $instrument->symbol }}" data-event="sell">Sälj</button></td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                        <section class="portfolio-meta">
+                            <dl>
+                                <dt>Totalt värde</dt>
+                                <dd>{{ number_format(round($portfolio->total_value, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
+                            </dl>
+                            <dl>
+                                <dt>Avkastning</dt>
+                                <dd>{{ number_format(round($portfolio->total_value - $portfolio->balance, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
+                            </dl>
+                            <dl>
+                                <dt>Eget kapital</dt>
+                                <dd>{{ number_format(round($portfolio->balance, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
+                            </dl>
+                        </section>
+                        {!! $portfolio !!}
                     </main>
                 </section>
 

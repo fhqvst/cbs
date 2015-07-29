@@ -1,0 +1,13 @@
+.portfolio-meta {
+  @include row($direction: RTL);
+  text-align: right;
+
+  dl {
+    @include span-columns(2);
+  }
+
+  dt {
+    @extend h4;
+  }
+
+}
