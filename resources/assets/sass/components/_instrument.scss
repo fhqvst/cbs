@@ -7,3 +7,17 @@
 .instrument__chart__inner {
   margin: $vertical-spacing $horizontal-spacing;
 }
+
+.instrument__meta__table {
+  @include span-columns(6);
+
+  dt, dd {
+    @include omega(2n);
+    @include span-columns(6);
+  }
+
+  dd {
+    text-align: right;
+  }
+
+}

@@ -50,7 +50,22 @@
                             <div class="instrument__chart__inner"></div>
                         </div>
                     </figure>
+                    <header class="block__header">
+                        <h1>Aktiedata</h1>
+                    </header>
                     <main class="block__content">
+                        <dl class="instrument__meta__table">
+                            <dt>Symbol</dt>
+                            <dd>{{ $instrument->symbol }}</dd>
+                            <dt>Namn</dt>
+                            <dd>{{ $instrument->label }}</dd>
+                        </dl>
+                        <dl class="instrument__meta__table">
+                            <dt>Sektor</dt>
+                            <dd>{{ $instrument->sector }}</dd>
+                            <dt>ISIN</dt>
+                            <dd>{{ $instrument->isin_code }}</dd>
+                        </dl>
                     </main>
                 </section>
 

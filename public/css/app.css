@@ -244,7 +244,7 @@ h1 {
     margin-top: 0; }
 
 h2 {
-  font-size: 1.5rem; }
+  font-size: 1rem; }
 
 h3 {
   font-size: 0.875rem; }
@@ -456,6 +456,9 @@ input {
   overflow: hidden;
   border-bottom: 1px solid #DDD;
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.025); }
+  .block h1 {
+    font-size: 1.25rem;
+    margin: 0; }
   .block--half {
     float: left;
     display: block;
@@ -478,12 +481,14 @@ input {
   border-bottom: 1px solid #F6F6F6;
   padding: 1.5625rem 1.5625rem;
   position: relative; }
-  .block__header h1 {
-    font-size: 1.25rem;
-    margin: 0; }
 
 .block__content {
+  display: block;
   padding: 1.5625rem 1.5625rem; }
+  .block__content::after {
+    clear: both;
+    content: "";
+    display: table; }
   .block__content--no-padding {
     padding: 0; }
 
@@ -672,6 +677,27 @@ input {
 
 .instrument__chart__inner {
   margin: 1.5625rem 1.5625rem; }
+
+.instrument__meta__table {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%; }
+  .instrument__meta__table:last-child {
+    margin-right: 0; }
+  .instrument__meta__table dt, .instrument__meta__table dd {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .instrument__meta__table dt:nth-child(2n), .instrument__meta__table dd:nth-child(2n) {
+      margin-right: 0; }
+    .instrument__meta__table dt:nth-child(2n+1), .instrument__meta__table dd:nth-child(2n+1) {
+      clear: left; }
+    .instrument__meta__table dt:last-child, .instrument__meta__table dd:last-child {
+      margin-right: 0; }
+  .instrument__meta__table dd {
+    text-align: right; }
 
 html, body {
   background: #EEE;
