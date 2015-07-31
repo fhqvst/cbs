@@ -6,6 +6,8 @@
 
             <main class="main-content">
 
+                <h1>{{ $instrument->label }}</h1>
+
                 <section class="block">
                     <header class="block__header">
                         <h1>System</h1>
@@ -42,14 +44,22 @@
                     </main>
                 </section>
 
-                <section class="block">
+                <section class="block block--half">
+                    <figure class="block__content block__content--no-padding">
+                        <div class="instrument__chart">
+                            <div class="instrument__chart__inner"></div>
+                        </div>
+                    </figure>
+                    <main class="block__content">
+                    </main>
+                </section>
+
+                <section class="block block--half">
                     <header class="block__header">
-                        <h1>{{ $instrument->label }}</h1>
+                        <h1>Orderdjup</h1>
                         <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
                     </header>
                     <main class="block__content">
-
-                        <div id="react__content"></div>
 
                     </main>
                 </section>

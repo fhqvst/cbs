@@ -1,6 +1,9 @@
 /vendor
 /node_modules
 /bower_components
+/config/nordnet.php
 .idea/
 .env
 .DS_STORE
+
+

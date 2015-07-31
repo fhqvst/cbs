@@ -1,0 +1,9 @@
+.instrument__chart {
+  background: $color-green;
+  box-sizing: border-box;
+  overflow: hidden; // Remove margin collapse from child
+}
+
+.instrument__chart__inner {
+  margin: $vertical-spacing $horizontal-spacing;
+}

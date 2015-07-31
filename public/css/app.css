@@ -228,7 +228,7 @@ input[type=button] {
     display: table; }
 
 body {
-  font-family: "DIN Pro", "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "DIN Pro", "San Fransisco", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   color: #333; }
 
@@ -238,10 +238,13 @@ body {
   font-size: 0.75em; }
 
 h1 {
-  font-size: 1.25rem; }
+  font-size: 2rem;
+  margin: 1.5625rem 0; }
+  h1:first-child {
+    margin-top: 0; }
 
 h2 {
-  font-size: 1rem; }
+  font-size: 1.5rem; }
 
 h3 {
   font-size: 0.875rem; }
@@ -430,6 +433,7 @@ input {
     .topbar__logotype:last-child {
       margin-right: 0; }
     .topbar__logotype h1 {
+      font-size: 1.25rem;
       line-height: 6rem; }
   .topbar__navigation {
     float: left;
@@ -452,26 +456,36 @@ input {
   overflow: hidden;
   border-bottom: 1px solid #DDD;
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.025); }
-  .block + .block {
-    margin-top: 1.5625rem; }
+  .block--half {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .block--half:last-child {
+      margin-right: 0; }
   .block--borderless {
     border-bottom: none;
     padding: 1.5625rem 1.5625rem 0; }
+  .block + .block {
+    margin-top: 1.5625rem; }
   .block.is-minimized .block__content {
     height: 0;
     margin: 0;
     padding: 0;
     overflow: hidden; }
-  .block .block__header  {
-    border-width: 0; }
 
 .block__header {
   border-bottom: 1px solid #F6F6F6;
   padding: 1.5625rem 1.5625rem;
   position: relative; }
+  .block__header h1 {
+    font-size: 1.25rem;
+    margin: 0; }
 
 .block__content {
   padding: 1.5625rem 1.5625rem; }
+  .block__content--no-padding {
+    padding: 0; }
 
 .block__toggle {
   border: 0;
@@ -650,6 +664,14 @@ input {
   .notice__close:hover {
     background: none;
     opacity: 1; }
+
+.instrument__chart {
+  background: #38bba5;
+  box-sizing: border-box;
+  overflow: hidden; }
+
+.instrument__chart__inner {
+  margin: 1.5625rem 1.5625rem; }
 
 html, body {
   background: #EEE;
