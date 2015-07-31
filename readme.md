@@ -8,7 +8,7 @@
 ## Konfiguration
 
 1. Skapa ny fil: `config/nordnet.php`
-2. Fyll den enligt nedan:
+2.
 ```
 <?php
   return [
