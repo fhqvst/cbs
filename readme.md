@@ -1,9 +1,11 @@
 # Låtsasbörsen
 
 ## Installation
-`npm install`
-`bower install`
-`gulp`
+1. `npm install`
+2. `bower install`
+3. `gulp`
+4. `php artisan migrate`
+5. Besök `*.dev/register/` och skapa ett nytt konto
 
 ## Konfiguration
 
@@ -16,7 +18,7 @@
       'password' => 'PASSWORD'
   ];
 ```
-- Användarnamn och lösenord skapar du här: https://api.test.nordnet.se/account/register
+- Användarnamn och lösenord till nEXT API skapar du här: https://api.test.nordnet.se/account/register
 
 ## Flöde
 
