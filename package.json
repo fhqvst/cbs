@@ -8,6 +8,7 @@
     "ioredis": "^1.6.1",
     "laravel-elixir": "^2.0.0",
     "laravel-elixir-wiredep": "^0.1.2",
+    "react": "^0.13.3",
     "socket.io": "*"
   }
 }

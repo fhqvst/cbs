@@ -4,8 +4,8 @@ require('laravel-elixir-wiredep');
 
 elixir(function(mix) {
     mix
+        .browserify('main.js')
         .sass('app.scss')
-        .scripts('**/*.js', 'public/js/app.js')
+        //.scripts(['main.js'], 'public/js/app.js')
         .wiredep({src: 'app.blade.php'});
 });
-

@@ -12,7 +12,7 @@
     <!-- endbower -->
 
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
 	{{--<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>--}}
@@ -26,22 +26,27 @@
 </head>
 <body>
 
-    {{--<div style="position: fixed; z-index: -1; width: 100%; height: 12rem; background: #38BB84"></div>--}}
+    <h2>Test</h2>
 
-    @include('header')
+	<div class="site">
 
-	@yield('content')
+		@include('header')
 
-    @include('footer')
+		@yield('content')
 
-    @include('modal')
+		@include('footer')
+
+		@include('modal')
+
+	</div>
 
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/velocity/velocity.js"></script>
-    <script src="/bower_components/velocity/velocity.ui.js"></script>
+    <script src="/bower_components/jquery-pjax/jquery.pjax.js"></script>
+    <script src="/bower_components/pace/pace.js"></script>
     <!-- endbower -->
-    <script src="{{ asset('/js/app.js') }}"></script>
+	<script src="{{ asset('/js/bundle.js') }}"></script>
+	{{--<script src="{{ asset('/js/app.js') }}"></script>--}}
 
 </body>
 </html>

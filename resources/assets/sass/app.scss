@@ -31,3 +31,7 @@ html, body {
 body {
   padding-bottom: $vertical-spacing;
 }
+
+.site {
+  z-index: 1;
+}

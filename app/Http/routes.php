@@ -12,9 +12,19 @@
 |
 */
 
+// Dashboard
+Route::get('dashboard', 'DashboardController@index');
+Route::get('/', 'DashboardController@index');
+
+// API
 Route::controller('nordnet', '\App\Nordnet\Controllers\NordnetController');
 
-Route::get('dashboard', 'DashboardController@index');
+// Auth @todo: Find a better way of setting the basic auth routes
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@getLogout');
+Route::get('register', 'Auth\AuthController@getRegister');
+Route::post('register', 'Auth\AuthController@postRegister');
 
-//Route::controller('/', 'Auth\AuthController');
+// Instrument
 Route::resource('instrument', 'InstrumentController');

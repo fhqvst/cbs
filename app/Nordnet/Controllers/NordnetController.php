@@ -70,6 +70,10 @@ class NordnetController extends Controller {
         return $nordnet->authenticate();
     }
 
+    public function getVolvo(Nordnet $nordnet) {
+        return $nordnet->getVolvo();
+    }
+
     public function getKey() {
         return Cache::get('nordnet_session');
     }

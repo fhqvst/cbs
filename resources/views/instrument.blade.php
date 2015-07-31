@@ -49,7 +49,7 @@
                     </header>
                     <main class="block__content">
 
-                        <div id="tick-data"></div>
+                        <div id="react__content"></div>
 
                     </main>
                 </section>

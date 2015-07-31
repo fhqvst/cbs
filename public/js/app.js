@@ -1,3 +1,5 @@
+var React = require('react');
+
 (function ($) {
 
     $(document).ready(function () {
@@ -24,10 +26,10 @@
         $('.notice__close').click(function () {
             $(this).parents('.notice').remove();
         });
-    });
-})(jQuery);
-(function ($) {
-    $(document).ready(function () {
+
+        //
+        // Synchronization
+        //
 
         $('#action__synchronize').click(function () {
             $.ajax(window.location.origin + '/nordnet/synchronize', {
@@ -65,6 +67,20 @@
                 }
             });
         });
+
+        // React
+        var CommentBox = React.createClass({
+            displayName: 'CommentBox',
+
+            render: function render() {
+                return React.createElement(
+                    'div',
+                    { className: 'commentBox' },
+                    'Hello, world! I am a CommentBox.'
+                );
+            }
+        });
+        react.render(React.createElement(CommentBox, null), document.getElementById('react__content'));
     });
 })(jQuery);
 //# sourceMappingURL=app.js.map

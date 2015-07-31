@@ -18,6 +18,7 @@
     "neat": "~1.7.2",
     "jquery": "~2.1.4",
     "ionicons": "~2.0.1",
-    "velocity": "~1.2.2"
+    "jquery-pjax": "~1.9.6",
+    "pace": "~1.0.2"
   }
 }

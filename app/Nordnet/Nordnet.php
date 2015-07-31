@@ -126,6 +126,10 @@ class Nordnet implements NordnetContract {
         return $this->get('tradables/intraday/' . $identifier);
     }
 
+    public function getVolvo() {
+        return file_get_contents('https://www.nordnet.se/graph/instrument/11/366?from=2015-07-28&to=2015-07-31&fields=last,open,high,low,volume');
+    }
+
     /**
      * Authenticates the app to the Nordnet nEXT API and caches the
      * returned session key for 4 minutes. The session key itself is valid
