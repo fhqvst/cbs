@@ -7,8 +7,8 @@
 
 ## Konfiguration
 
-1. Skapa ny fil: `config/nordnet.php`
-2.
+- Skapa ny fil: `config/nordnet.php`
+- Fyll den enligt nedan:
 ```
 <?php
   return [
@@ -16,8 +16,7 @@
       'password' => 'PASSWORD'
   ];
 ```
-
-3. Användarnamn och lösenord skapar du här: https://api.test.nordnet.se/account/register
+- Användarnamn och lösenord skapar du här: https://api.test.nordnet.se/account/register
 
 ## Flöde
 
