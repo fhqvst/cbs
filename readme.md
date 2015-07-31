@@ -1,5 +1,24 @@
 # Låtsasbörsen
 
+## Installation
+`npm install`
+`bower install`
+`gulp`
+
+## Konfiguration
+
+1. Skapa ny fil: `config/nordnet.php`
+2. Fyll den enligt nedan:
+```
+<?php
+  return [
+      'username' => 'USERNAME',
+      'password' => 'PASSWORD'
+  ];
+```
+
+3. Användarnamn och lösenord skapar du här: https://api.test.nordnet.se/account/register
+
 ## Flöde
 
 1. En USER hittar, på en MARKET, ett INSTRUMENT denne vill köpa
