@@ -10,14 +10,30 @@
 
 .instrument__meta__table {
   @include span-columns(6);
+  display: table;
 
-  dt, dd {
-    @include omega(2n);
-    @include span-columns(6);
+  font-size: 0.75rem;
+
+  tbody {
+    width: 100%;
+  }
+  tr:hover {
+    background: $color-off-white;
+  }
+  td {
+    vertical-align: middle;
+  }
+  td:first-child {
+    text-align: left;
+    font-weight: 500;
+  }
+  td:last-child {
+    text-align: right;
+    word-break: break-all;
   }
 
-  dd {
-    text-align: right;
+  .unit {
+    vertical-align: middle;
   }
 
 }

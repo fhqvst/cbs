@@ -54,11 +54,10 @@ var LineChart = require("react-chartjs").Line;
             });
         });
 
-
         $('#action__get-tradables').click(function() {
-            $.ajax(window.location.origin + '/nordnet/borsdata/255', {
+            $.ajax('http://borsdata.se/progress/comp/volv', {
                 method: 'GET',
-                success: function(data) {
+                success: function(data, response) {
                     console.log(data);
                 }
             });

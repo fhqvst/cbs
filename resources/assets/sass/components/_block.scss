@@ -1,3 +1,17 @@
+.block-wrapper {
+  @include span-columns(12);
+
+  &--half {
+    @include span-columns(6);
+  }
+
+  & + .block,
+  & + .block-wrapper {
+    margin-top: $vertical-spacing;
+  }
+
+}
+
 .block {
   background: $color-white;
   overflow: hidden;
@@ -9,16 +23,13 @@
     margin: 0;
   }
 
-  &--half {
-    @include span-columns(6);
-  }
-
   &--borderless {
     border-bottom: none;
     padding: $vertical-spacing $horizontal-spacing 0;
   }
 
-  & + .block {
+  & + .block,
+  & + .block-wrapper {
     margin-top: $vertical-spacing;
   }
 

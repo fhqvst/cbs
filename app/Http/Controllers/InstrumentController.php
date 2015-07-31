@@ -57,25 +57,23 @@ class InstrumentController extends Controller
     public function show($id)
     {
 
-        $keys = DB::table('instrument_meta')
-            ->select('meta_key')
+        $data = DB::table('metadata')
+            ->select('instrument_id', 'key', 'value')
             ->where('instrument_id', $id)
-            ->groupBy('meta_key')
+            ->groupBy('key')
             ->get();
 
-        $meta = [];
+        dd($data);
 
-        foreach($keys as $key) {
-            $meta[$key->meta_key] = DB::table('instrument_meta')
-                ->select('meta_value')
-                ->where('meta_key', $key->meta_key)
-                ->orderBy('logged_at')
-                ->first();
+        $instrument_meta = [];
+
+        foreach($data as $meta) {
+            $instrument_meta[$meta->key] = $meta->value;
         }
 
         return view('instrument')
             ->with('instrument', Instrument::findOrFail($id))
-            ->with('instrument_meta', $meta);
+            ->with('instrument_meta', $instrument_meta);
     }
 
     /**

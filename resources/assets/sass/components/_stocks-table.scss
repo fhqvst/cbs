@@ -3,10 +3,6 @@
   line-height: 1.5;
   letter-spacing: 0.1em;
 
-  tr {
-    transition: .075s;
-  }
-
   tr:hover {
     background: $color-off-white;
   }
@@ -34,4 +30,12 @@
     text-align: right;
     white-space: nowrap;
   }
+
+  a {
+    color: $color-almost-black;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
 }

@@ -95,6 +95,14 @@ table {
     text-align: center;
     vertical-align: bottom;
   }
+
+  td:first-child {
+    padding-left: $horizontal-spacing/4;
+  }
+  td:last-child {
+    padding-right: $horizontal-spacing/4;
+  }
+
 }
 
 // Inputs

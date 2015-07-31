@@ -4,6 +4,8 @@ namespace App\Nordnet;
 
 use Cache;
 use DB;
+use App\Instrument;
+use App\Metadata;
 use App\Nordnet\Contracts\NordnetContract;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -127,81 +129,172 @@ class Nordnet implements NordnetContract {
         return $this->get('tradables/intraday/' . $identifier);
     }
 
-    public function getBorsdata($instrument_id) {
+    public function getBorsdata() {
 
-        // @todo: Clean up this giant pile of crap
+        $indices = array(
+            "5" => "revenue",
+            "6" => "income",
+            "7" => "dividend",
+            "8" => "equity",
+            "23" => "free_cash_flow",
+            "25" => "capex_percent",
+            "28" => "gross_margin",
+            "29" => "ebit_margin",
+            "30" => "income_margin",
+            "31" => "fcf_margin",
+            "32" => "ebitda_margin",
+            "33" => "return_on_equity",
+            "34" => "return_on_assets",
+            "36" => "return_on_capital",
+            "39" => "solidity",
+            "41" => "net_debt_percent",
+            "46" => "cash_percent",
+            "51" => "operating_margin",
+            "61" => "shares",
+            "68" => "operating_cash_flow",
+            "70" => "ebit",
+            "71" => "ebitda",
+            "73" => "net_debt",
+            "92" => "intangible_assets_percent",
+            "93" => "working_capital_percent"
+        );
 
-        $options = array('http' =>
-            array(
-                'method'  => 'POST',
-                'header'  => "Content-Type: application/json; charset=UTF-8",
-                'content' => json_encode(array(
-                    "companyID" => $instrument_id,
-                    "selectedKPI" => 6
-                )),
-                'timeout' => 60
-            )
+        $companies = array(
+            "2" => "aak",
+            "3" => "abb",
+            "258" => "aoi",
+            "10" => "alfa",
+            "17" => "assa",
+            "18" => "azn",
+            "19" => "atco",
+            "20" => "ljgr",
+            "21" => "aliv",
+            "24" => "axfo",
+            "25" => "axis",
+            "32" => "bets",
+            "34" => "bill",
+            "40" => "bol",
+            "46" => "cast",
+            "373" => "comh",
+            "70" => "elux",
+            "71" => "ekta",
+            "75" => "enq",
+            "77" => "eric",
+            "80" => "fabg",
+            "83" => "bald",
+            "611" => "baldpref",
+            "88" => "geti",
+            "204" => "shb",
+            "97" => "hm",
+            "98" => "hexa",
+            "99" => "hpol",
+            "102" => "holm",
+            "103" => "hufv",
+            "104" => "husq",
+            "92" => "ica",
+            "109" => "indu",
+            "110" => "indt",
+            "112" => "ij",
+            "113" => "inve",
+            "116" => "jm",
+            "120" => "kinv",
+            "126" => "lato",
+            "440" => "lifco",
+            "129" => "loom",
+            "130" => "lund",
+            "131" => "lumi",
+            "132" => "lupe",
+            "135" => "meda",
+            "138" => "melk",
+            "143" => "mic",
+            "148" => "mtg",
+            "151" => "ncc",
+            "156" => "nibe",
+            "157" => "nobi",
+            "249" => "noki",
+            "159" => "nda",
+            "171" => "ori",
+            "738" => "pndx",
+            "175" => "peab",
+            "185" => "rato",
+            "614" => "ratopref",
+            "193" => "saab",
+            "195" => "sand",
+            "197" => "sca",
+            "199" => "seb",
+            "201" => "secu",
+            "207" => "ska",
+            "208" => "skf",
+            "211" => "ssab",
+            "212" => "ste",
+            "217" => "swed",
+            "218" => "swma",
+            "219" => "sobi",
+            "222" => "tel2",
+            "223" => "tlsn",
+            "224" => "tien",
+            "229" => "trel",
+            "238" => "wall",
+            "236" => "volv"
         );
 
         $url = 'http://borsdata.se/progress/getHighChartJason';
 
-        $kpis = explode(',', "5,6,8,7,23,25,28,29,30,31,32,33,34,36,39,41,46,51,61,68,70,71,73,92,93");
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/json"));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, true);
 
-        foreach($kpis as $kp) {
 
-            $options['http']['content'] = json_encode(array(
-                "companyID" => $instrument_id,
-                "selectedKPI" => $kp
-            ));
-            $context  = stream_context_create($options);
-            $result = file_get_contents($url, false, $context);
 
-            $result = json_decode($result);
+        foreach($companies as $company_id => $company) {
+            foreach($indices as $index => $name) {
 
-            $kpi = $result->KPIData[0];
-
-            $name = $kpi->Name;
-            $name = strtolower($name);
-
-            $a = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'ß', 'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ', 'Ā', 'ā', 'Ă', 'ă', 'Ą', 'ą', 'Ć', 'ć', 'Ĉ', 'ĉ', 'Ċ', 'ċ', 'Č', 'č', 'Ď', 'ď', 'Đ', 'đ', 'Ē', 'ē', 'Ĕ', 'ĕ', 'Ė', 'ė', 'Ę', 'ę', 'Ě', 'ě', 'Ĝ', 'ĝ', 'Ğ', 'ğ', 'Ġ', 'ġ', 'Ģ', 'ģ', 'Ĥ', 'ĥ', 'Ħ', 'ħ', 'Ĩ', 'ĩ', 'Ī', 'ī', 'Ĭ', 'ĭ', 'Į', 'į', 'İ', 'ı', 'Ĳ', 'ĳ', 'Ĵ', 'ĵ', 'Ķ', 'ķ', 'Ĺ', 'ĺ', 'Ļ', 'ļ', 'Ľ', 'ľ', 'Ŀ', 'ŀ', 'Ł', 'ł', 'Ń', 'ń', 'Ņ', 'ņ', 'Ň', 'ň', 'ŉ', 'Ō', 'ō', 'Ŏ', 'ŏ', 'Ő', 'ő', 'Œ', 'œ', 'Ŕ', 'ŕ', 'Ŗ', 'ŗ', 'Ř', 'ř', 'Ś', 'ś', 'Ŝ', 'ŝ', 'Ş', 'ş', 'Š', 'š', 'Ţ', 'ţ', 'Ť', 'ť', 'Ŧ', 'ŧ', 'Ũ', 'ũ', 'Ū', 'ū', 'Ŭ', 'ŭ', 'Ů', 'ů', 'Ű', 'ű', 'Ų', 'ų', 'Ŵ', 'ŵ', 'Ŷ', 'ŷ', 'Ÿ', 'Ź', 'ź', 'Ż', 'ż', 'Ž', 'ž', 'ſ', 'ƒ', 'Ơ', 'ơ', 'Ư', 'ư', 'Ǎ', 'ǎ', 'Ǐ', 'ǐ', 'Ǒ', 'ǒ', 'Ǔ', 'ǔ', 'Ǖ', 'ǖ', 'Ǘ', 'ǘ', 'Ǚ', 'ǚ', 'Ǜ', 'ǜ', 'Ǻ', 'ǻ', 'Ǽ', 'ǽ', 'Ǿ', 'ǿ');
-            $b = array('A', 'A', 'A', 'A', 'A', 'A', 'AE', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'D', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U', 'Y', 's', 'a', 'a', 'a', 'a', 'a', 'a', 'ae', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'y', 'y', 'A', 'a', 'A', 'a', 'A', 'a', 'C', 'c', 'C', 'c', 'C', 'c', 'C', 'c', 'D', 'd', 'D', 'd', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'G', 'g', 'G', 'g', 'G', 'g', 'G', 'g', 'H', 'h', 'H', 'h', 'I', 'i', 'I', 'i', 'I', 'i', 'I', 'i', 'I', 'i', 'IJ', 'ij', 'J', 'j', 'K', 'k', 'L', 'l', 'L', 'l', 'L', 'l', 'L', 'l', 'l', 'l', 'N', 'n', 'N', 'n', 'N', 'n', 'n', 'O', 'o', 'O', 'o', 'O', 'o', 'OE', 'oe', 'R', 'r', 'R', 'r', 'R', 'r', 'S', 's', 'S', 's', 'S', 's', 'S', 's', 'T', 't', 'T', 't', 'T', 't', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'W', 'w', 'Y', 'y', 'Y', 'Z', 'z', 'Z', 'z', 'Z', 'z', 's', 'f', 'O', 'o', 'U', 'u', 'A', 'a', 'I', 'i', 'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'A', 'a', 'AE', 'ae', 'O', 'o');
-            $name = str_replace($a, $b, $name);
-
-            $name = preg_replace('/[%]+/', 'procent', $name);
-            $name = preg_replace('/[- ]+/', '_', $name);
-            $name = preg_replace('/[^a-zA-Z0-9_]+/', '', $name);
-
-            foreach($kpi->Data as $data) {
-
-                $date = date_create($data->Day . '-' . $data->Month . '-' . strftime("%Y", $data->Year / 1000));
-                $date = $date->format('Y-m-d');
-                $value = $data->Value;
-
-                $new = array(
-                    'instrument_id' => 1,
-                    'meta_key' => $name,
-                    'meta_value' => $value,
-                    'logged_at' => $date
+                $data = array(
+                    "companyID" => $company_id,
+                    "selectedKPI" => $index
                 );
 
-                $meta = DB::table('instrument_meta')
-                    ->where('logged_at', $date)
-                    ->where('meta_key', $name)
-                    ->get();
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 
-                if($meta) {
-                    DB::table('instrument_meta')
-                        ->where('logged_at', $date)
-                        ->where('meta_key', $name)
-                        ->update($new);
-                } else {
-                    DB::table('instrument_meta')->insert($new);
+                $response = curl_exec($ch);
+                $status = curl_getinfo($ch)['http_code'];
+
+                if($status != 200) {
+                    continue;
                 }
+
+                $kpi = json_decode($response)->KPIData;
+                $kpi = $kpi[0];
+
+                foreach($kpi->Data as $value) {
+
+                    // Format date for the DATETIME mysql field
+                    $year = strftime("%Y", $value->Year / 1000);
+                    $date = date_create($value->Day . '-' . $value->Month . '-' . $year);
+                    $date = date_format($date, 'Y-m-d H:i:s');
+
+                    $instruments = Instrument::where('symbol', 'like', $company . '%')->get();
+
+                    foreach ($instruments as $instrument) {
+                        $instrument_meta = Metadata::firstOrCreate(array(
+                            "instrument_id" => $instrument->id,
+                            "key" => $name,
+                            "value" => $value->Value,
+                            "created_at" => $date
+                        ));
+                    }
+
+                }
+
             }
+            echo "$company<hr>";
         }
 
-        return true;
+        curl_close($ch);
 
+        return "";
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Instrument extends Model {
 
@@ -9,6 +10,10 @@ class Instrument extends Model {
     public function positions()
     {
         return $this->belongsToMany('App\Positions');
+    }
+
+    public function metadata() {
+        return $this->hasMany('App\Metadata');
     }
 
 }

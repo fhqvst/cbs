@@ -298,6 +298,10 @@ table {
     padding: 0.5rem 0;
     text-align: center;
     vertical-align: bottom; }
+  table td:first-child {
+    padding-left: 0.39062rem; }
+  table td:last-child {
+    padding-right: 0.39062rem; }
 
 input {
   border: 2px solid #EEE;
@@ -451,6 +455,24 @@ input {
         .topbar__navigation nav a:hover {
           color: #38bba5; }
 
+.block-wrapper {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .block-wrapper:last-child {
+    margin-right: 0; }
+  .block-wrapper--half {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .block-wrapper--half:last-child {
+      margin-right: 0; }
+  .block-wrapper + .block,
+  .block-wrapper + .block-wrapper {
+    margin-top: 1.5625rem; }
+
 .block {
   background: #FFF;
   overflow: hidden;
@@ -459,17 +481,11 @@ input {
   .block h1 {
     font-size: 1.25rem;
     margin: 0; }
-  .block--half {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%; }
-    .block--half:last-child {
-      margin-right: 0; }
   .block--borderless {
     border-bottom: none;
     padding: 1.5625rem 1.5625rem 0; }
-  .block + .block {
+  .block + .block,
+  .block + .block-wrapper {
     margin-top: 1.5625rem; }
   .block.is-minimized .block__content {
     height: 0;
@@ -515,8 +531,6 @@ input {
   font-size: .75rem;
   line-height: 1.5;
   letter-spacing: 0.1em; }
-  .stocks-table tr {
-    transition: .075s; }
   .stocks-table tr:hover {
     background: #EEE; }
   .stocks-table td {
@@ -533,6 +547,10 @@ input {
     white-space: nowrap; }
     .stocks-table td.buy-sell-buttons button, .stocks-table td.buy-sell-buttons .button {
       border-width: 0; }
+  .stocks-table a {
+    color: #333; }
+    .stocks-table a:hover {
+      text-decoration: underline; }
 
 .portfolio-meta {
   display: block;
@@ -682,22 +700,25 @@ input {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 48.82117%; }
+  width: 48.82117%;
+  display: table;
+  font-size: 0.75rem; }
   .instrument__meta__table:last-child {
     margin-right: 0; }
-  .instrument__meta__table dt, .instrument__meta__table dd {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%; }
-    .instrument__meta__table dt:nth-child(2n), .instrument__meta__table dd:nth-child(2n) {
-      margin-right: 0; }
-    .instrument__meta__table dt:nth-child(2n+1), .instrument__meta__table dd:nth-child(2n+1) {
-      clear: left; }
-    .instrument__meta__table dt:last-child, .instrument__meta__table dd:last-child {
-      margin-right: 0; }
-  .instrument__meta__table dd {
-    text-align: right; }
+  .instrument__meta__table tbody {
+    width: 100%; }
+  .instrument__meta__table tr:hover {
+    background: #EEE; }
+  .instrument__meta__table td {
+    vertical-align: middle; }
+  .instrument__meta__table td:first-child {
+    text-align: left;
+    font-weight: 500; }
+  .instrument__meta__table td:last-child {
+    text-align: right;
+    word-break: break-all; }
+  .instrument__meta__table .unit {
+    vertical-align: middle; }
 
 .breadcrumbs {
   float: left;
