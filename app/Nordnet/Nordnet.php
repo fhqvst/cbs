@@ -246,8 +246,6 @@ class Nordnet implements NordnetContract {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, true);
 
-
-
         foreach($companies as $company_id => $company) {
             foreach($indices as $index => $name) {
 
@@ -278,23 +276,24 @@ class Nordnet implements NordnetContract {
                     $instruments = Instrument::where('symbol', 'like', $company . '%')->get();
 
                     foreach ($instruments as $instrument) {
-                        $instrument_meta = Metadata::firstOrCreate(array(
+                        $instrument_meta = array(
                             "instrument_id" => $instrument->id,
                             "key" => $name,
                             "value" => $value->Value,
                             "created_at" => $date
-                        ));
+                        );
+                        $instrument_update = Metadata::firstOrCreate($instrument_meta);
+                        $instrument_update->update($instrument_meta);
                     }
 
                 }
 
             }
-            echo "$company<hr>";
         }
 
         curl_close($ch);
 
-        return "";
+        return "Success";
     }
 
     /**

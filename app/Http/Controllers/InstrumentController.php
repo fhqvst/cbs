@@ -56,14 +56,13 @@ class InstrumentController extends Controller
      */
     public function show($id)
     {
-
         $data = DB::table('metadata')
             ->select('instrument_id', 'key', 'value')
             ->where('instrument_id', $id)
             ->groupBy('key')
             ->get();
 
-        dd($data);
+        print_r($data);
 
         $instrument_meta = [];
 
