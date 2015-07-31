@@ -70,8 +70,8 @@ class NordnetController extends Controller {
         return $nordnet->authenticate();
     }
 
-    public function getVolvo(Nordnet $nordnet) {
-        return $nordnet->getVolvo();
+    public function getBorsdata($instrument_id, Nordnet $nordnet) {
+        return $nordnet->getBorsdata($instrument_id);
     }
 
     public function getKey() {

@@ -56,7 +56,7 @@ var LineChart = require("react-chartjs").Line;
         });
 
         $("#action__get-tradables").click(function () {
-            $.ajax(window.location.origin + "/nordnet/volvo", {
+            $.ajax(window.location.origin + "/nordnet/borsdata/255", {
                 method: "GET",
                 success: function success(data) {
                     console.log(data);
