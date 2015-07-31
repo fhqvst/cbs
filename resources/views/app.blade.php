@@ -26,8 +26,6 @@
 </head>
 <body>
 
-    <h2>Test</h2>
-
 	<div class="site">
 
 		@include('header')

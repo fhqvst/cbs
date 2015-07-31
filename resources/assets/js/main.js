@@ -82,10 +82,10 @@ var React = require('react');
         $(document).pjax('a', '.site');
 
         $(document).on('pjax:send', function() {
-            console.log("pjax:send");
+            $('.site').addClass('is-loading');
         });
         $(document).on('pjax:complete', function() {
-            console.log("pjax:complete");
+            $('.site').removeClass('is-loading');
         });
 
     });
