@@ -4,6 +4,15 @@
     <div class="container">
         <div class="row">
 
+            <nav class="breadcrumbs">
+                <div class="breadcrumbs__left">
+                    <a href="/"><i class="ion-ios-arrow-back"></i>Tillbaka</a>
+                </div>
+                <div class="breadcrumbs__right">
+
+                </div>
+            </nav>
+
             <main class="main-content">
 
                 <h1>{{ $instrument->label }}</h1>

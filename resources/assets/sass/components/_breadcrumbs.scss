@@ -1,0 +1,33 @@
+.breadcrumbs {
+  @include span-columns(12);
+  margin-top: $vertical-spacing;
+
+  a {
+    color: $color-gray;
+    &:hover {
+      color: $color-almost-black;
+    }
+    i {
+      margin-right: $horizontal-spacing/4;
+    }
+  }
+
+}
+
+.breadcrumbs__left {
+  @include span-columns(6);
+}
+
+.breadcrumbs__right {
+  @include span-columns(6);
+  text-align: right;
+
+  ul {
+    float: right;
+  }
+
+  li {
+    float: left;
+  }
+
+}
