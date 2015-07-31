@@ -35,15 +35,15 @@
                             <section class="setting">
                                 <header class="setting__header">
                                     <h3>
-                                        Handel & transaktioner
+                                        Börsdata
                                     </h3>
                                 </header>
                                 <div class="setting__description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis pellentesque eleifend. Sed porttitor enim non iaculis fringilla dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>Hämtar börsdata för <strong>Volvo B</strong>. Börsdata.se använder ett annat system för att identifiera instrument.</p>
                                 </div>
                                 <div class="setting__actions">
                                     <button class="button--green" id="action__get-tradables">
-                                        Hämta tradables
+                                        Hämta Börsdata
                                     </button>
                                 </div>
                             </section>
@@ -75,6 +75,7 @@
                             <dt>ISIN</dt>
                             <dd>{{ $instrument->isin_code }}</dd>
                         </dl>
+                        <?php var_dump($instrument_meta) ?>
                     </main>
                 </section>
 

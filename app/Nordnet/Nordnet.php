@@ -197,13 +197,10 @@ class Nordnet implements NordnetContract {
                 } else {
                     DB::table('instrument_meta')->insert($new);
                 }
-                echo 'Done: ' . $name;
-
             }
-
-
-
         }
+
+        return true;
 
     }
 

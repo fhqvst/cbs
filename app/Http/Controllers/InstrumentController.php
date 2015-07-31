@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Instrument;
+use DB;
 
 class InstrumentController extends Controller
 {
@@ -55,8 +56,26 @@ class InstrumentController extends Controller
      */
     public function show($id)
     {
+
+        $keys = DB::table('instrument_meta')
+            ->select('meta_key')
+            ->where('instrument_id', $id)
+            ->groupBy('meta_key')
+            ->get();
+
+        $meta = [];
+
+        foreach($keys as $key) {
+            $meta[$key->meta_key] = DB::table('instrument_meta')
+                ->select('meta_value')
+                ->where('meta_key', $key->meta_key)
+                ->orderBy('logged_at')
+                ->first();
+        }
+
         return view('instrument')
-            ->with('instrument', Instrument::findOrFail($id));
+            ->with('instrument', Instrument::findOrFail($id))
+            ->with('instrument_meta', $meta);
     }
 
     /**
