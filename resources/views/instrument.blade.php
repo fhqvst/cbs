@@ -39,7 +39,7 @@
                                     </h3>
                                 </header>
                                 <div class="setting__description">
-                                    <p>Hämtar börsdata för <strong>Volvo B</strong>. Börsdata.se använder ett annat system för att identifiera instrument.</p>
+                                    <p>Hämtar börsdata för <strong>alla instrument</strong> på nytt. Börsdata.se använder ett annat system för att identifiera instrument.</p>
                                 </div>
                                 <div class="setting__actions">
                                     <button class="button--green" id="action__get-tradables">
@@ -86,11 +86,11 @@
                                 <tr><td>EBIT</td>
                                     <td>{{ $instrument_meta["ebitda"] }}<span class="unit">SEK</span></td></tr>
                                 <tr><td>EBIT-marginal</td>
-                                    <td>{{ $instrument_meta["ebit_margin"] }}<span class="unit">SEK</span></td></tr>
+                                    <td>{{ $instrument_meta["ebit_margin"] }}<span class="unit">%</span></td></tr>
                                 <tr><td>EBITDA</td>
                                     <td>{{ $instrument_meta["ebit"] }}<span class="unit">SEK</span></td></tr>
                                 <tr><td>EBITDA-marginal</td>
-                                    <td>{{ $instrument_meta["ebitda_margin"] }}<span class="unit">SEK</span></td></tr>
+                                    <td>{{ $instrument_meta["ebitda_margin"] }}<span class="unit">%</span></td></tr>
                                 </tbody>
                             </table>
                             <table class="instrument__meta__table">
