@@ -62,8 +62,6 @@ class InstrumentController extends Controller
             ->groupBy('key')
             ->get();
 
-        print_r($data);
-
         $instrument_meta = [];
 
         foreach($data as $meta) {
