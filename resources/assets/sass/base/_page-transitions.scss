@@ -2,7 +2,6 @@
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
-
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -26,6 +25,7 @@
 .site {
   opacity: 1;
   transition: opacity 0.25s;
+  position: relative;
   &.is-loading {
     opacity: 0.75;
   }

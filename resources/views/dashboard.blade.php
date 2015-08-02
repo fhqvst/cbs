@@ -6,7 +6,7 @@
 
             <main class="main-content">
 
-                <section class="notice notice--success">
+                <section class="notice notice--warning">
                     <section class="notice__content">
                         <p class="notice__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <button class="button notice__close"><i class="icon ion-ios-close-empty"></i></button>
@@ -35,84 +35,57 @@
                                     </h3>
                                 </header>
                                 <div class="setting__description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis pellentesque eleifend. Sed porttitor enim non iaculis fringilla dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>Laddar in marknader, listor och alla aktier på OMX Stockholm Large Cap.</p>
                                 </div>
                                 <div class="setting__actions">
-                                    <button id="action__synchronize">
+                                    <button class="button button--green" id="action__synchronize">
                                         Synkronisera
                                     </button>
                                 </div>
                             </section>
-                            <section class="setting">
-                                <header class="setting__header">
-                                    <h3>
-                                        Instrumentcache
-                                    </h3>
-                                </header>
-                                <div class="setting__description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis pellentesque eleifend. Sed porttitor enim non iaculis fringilla dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="setting__actions">
-                                    <button id="action__update-instrument">
-                                        Uppdatera
-                                    </button>
-                                </div>
-                            </section>
-
-                        </section>
-
-                        <section class="setting__group">
-
-                            <header class="setting__group__header">
-                                <h2>
-                                    Övrigt
-                                </h2>
-                            </header>
-
-                            <section class="setting">
-                                <header class="setting__header">
-                                    <h3>
-                                        Handel & transaktioner
-                                    </h3>
-                                </header>
-                                <div class="setting__description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis pellentesque eleifend. Sed porttitor enim non iaculis fringilla dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="setting__actions">
-                                    <button class="button--green" id="action__connect-to-feed">
-                                        Anslut feed
-                                    </button>
-                                </div>
-                            </section>
 
                         </section>
 
                     </main>
                 </section>
 
-                <section class="block">
-                    <header class="block__header">
-                        <h1>Portfölj</h1>
-                        <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
-                    </header>
-                    <main class="block__content">
-                        <section class="portfolio-meta">
-                            <dl>
-                                <dt>Totalt värde</dt>
-                                <dd>{{ number_format(round($portfolio->total_value, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
-                            </dl>
-                            <dl>
-                                <dt>Avkastning</dt>
-                                <dd>{{ number_format(round($portfolio->total_value - $portfolio->balance, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
-                            </dl>
-                            <dl>
-                                <dt>Eget kapital</dt>
-                                <dd>{{ number_format(round($portfolio->balance, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
-                            </dl>
-                        </section>
-                        {!! $portfolio !!}
-                    </main>
-                </section>
+                <div class="block-wrapper">
+
+                    <section class="block block--half">
+                        <header class="block__header">
+                            <h1>Portfölj</h1>
+                            <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
+                        </header>
+                        <main class="block__content">
+                            <section class="portfolio-meta">
+                                <dl>
+                                    <dt>Eget kapital</dt>
+                                    <dd>{{ number_format(round($portfolio->balance, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
+                                </dl>
+                                <dl>
+                                    <dt>Avkastning</dt>
+                                    <dd>{{ number_format(round($portfolio->total_value - $portfolio->balance, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
+                                </dl>
+                                <dl>
+                                    <dt>Totalt värde</dt>
+                                    <dd>{{ number_format(round($portfolio->total_value, 2), 2, '.', ' ') }} <span class="unit">SEK</span></dd>
+                                </dl>
+                            </section>
+                        </main>
+                    </section>
+
+                    <section class="block block--half">
+                        <header class="block__header">
+                            <h1>Ordrar</h1>
+                            <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
+                        </header>
+                        <main class="block__content">
+                            <h3>Aktiva</h3>
+                            <h3>Avslutade</h3>
+                        </main>
+                    </section>
+
+                </div>
 
                 <section class="block">
                     <header class="block__header">

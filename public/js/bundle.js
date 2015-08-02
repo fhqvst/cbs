@@ -23,7 +23,7 @@ var LineChart = require("react-chartjs").Line;
          });
          */
 
-        $(".block__toggle").click(function () {
+        $(".block__header").click(function () {
             $(this).parents(".block").toggleClass("is-minimized");
             $(this).find("i").toggleClass("ion-ios-minus-empty");
             $(this).find("i").toggleClass("ion-ios-plus-empty");

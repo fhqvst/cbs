@@ -26,6 +26,8 @@
 </head>
 <body>
 
+    <div class="background"></div>
+
 	<div class="site">
 
 		@include('header')

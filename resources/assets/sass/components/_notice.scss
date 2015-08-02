@@ -1,9 +1,7 @@
 .notice {
-  border-width: 1px;
-  border-style: solid;
   color: $color-white;
-  margin-bottom: $vertical-spacing;
   position: relative;
+  margin-top: $vertical-spacing;
 
   &--info {
     background: $color-blue;
@@ -16,8 +14,7 @@
   }
 
   &--warning {
-    background: lighten($color-orange, 10);
-    border-color: darken($color-orange, 5);
+    background: $color-orange;
   }
 
   &--danger {

@@ -1,13 +1,17 @@
 .portfolio-meta {
-  @include row($direction: RTL);
-  text-align: right;
+  text-align: center;
 
   dl {
-    @include span-columns(2);
+    @include span-columns(4);
   }
 
   dt {
     @extend h4;
+  }
+
+  .unit {
+    vertical-align: middle;
+    line-height: 1em;
   }
 
 }

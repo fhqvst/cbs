@@ -22,8 +22,8 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 2rem;
   margin: $vertical-spacing 0;
-  &:first-child {
-    margin-top: 0;
+  &.page-title {
+    margin-bottom: 0;
   }
 }
 h2 {
@@ -45,6 +45,7 @@ h6 {
 .logotype {
   font-weight: bold;
   color: $color-green;
+  margin: 0;
   &:after {
     display: inline-block;
     content: ' ';
@@ -80,7 +81,8 @@ button {
 table {
   width: 100%;
 
-  tr:nth-child(even) {
+  tr:nth-child(even),
+  th {
     background: $color-almost-white;
   }
 
@@ -90,16 +92,19 @@ table {
     text-transform: uppercase;
   }
 
-  td {
+  td,
+  th {
     padding: 0.5rem 0;
     text-align: center;
     vertical-align: bottom;
   }
 
-  td:first-child {
+  td:first-child,
+  th:first-child {
     padding-left: $horizontal-spacing/4;
   }
-  td:last-child {
+  td:last-child,
+  th:last-child{
     padding-right: $horizontal-spacing/4;
   }
 

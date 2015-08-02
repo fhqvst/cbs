@@ -15,7 +15,7 @@
 
             <main class="main-content">
 
-                <h1>{{ $instrument->name }}</h1>
+                <h1 class="page-title">{{ $instrument->name }}</h1>
 
                 <section class="block">
                     <header class="block__header">
