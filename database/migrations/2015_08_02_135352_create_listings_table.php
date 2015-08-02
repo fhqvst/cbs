@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRolesToUsers extends Migration
+class CreateListingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class AddRolesToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table) {
-            $table->integer('role');
+        Schema::create('listings', function(Blueprint $table) {
+            $table->increments('id');
+            $table->bigInteger('nordnet_id');
+            $table->text('name');
+            $table->timestamps();
         });
     }
 
@@ -24,8 +27,6 @@ class AddRolesToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function($table) {
-            $table->dropColumn('role');
-        });
+        Schema::drop('listings');
     }
 }

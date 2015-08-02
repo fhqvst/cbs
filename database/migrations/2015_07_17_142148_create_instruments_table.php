@@ -15,10 +15,13 @@ class CreateInstrumentsTable extends Migration
         Schema::create('instruments', function($table) {
             $table->increments('id');
             $table->string('symbol');
-            $table->string('name')->unique();
-            $table->text('label');
-            $table->integer('nordnet_id');
-            $table->integer('market_id');
+            $table->text('name');
+            $table->bigInteger('nordnet_id')->default(0);
+            $table->integer('market_id')->default(0);
+            $table->string('sector')->default('NO_SECTOR');
+            $table->string('isin_code')->default(0);
+            $table->integer('listing_id')->default(0);
+            $table->integer('metadata_id')->default(0);
             $table->timestamps();
         });
     }

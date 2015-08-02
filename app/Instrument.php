@@ -5,7 +5,7 @@ use DB;
 
 class Instrument extends Model {
 
-    protected $fillable = ['symbol', 'name', 'label', 'nordnet_id', 'market_id', 'sector', 'isin_code'];
+    protected $fillable = ['symbol', 'name', 'label', 'nordnet_id', 'market_id', 'listing_id', 'sector', 'isin_code'];
 
     public function positions()
     {
@@ -14,6 +14,10 @@ class Instrument extends Model {
 
     public function metadata() {
         return $this->hasMany('App\Metadata');
+    }
+
+    public function quotes() {
+        return $this->hasMany('App\Quote');
     }
 
 }

@@ -13,7 +13,7 @@ class CreateTradesTable extends Migration
     public function up()
     {
         Schema::create('trades', function($table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('instrument_id');
             $table->integer('buyer_id'); // user_id
             $table->integer('seller_id'); // user_id

@@ -12,7 +12,7 @@ class CreatePortfoliosTable extends Migration
      */
     public function up()
     {
-        Schema::create('portfolios', function($table) {
+        Schema::create('portfolios', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->decimal('own_capital', 19, 4);

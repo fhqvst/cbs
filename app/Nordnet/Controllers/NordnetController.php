@@ -3,35 +3,87 @@
 namespace App\Nordnet\Controllers;
 
 use App\Instrument;
+use App\Market;
+use App\Listing;
+use App\Quote;
 use App\Http\Controllers\Controller;
 use Cache;
 use App\Nordnet\Contracts\NordnetContract as Nordnet;
 
 class NordnetController extends Controller {
 
+
     public function __construct() {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function getSynchronize(Nordnet $nordnet)
     {
-        $results = $nordnet->getInstrumentList(16314763);
-
-        foreach($results as $result) {
-            if(!Instrument::firstOrCreate([
-                'symbol' => $result->symbol,
-                'name' => $result->name,
-                'label' => $result->name,
-                'nordnet_id' => $result->instrument_id,
-                'market_id' => property_exists($result, 'tradables') ? $result->tradables[0]->market_id : 0,
-                'sector' => property_exists($result, 'sector') ? $result->sector : '',
-                'isin_code' => property_exists($result, 'isin_code') ? $result->isin_code : ''
+        // Synchronize listings
+        $listings = $nordnet->getListings();
+        foreach($listings as $listing) {
+            if(!Listing::firstOrCreate([
+                'nordnet_id' => $listing->list_id,
+                'name' => $listing->name
             ])) {
                 return "An error occured";
-            };
+            }
         }
-        return response()->json(Instrument::all());
 
+        // Synchronize markets
+        $markets = $nordnet->getMarkets();
+        foreach($markets as $market) {
+            if(!Market::firstOrCreate([
+                'nordnet_id' => $market->market_id,
+                'name' => $market->name
+            ])) {
+                return "An error occured";
+            }
+        }
+
+        // Synchronize instruments
+        $listings = array(
+            "large_cap_stockholm" => 16314763
+        );
+
+        $markets = array(
+            "nasdaq_omx_stockholm" => 11
+        );
+
+        foreach($listings as $listing) {
+
+            $instruments = $nordnet->getInstruments($listing);
+            foreach($instruments as $instrument) {
+
+                // Get correct market_id for instrument
+                if(property_exists($instrument, 'tradables')) {
+                    foreach($instrument->tradables as $tradable) {
+                        if(in_array($tradable->market_id, $markets, true)) {
+                            $market_id = Market::where('nordnet_id', $tradable->market_id)->first()->id;
+                            break;
+                        }
+                    }
+                }
+
+                if(!Instrument::firstOrCreate([
+                    'symbol' => $instrument->symbol,
+                    'name' => $instrument->name,
+                    'nordnet_id' => $instrument->instrument_id,
+                    'market_id' => isset($market_id) ? $market_id : 0,
+                    'sector' => property_exists($instrument, 'sector') ? $instrument->sector : '',
+                    'isin_code' => property_exists($instrument, 'isin_code') ? $instrument->isin_code : '',
+                    'listing_id' => Listing::where('nordnet_id', $listing)->first()->id,
+                ])) {
+                    return "An error occured";
+                };
+            }
+
+        }
+
+        // Synchronize instrument metadata
+        // $nordnet->borsdata();
+
+        return "OK";
     }
 
     public function getUpdate($instrument_id, Nordnet $nordnet) {
@@ -58,16 +110,16 @@ class NordnetController extends Controller {
         return "{}";
     }
 
-    public function getTradables($identifier, Nordnet $nordnet) {
-        return $nordnet->getTradables($identifier);
+    public function getInstruments(Nordnet $nordnet) {
+        return $nordnet->getInstruments('16314763');
     }
 
-    public function getOrders($instrument_id, Nordnet $nordnet) {
-        return $nordnet->getOrders($instrument_id);
+    public function getLists(Nordnet $nordnet) {
+        return $nordnet->getLists();
     }
 
-    public function getLogin(Nordnet $nordnet) {
-        return $nordnet->authenticate();
+    public function getMarkets(Nordnet $nordnet) {
+        return $nordnet->getMarkets();
     }
 
     public function getBorsdata(Nordnet $nordnet) {

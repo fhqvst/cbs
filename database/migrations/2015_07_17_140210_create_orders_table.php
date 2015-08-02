@@ -13,7 +13,7 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function($table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('instrument_id');
             $table->integer('user_id');
             $table->bigInteger('volume');

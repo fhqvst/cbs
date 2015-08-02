@@ -14,9 +14,8 @@ class CreateMarketsTable extends Migration
     {
         Schema::create('markets', function($table) {
             $table->increments('id');
-            $table->integer('nordnet_id');
-            $table->string('name')->unique();
-            $table->text('label');
+            $table->bigInteger('nordnet_id');
+            $table->text('name');
             $table->timestamps();
         });
     }

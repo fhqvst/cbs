@@ -14,7 +14,6 @@ class CreateMetadataTable extends Migration
     {
         Schema::create('metadata', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('instrument_id');
             $table->string('key');
             $table->longText('value');
             $table->dateTime('created_at');

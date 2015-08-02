@@ -117,21 +117,25 @@ class Nordnet implements NordnetContract {
      * Returns a list of instruments by market id, or a list of all
      * available market id's,
      *
-     * @param string $market_id
+     * @param string $list_id
      * @return mixed
      */
-    public function getInstrumentList($market_id = '')
+    public function getInstruments($list_id = '')
     {
-        return $this->get('lists/' . $market_id);
+        return $this->get('lists/' . $list_id);
     }
 
-    public function getTradables($identifier) {
-        return $this->get('tradables/intraday/' . $identifier);
+    public function getMarkets() {
+        return $this->get('markets');
     }
 
-    public function getBorsdata() {
+    public function getListings() {
+        return $this->get('lists');
+    }
 
-        $indices = array(
+    public function borsdata() {
+
+        $key_numbers = array(
             "5" => "revenue",
             "6" => "income",
             "7" => "dividend",
@@ -247,11 +251,11 @@ class Nordnet implements NordnetContract {
         curl_setopt($ch, CURLOPT_POST, true);
 
         foreach($companies as $company_id => $company) {
-            foreach($indices as $index => $name) {
+            foreach($key_numbers as $number_id => $name) {
 
                 $data = array(
                     "companyID" => $company_id,
-                    "selectedKPI" => $index
+                    "selectedKPI" => $number_id
                 );
 
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
@@ -277,17 +281,19 @@ class Nordnet implements NordnetContract {
 
                     foreach ($instruments as $instrument) {
                         $instrument_meta = array(
-                            "instrument_id" => $instrument->id,
                             "key" => $name,
                             "value" => $value->Value,
                             "created_at" => $date
                         );
-                        $instrument_update = Metadata::firstOrCreate($instrument_meta);
-                        $instrument_update->update($instrument_meta);
+                        $metadata_update = Metadata::firstOrCreate($instrument_meta);
+                        $metadata_update->update($instrument_meta);
+
+                        $instrument = $instrument->update([
+                            "metadata_id" => $metadata_update->id
+                        ]);
+
                     }
-
                 }
-
             }
         }
 
