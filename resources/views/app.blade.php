@@ -45,8 +45,8 @@
     <script src="/bower_components/jquery-pjax/jquery.pjax.js"></script>
     <script src="/bower_components/pace/pace.js"></script>
     <!-- endbower -->
-	<script src="{{ asset('/js/bundle.js') }}"></script>
-	{{--<script src="{{ asset('/js/app.js') }}"></script>--}}
+    <script src="{{ asset('/js/highstock.js') }}"></script>
+    <script src="{{ asset('/js/bundle.js') }}"></script>
 
 </body>
 </html>

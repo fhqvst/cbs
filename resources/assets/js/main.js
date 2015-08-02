@@ -1,27 +1,12 @@
 var React = require('react');
-var Chart = require("chart.js");
-var LineChart = require("react-chartjs").Line;
-
 
 (function($) {
 
     "use strict";
 
     function initialize() {
-        var modal = $('.modal');
-        var overlay = $('.overlay');
 
-        /*
-         $('button').click(function(e) {
-         modal.css({visibility: 'visible'});
-         modal.addClass('is-open');
-         overlay.velocity("fadeIn");
-         var stock = $(e.target).closest('tr').data('stock');
-         modal.html(stock)
-         });
-         */
-
-        $('.block__header').click(function() {
+        $('.block__toggle').click(function() {
             $(this).parents('.block').toggleClass('is-minimized');
             $(this).find('i').toggleClass('ion-ios-minus-empty');
             $(this).find('i').toggleClass('ion-ios-plus-empty');
@@ -35,7 +20,6 @@ var LineChart = require("react-chartjs").Line;
         //
         // Synchronization
         //
-
         $('#action__synchronize').click(function() {
             $.ajax(window.location.origin + '/nordnet/synchronize', {
                 method: 'GET',
@@ -63,54 +47,38 @@ var LineChart = require("react-chartjs").Line;
             });
         });
 
+        $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-ohlc.json&callback=?', function (data) {
+
+            // create the chart
+            $('.instrument__chart__inner').highcharts('StockChart', {
 
 
-        // React
+                rangeSelector : {
+                    selected : 1
+                },
 
-        var colors = {
-            white: "rgba(255,255,255,1)",
-            opaque: "rgba(255, 255, 255, 0.25)",
-            red: "rgba(255,0,0,1)"
-        };
+                title : {
+                    text : 'AAPL Stock Price'
+                },
 
-        Chart.defaults.global.responsive = true;
-        Chart.defaults.global.scaleGridLineColor = colors.red;
-
-        var chartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "Instrument Graph Data",
-                    fillColor: colors.opaque,
-                    strokeColor: colors.white,
-                    pointColor: colors.white,
-                    pointStrokeColor: colors.white,
-                    pointHighlightFill: colors.white,
-                    pointHighlightStroke: colors.white,
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                }
-            ]
-        };
-
-        var chartOptions = {
-            bezierCurve: false,
-            scaleFontColor: colors.white,
-            scaleLineColor: colors.opaque,
-            scaleGridLineColor: colors.opaque
-        };
-
-        var StockChart = React.createClass({
-            render: function() {
-                return <LineChart data={chartData} options={chartOptions} />
-            }
+                series : [{
+                    type : 'candlestick',
+                    name : 'AAPL Stock Price',
+                    data : data,
+                    dataGrouping : {
+                        units : [
+                            [
+                                'week', // unit name
+                                [1] // allowed multiples
+                            ], [
+                                'month',
+                                [1, 2, 3, 4, 6]
+                            ]
+                        ]
+                    }
+                }]
+            });
         });
-
-        if($('.instrument__chart').length) {
-            React.render(
-                <StockChart />, $('.instrument__chart__inner')[0]
-            );
-        }
-
 
         // PJAX
         $(document).pjax('a', '.site');
