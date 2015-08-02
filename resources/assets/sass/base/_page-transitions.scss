@@ -24,9 +24,9 @@
 
 // Pjax
 .site {
-  transition: 0.25s;
   opacity: 1;
+  transition: opacity 0.25s;
   &.is-loading {
-    opacity: 0.5;
+    opacity: 0.75;
   }
 }

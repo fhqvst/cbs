@@ -418,10 +418,10 @@ input {
   height: 2px; }
 
 .site {
-  transition: 0.25s;
-  opacity: 1; }
+  opacity: 1;
+  transition: opacity 0.25s; }
   .site.is-loading {
-    opacity: 0.5; }
+    opacity: 0.75; }
 
 .topbar {
   background: #333;

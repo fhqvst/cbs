@@ -15,7 +15,7 @@
 
             <main class="main-content">
 
-                <h1>{{ $instrument->label }}</h1>
+                <h1>{{ $instrument->name }}</h1>
 
                 <section class="block">
                     <header class="block__header">
@@ -65,6 +65,7 @@
                             <h1>Aktiedata</h1>
                         </header>
                         <main class="block__content">
+                            <?php /*
                             <table class="instrument__meta__table">
                                 <tbody>
                                 <tr><td>Symbol</td>
@@ -121,7 +122,7 @@
                                     <td>{{ $instrument_meta["solidity"] }}<span class="unit">%</span></td></tr>
                                 </tbody>
                             </table>
-
+                            */ ?>
                         </main>
                     </section>
 
