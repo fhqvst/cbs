@@ -5,7 +5,8 @@
 }
 
 .instrument__chart__inner {
-  margin: $vertical-spacing $horizontal-spacing;
+//  margin: $vertical-spacing $horizontal-spacing;
+  border-bottom: 1px solid $color-almost-white;
 }
 
 .instrument__meta__table {

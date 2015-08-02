@@ -704,7 +704,7 @@ input {
   overflow: hidden; }
 
 .instrument__chart__inner {
-  margin: 1.5625rem 1.5625rem; }
+  border-bottom: 1px solid #F6F6F6; }
 
 .instrument__meta__table {
   float: left;
