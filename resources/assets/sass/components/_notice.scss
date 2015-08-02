@@ -9,12 +9,12 @@
   }
 
   &--success {
-    background: $color-green;
-    border-color: darken($color-green, 5);
+    background: $color-primary;
+    border-color: darken($color-primary, 5);
   }
 
   &--warning {
-    background: $color-orange;
+    background: $color-secondary;
   }
 
   &--danger {

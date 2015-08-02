@@ -17,42 +17,6 @@
 
                 <h1 class="page-title">{{ $instrument->name }}</h1>
 
-                <section class="block">
-                    <header class="block__header">
-                        <h1>System</h1>
-                        <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
-                    </header>
-                    <main class="block__content settings">
-
-                        <section class="setting__group">
-
-                            <header class="setting__group__header">
-                                <h2>
-                                    Övrigt
-                                </h2>
-                            </header>
-
-                            <section class="setting">
-                                <header class="setting__header">
-                                    <h3>
-                                        Börsdata
-                                    </h3>
-                                </header>
-                                <div class="setting__description">
-                                    <p>Hämtar börsdata för <strong>alla instrument</strong> på nytt. Börsdata.se använder ett annat system för att identifiera instrument.</p>
-                                </div>
-                                <div class="setting__actions">
-                                    <button class="button--green" id="action__get-tradables">
-                                        Hämta Börsdata
-                                    </button>
-                                </div>
-                            </section>
-
-                        </section>
-
-                    </main>
-                </section>
-
                 <div class="block-wrapper block-wrapper--half">
 
                     <section class="block">

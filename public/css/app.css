@@ -260,7 +260,7 @@ h6 {
 
 .logotype {
   font-weight: bold;
-  color: #38BBA5;
+  color: #38a5bb;
   margin: 0; }
   .logotype:after {
     display: inline-block;
@@ -268,7 +268,7 @@ h6 {
     font-family: "Ionicons", sans-serif; }
 
 a {
-  color: #38BBA5;
+  color: #38a5bb;
   text-decoration: none;
   transition: .125s; }
 
@@ -348,10 +348,10 @@ input {
       background: #FF6E4C;
       color: #EEE; }
   .button--green {
-    color: #38BBA5;
-    border-color: #38BBA5; }
+    color: #38a5bb;
+    border-color: #38a5bb; }
     .button--green:hover {
-      background: #38BBA5;
+      background: #38a5bb;
       color: #EEE; }
 
 .form--full-width {
@@ -391,13 +391,13 @@ input {
         margin-right: 0; } }
 
 @media screen and (min-width: 961px) {
-  .register-form {
+  .block.register-form {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 48.82117%;
     margin-left: 25.58941%; }
-    .register-form:last-child {
+    .block.register-form:last-child {
       margin-right: 0; } }
 
 .pace {
@@ -412,13 +412,13 @@ input {
   display: none; }
 
 .pace .pace-progress {
-  background: #38BBA5;
+  background: #38a5bb;
   position: fixed;
   z-index: 2000;
   top: 0;
   right: 100%;
   width: 100%;
-  height: 2px; }
+  height: 4px; }
 
 .site {
   opacity: 1;
@@ -456,7 +456,7 @@ input {
         margin-left: 1.5625rem;
         color: #FFF; }
         .topbar__navigation nav a:hover {
-          color: #38BBA5; }
+          color: #38a5bb; }
 
 .block-wrapper {
   float: left;
@@ -662,10 +662,10 @@ input {
     background: #38a5bb;
     border-color: #3294a7; }
   .notice--success {
-    background: #38BBA5;
-    border-color: #32a794; }
+    background: #38a5bb;
+    border-color: #3294a7; }
   .notice--warning {
-    background: #FF6E4C; }
+    background: #38a5bb; }
   .notice--danger {
     background: #fc4056;
     border-color: #ec041e; }
@@ -699,7 +699,7 @@ input {
     opacity: 1; }
 
 .instrument__chart {
-  background: #38BBA5;
+  background: #38a5bb;
   box-sizing: border-box;
   overflow: hidden; }
 
@@ -735,7 +735,7 @@ input {
   display: block;
   margin-right: 2.35765%;
   width: 100%;
-  margin-bottom: 1.5625rem; }
+  margin-top: 1.5625rem; }
   .breadcrumbs:last-child {
     margin-right: 0; }
   .breadcrumbs a {

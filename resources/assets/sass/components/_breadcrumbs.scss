@@ -1,6 +1,6 @@
 .breadcrumbs {
   @include span-columns(12);
-  margin-bottom: $vertical-spacing;
+  margin-top: $vertical-spacing;
 
   a {
     color: $color-gray;

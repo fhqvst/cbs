@@ -6,7 +6,7 @@
 
             <main class="main-content">
 
-                <section class="notice notice--warning">
+                <section class="notice notice--success">
                     <section class="notice__content">
                         <p class="notice__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <button class="button notice__close"><i class="icon ion-ios-close-empty"></i></button>

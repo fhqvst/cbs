@@ -47,10 +47,10 @@
   }
 
   @include modifier('green') {
-    color: $color-green;
-    border-color: $color-green;
+    color: $color-primary;
+    border-color: $color-primary;
     &:hover {
-      background: $color-green;
+      background: $color-primary;
       color: $color-off-white;
     }
   }

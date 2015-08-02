@@ -4,7 +4,7 @@
         <div class="row">
 
             <div class="topbar__logotype">
-                <h1 class="logotype">CBS</h1>
+                <h1 class="logotype">LÅTSASBÖRSEN</h1>
             </div>
 
             <div class="topbar__navigation">

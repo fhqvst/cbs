@@ -76,9 +76,9 @@ var React = require('react');
                 plotOptions: {
                     candlestick: {
                         color: colors.orange,
-                        upColor: colors.green,
+                        upColor: colors.blue,
                         lineColor: colors.orange,
-                        upLineColor: colors.green,
+                        upLineColor: colors.blue,
                         states: {
                             hover: {
                                 lineWidth: 1
