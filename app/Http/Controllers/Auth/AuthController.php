@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Portfolio;
 use Auth;
 use Validator;
 use Redirect;
@@ -62,12 +63,24 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'section' => $data['section']
         ]);
+
+        if($user) {
+            Portfolio::create([
+                'user_id' => $user->id,
+                'own_capital' => 50000,
+                'balance' => 50000,
+                'profit' => 0,
+                'total_value' => 50000
+            ]);
+        }
+
+        return $user;
     }
 
     public function getLogout(Request $request) {
