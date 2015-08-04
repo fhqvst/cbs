@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMarketsTable extends Migration
+class CreateInstrumentsToMarketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateMarketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('markets', function($table) {
-            $table->increments('id');
-            $table->bigInteger('nordnet_id');
-            $table->text('name');
-            $table->timestamps();
+        Schema::create('instruments_markets', function (Blueprint $table) {
+            $table->integer('instrument_id');
+            $table->integer('market_id');
+            $table->primary(['instrument_id', 'market_id']);
         });
     }
 
@@ -27,6 +26,6 @@ class CreateMarketsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('markets');
+        Schema::drop('instruments_markets');
     }
 }

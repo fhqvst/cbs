@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePositionsTable extends Migration
+class CreateQuotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class CreatePositionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('positions', function($table) {
+        Schema::create('quotes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('instrument_id');
-            $table->bigInteger('volume');
-            $table->decimal('price', 19, 4);
-            $table->decimal('profit', 19, 4);
-            $table->decimal('market_value', 19, 4);
+            $table->decimal('open', 19, 4);
+            $table->decimal('high', 19, 4);
+            $table->decimal('low', 19, 4);
+            $table->decimal('close', 19, 4);
+            $table->dateTime('from');
+            $table->dateTime('to');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreatePositionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('positions');
+        Schema::drop('quotes');
     }
 }

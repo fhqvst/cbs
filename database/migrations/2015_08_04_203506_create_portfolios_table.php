@@ -12,13 +12,12 @@ class CreatePortfoliosTable extends Migration
      */
     public function up()
     {
-        Schema::create('portfolios', function(Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
+        Schema::create('portfolios', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->decimal('own_capital', 19, 4);
             $table->decimal('balance', 19, 4);
-            $table->decimal('profit', 19, 4);
-            $table->decimal('total_value', 19, 4);
+            $table->decimal('value', 19, 4);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

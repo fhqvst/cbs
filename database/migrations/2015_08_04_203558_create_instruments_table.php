@@ -12,16 +12,15 @@ class CreateInstrumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('instruments', function($table) {
+        Schema::create('instruments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('symbol');
+            $table->bigInteger('volume');
             $table->text('name');
-            $table->bigInteger('nordnet_id')->default(0);
-            $table->integer('market_id')->default(0);
-            $table->string('sector')->default('NO_SECTOR');
-            $table->string('isin_code')->default(0);
-            $table->integer('listing_id')->default(0);
-            $table->integer('metadata_id')->default(0);
+            $table->bigInteger('visible_volume');
+            $table->integer('nordnet_id')->default(0);
+            $table->integer('listing_id');
+            $table->integer('market_id');
+            $table->bigInteger('metadata_id')->default(0);
             $table->timestamps();
         });
     }

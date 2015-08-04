@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMetadataTable extends Migration
+class CreateBrokersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,10 @@ class CreateMetadataTable extends Migration
      */
     public function up()
     {
-        Schema::create('metadata', function(Blueprint $table) {
+        Schema::create('brokers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('key');
-            $table->longText('value');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
+            $table->text('name');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +26,6 @@ class CreateMetadataTable extends Migration
      */
     public function down()
     {
-        Schema::drop('metadata');
+        Schema::drop('brokers');
     }
 }

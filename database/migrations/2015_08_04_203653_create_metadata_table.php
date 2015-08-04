@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListingsTable extends Migration
+class CreateMetadataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,14 @@ class CreateListingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('listings', function(Blueprint $table) {
-            $table->increments('id');
-            $table->bigInteger('nordnet_id');
-            $table->text('name');
+        Schema::create('metadata', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('key');
+            $table->longText('value');
+            $table->dateTime('logged_at');
             $table->timestamps();
+
+            $table->unique(array('key', 'logged_at'));
         });
     }
 
@@ -27,6 +30,6 @@ class CreateListingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('listings');
+        Schema::drop('metadata');
     }
 }
