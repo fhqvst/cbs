@@ -5,7 +5,7 @@ namespace App\Nordnet\Controllers;
 use App\Instrument;
 use App\Market;
 use App\Listing;
-use App\Quote;
+use App\Metadata;
 use App\Http\Controllers\Controller;
 use Cache;
 use App\Nordnet\Contracts\NordnetContract as Nordnet;
@@ -50,14 +50,15 @@ class NordnetController extends Controller {
             "nasdaq_omx_stockholm" => 11
         );
 
+        // Loop through chosen list and fetch respective instruments
         foreach($listings as $listing) {
 
             $instruments = $nordnet->getInstruments($listing);
-            foreach($instruments as $instrument) {
+            foreach($instruments as $nn_instrument) {
 
                 // Get correct market_id for instrument
-                if(property_exists($instrument, 'tradables')) {
-                    foreach($instrument->tradables as $tradable) {
+                if(property_exists($nn_instrument, 'tradables')) {
+                    foreach($nn_instrument->tradables as $tradable) {
                         if(in_array($tradable->market_id, $markets, true)) {
                             $market_id = Market::where('nordnet_id', $tradable->market_id)->first()->id;
                             break;
@@ -65,25 +66,42 @@ class NordnetController extends Controller {
                     }
                 }
 
-                if(!Instrument::firstOrCreate([
-                    'symbol' => $instrument->symbol,
-                    'name' => $instrument->name,
-                    'nordnet_id' => $instrument->instrument_id,
-                    'market_id' => isset($market_id) ? $market_id : 0,
-                    'sector' => property_exists($instrument, 'sector') ? $instrument->sector : '',
-                    'isin_code' => property_exists($instrument, 'isin_code') ? $instrument->isin_code : '',
+                $instrument = Instrument::firstOrCreate([
+                    'symbol' => $nn_instrument->symbol,
+                    'name' => $nn_instrument->name,
+                    'nordnet_id' => $nn_instrument->instrument_id,
                     'listing_id' => Listing::where('nordnet_id', $listing)->first()->id,
-                ])) {
-                    return "An error occured";
-                };
+                ]);
+
+                if(!$instrument) {
+                    return "An error occured when inserting the instrument.";
+                }
+
+                // Add sector
+                if(property_exists($nn_instrument, 'sector')) {
+                    $sector = Metadata::firstOrCreate([
+                        'key' => 'sector',
+                        'value' => $nn_instrument->sector,
+                        'logged_at' => date("Y-m-d H:i:s")
+                    ]);
+                    $instrument->metadata()->attach($sector->id);
+                }
+
+                // Add isin code
+                if(property_exists($nn_instrument, 'isin_code')) {
+                    $isin_code = Metadata::firstOrCreate([
+                        'key' => 'isin_code',
+                        'value' => $nn_instrument->isin_code,
+                        'logged_at' => date("Y-m-d H:i:s")
+                    ]);
+                    $instrument->metadata()->attach($isin_code->id);
+                }
+
             }
 
         }
 
-        // Synchronize instrument metadata
-        // $nordnet->borsdata();
-
-        return "OK";
+        return "Synchronization succeeded :D";
     }
 
     public function getUpdate($instrument_id, Nordnet $nordnet) {
@@ -124,6 +142,10 @@ class NordnetController extends Controller {
 
     public function getBorsdata(Nordnet $nordnet) {
         return $nordnet->getBorsdata();
+    }
+
+    public function postOrder(Nordnet $nordnet) {
+
     }
 
     public function getKey() {

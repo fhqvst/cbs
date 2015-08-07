@@ -14,13 +14,10 @@ class CreateInstrumentsTable extends Migration
     {
         Schema::create('instruments', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('volume');
+            $table->string('symbol');
             $table->text('name');
-            $table->bigInteger('visible_volume');
             $table->integer('nordnet_id')->default(0);
             $table->integer('listing_id');
-            $table->integer('market_id');
-            $table->bigInteger('metadata_id')->default(0);
             $table->timestamps();
         });
     }

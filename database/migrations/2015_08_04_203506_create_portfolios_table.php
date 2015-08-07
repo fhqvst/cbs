@@ -16,7 +16,7 @@ class CreatePortfoliosTable extends Migration
             $table->bigIncrements('id');
             $table->decimal('own_capital', 19, 4);
             $table->decimal('balance', 19, 4);
-            $table->decimal('value', 19, 4);
+            $table->decimal('total_value', 19, 4);
             $table->integer('user_id');
             $table->timestamps();
         });

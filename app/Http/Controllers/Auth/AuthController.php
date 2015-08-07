@@ -76,7 +76,6 @@ class AuthController extends Controller
                 'user_id' => $user->id,
                 'own_capital' => 50000,
                 'balance' => 50000,
-                'profit' => 0,
                 'total_value' => 50000
             ]);
         }

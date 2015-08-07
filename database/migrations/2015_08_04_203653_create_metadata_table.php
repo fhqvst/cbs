@@ -18,8 +18,6 @@ class CreateMetadataTable extends Migration
             $table->longText('value');
             $table->dateTime('logged_at');
             $table->timestamps();
-
-            $table->unique(array('key', 'logged_at'));
         });
     }
 

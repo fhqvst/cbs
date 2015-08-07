@@ -14,12 +14,12 @@ use Illuminate\Database\Eloquent\Model;
 class Metadata extends Model
 {
 
-    protected $fillable = ['instrument_id', 'key', 'value', 'created_at'];
+    protected $fillable = ['instrument_id', 'key', 'value', 'logged_at', 'created_at'];
     protected $table = 'metadata';
 
     public function instrument()
     {
-        return $this->belongsTo('App\Instrument');
+        return $this->belongsToMany('App\Instrument', 'instruments_metadata');
     }
 
 }

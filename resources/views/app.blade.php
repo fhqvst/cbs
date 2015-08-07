@@ -11,7 +11,7 @@
     <link rel='stylesheet' href='/bower_components/ionicons/css/ionicons.css' />
     <!-- endbower -->
 
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    {{--<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">--}}
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
