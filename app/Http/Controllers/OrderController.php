@@ -50,7 +50,7 @@ class OrderController extends Controller
             'side' => $request->input('side'),
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
-            'instrument_id' => $request->input('instrument_id'),
+            'instrument' => $request->input('instrument'),
             'status' => 'ON_MARKET',
             'type' => $request->input('type')
         );

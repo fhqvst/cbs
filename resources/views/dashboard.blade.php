@@ -81,6 +81,35 @@
                         </header>
                         <main class="block__content">
                             <h3>Aktiva</h3>
+                            <table class="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Typ</th>
+                                        <th>Symbol</th>
+                                        <th>Pris</th>
+                                        <th>Volym</th>
+                                        <th>Tid</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($orders as $order)
+
+                                        <tr>
+                                            <td>{{ $order->side }}</td>
+                                            <td>{{ $order->instrument->symbol }}</td>
+                                            <td>{{ $order->price }}</td>
+                                            <td>{{ $order->volume }}</td>
+                                            <td>{{ date('H:i:s', strtotime($order->updated_at)) }}</td>
+                                            <td>
+                                                <i class="icon ion-ios-pen"></i>
+                                                <i class="icon ion-ios-times"></i>
+                                            </td>
+                                        </tr>
+
+                                    @endforeach
+                                </tbody>
+                            </table>
                             <h3>Avslutade</h3>
                         </main>
                     </section>

@@ -288,7 +288,8 @@ button, .button {
     color: #F6F6F6; }
 
 table {
-  width: 100%; }
+  width: 100%;
+  font-size: 0.75rem; }
   table tr:nth-child(even),
   table th {
     background: #F6F6F6; }
