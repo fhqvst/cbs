@@ -1,17 +1,20 @@
-.form--full-width {
-  width: 100%;
-
-  .form__label,
-  .form__control {
-    width: 100%;
-  }
+.form {
+  @include row;
 }
 
 .form__group {
-  display: block;
+  @include span-columns(12);
 
   & + .form__group {
     margin-top: $vertical-spacing;
+  }
+
+  &--half {
+    @include span-columns(6);
+    @include omega(2n);
+    & + .form__group--half {
+      margin-top: 0;
+    }
   }
 
 }
@@ -19,7 +22,8 @@
 .form__label {
   display: block;
 
-  & + .form__control {
+  & + .form__control,
+  {
     margin-top: $padding-small;
   }
 

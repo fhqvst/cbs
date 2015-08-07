@@ -96,13 +96,40 @@
 
                     <section class="block">
                         <header class="block__header">
-                            <h1>Beskrivning</h1>
+                            <h1>Handla</h1>
                             <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
                         </header>
                         <main class="block__content">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
+                            <form class="form--full-width instrument__form" role="form" method="POST" action="{{ url('order') }}">
+
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="instrument" value="{{ $instrument->id }}">
+
+                                <div class="form__group form__group--half">
+                                    <label class="form__label">Pris</label>
+                                    <input class="form__control" type="text" name="price" value="{{ old('price') }}">
+                                </div>
+                                <div class="form__group form__group--half">
+                                    <label class="form__label">Volym</label>
+                                    <input class="form__control" type="number" name="volume" value="{{ old('volume') }}">
+                                </div>
+
+                                <div class="form__group">
+                                    <label class="form__label">Ordertyp</label>
+                                    <select class="form__control" name="type">
+                                        <option value="NORMAL">Normal</option>
+                                    </select>
+                                </div>
+
+                                <div class="form__group instrument__form__buy-sell">
+                                    <button type="submit" name="side" value="1" class="button button--huge button--green">
+                                        Köp
+                                    </button>
+                                    <button type="submit" name="side" value="0" class="button button--huge button--red">
+                                        Sälj
+                                    </button>
+                                </div>
+                            </form>
                         </main>
                     </section>
 

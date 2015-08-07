@@ -38,3 +38,16 @@
   }
 
 }
+
+.instrument__form {
+
+  .instrument__form__buy-sell {
+
+    button {
+      @include span-columns(6);
+      @include omega(2n);
+    }
+
+  }
+
+}

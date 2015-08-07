@@ -60,9 +60,9 @@ var React = require('react');
             orange: '#FF6E4C'
         };
 
-        $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-ohlc.json&callback=?', function (data) {
-
-            Highcharts.theme = {
+        /*
+         $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-ohlc.json&callback=?', function (data) {
+             Highcharts.theme = {
                 title: {
                     style: {
                         color: '#333',
@@ -75,8 +75,7 @@ var React = require('react');
                         font: 'bold 12px serif'
                     }
                 },
-
-                plotOptions: {
+                 plotOptions: {
                     candlestick: {
                         color: colors.orange,
                         upColor: colors.blue,
@@ -89,17 +88,15 @@ var React = require('react');
                         }
                     }
                 },
-
-                tooltip: {
-                    backgroundColor: 'rgba(255,255,255,0.75)',
-                    borderColor: 'rgba(0,0,0,0.25)',
+                 tooltip: {
+                   backgroundColor: "rgba(255,255,255,0.75)",
+                    borderColor: "rgba(0,0,0,0.25)",
                     borderWidth: 1,
                     borderRadius: 0,
-                    shape: 'square',
+                    shape: "square",
                     shadow: false
                 },
-
-                rangeSelector: {
+                 rangeSelector: {
                     buttonTheme: { // styles for the buttons
                         fill: 'none',
                         stroke: 'none',
@@ -136,38 +133,39 @@ var React = require('react');
                     },
                     selected: 1
                 },
-
-                legend: {
+                 legend: {
                     itemStyle: {
                         font: '9pt Calibri, Roboto, sans-serif',
                         color: 'black'
                     },
-                    itemHoverStyle: {
+                    itemHoverStyle:{
                         color: '#38BBA5'
                     }
                 },
-
-                navigator: {
+                  navigator: {
                     outlineColor: colors.gray
                 }
             };
-
-            Highcharts.setOptions(Highcharts.theme);
-
-            // create the chart
+             Highcharts.setOptions(Highcharts.theme);
+             // create the chart
             $('.instrument__chart__inner').highcharts('StockChart', {
-
-                rangeSelector: {
-                    selected: 1
+                 rangeSelector : {
+                    selected : 1
                 },
-                series: [{
-                    type: 'candlestick',
-                    name: 'AAPL Stock Price',
-                    data: data,
-                    dataGrouping: {
-                        units: [['week', // unit name
-                        [1] // allowed multiples
-                        ], ['month', [1, 2, 3, 4, 6]]]
+                series : [{
+                    type : 'candlestick',
+                    name : 'AAPL Stock Price',
+                    data : data,
+                    dataGrouping : {
+                        units : [
+                            [
+                                'week', // unit name
+                                [1] // allowed multiples
+                            ], [
+                                'month',
+                                [1, 2, 3, 4, 6]
+                            ]
+                        ]
                     }
                 }],
                 xAxis: {
@@ -178,8 +176,7 @@ var React = require('react');
                     gridLineColor: colors.offWhite,
                     gridLineWidth: 1
                 },
-
-                credits: {
+                 credits: {
                     enabled: false
                 },
                 chart: {
@@ -193,9 +190,9 @@ var React = require('react');
                 scrollbar: {
                     enabled: false
                 }
-
-            });
+             });
         });
+         */
 
         // PJAX
         $(document).pjax('a', '.site');

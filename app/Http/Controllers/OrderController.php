@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Redis;
 use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
@@ -16,7 +17,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -37,18 +38,25 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        // Get Redis instance
+        $redis = Redis::connection();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
+        // Create order parameters
+        $order = array(
+            'portfolio' => $request->user()->portfolio(),
+            'price' => $request->input('price'),
+            'volume' => $request->input('volume'),
+            'visible_volume' => $request->input('volume'),
+            'side' => $request->input('side'),
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+            'instrument_id' => $request->input('instrument_id'),
+            'status' => 'ON_MARKET',
+            'type' => $request->input('type')
+        );
+        $order_id = $redis->incr('order:id => 1000');
+
+        return $redis->lPush('order:1337', json_encode($order));
     }
 
     /**

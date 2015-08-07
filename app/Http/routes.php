@@ -28,3 +28,6 @@ Route::post('register', 'Auth\AuthController@postRegister');
 
 // Instrument
 Route::resource('instrument', 'InstrumentController');
+
+// Orders
+Route::resource('order', 'OrderController');

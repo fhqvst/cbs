@@ -354,16 +354,35 @@ input {
       background: #38a5bb;
       color: #EEE; }
 
-.form--full-width {
-  width: 100%; }
-  .form--full-width .form__label,
-  .form--full-width .form__control {
-    width: 100%; }
+.form {
+  display: block; }
+  .form::after {
+    clear: both;
+    content: "";
+    display: table; }
 
 .form__group {
-  display: block; }
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .form__group:last-child {
+    margin-right: 0; }
   .form__group + .form__group {
     margin-top: 1.5625rem; }
+  .form__group--half {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .form__group--half:last-child {
+      margin-right: 0; }
+    .form__group--half:nth-child(2n) {
+      margin-right: 0; }
+    .form__group--half:nth-child(2n+1) {
+      clear: left; }
+    .form__group--half + .form__group--half {
+      margin-top: 0; }
 
 .form__label {
   display: block; }
@@ -729,6 +748,18 @@ input {
     word-break: break-all; }
   .instrument__meta__table .unit {
     vertical-align: middle; }
+
+.instrument__form .instrument__form__buy-sell button, .instrument__form .instrument__form__buy-sell .button {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%; }
+  .instrument__form .instrument__form__buy-sell button:last-child, .instrument__form .instrument__form__buy-sell .button:last-child {
+    margin-right: 0; }
+  .instrument__form .instrument__form__buy-sell button:nth-child(2n), .instrument__form .instrument__form__buy-sell .button:nth-child(2n) {
+    margin-right: 0; }
+  .instrument__form .instrument__form__buy-sell button:nth-child(2n+1), .instrument__form .instrument__form__buy-sell .button:nth-child(2n+1) {
+    clear: left; }
 
 .breadcrumbs {
   float: left;

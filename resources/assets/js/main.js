@@ -57,6 +57,8 @@ var React = require('react');
             orange: "#FF6E4C"
         };
 
+        /*
+
         $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-ohlc.json&callback=?', function (data) {
 
             Highcharts.theme = {
@@ -200,6 +202,8 @@ var React = require('react');
 
             });
         });
+
+        */
 
         // PJAX
         $(document).pjax('a', '.site');
