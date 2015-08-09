@@ -139,7 +139,16 @@
                             <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
                         </header>
                         <main class="block__content">
-
+                            <table class="orderbook">
+                                <thead>
+                                    <tr>
+                                        <th>Köp</th>
+                                        <th>Sälj</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="orderbook__body">
+                                </tbody>
+                            </table>
                         </main>
                     </section>
 

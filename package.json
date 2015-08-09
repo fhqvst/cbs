@@ -4,7 +4,9 @@
     "gulp": "^3.8.8"
   },
   "dependencies": {
+    "express": "^4.13.3",
     "highstock-release": "^2.1.7",
+    "hiredis": "^0.4.0",
     "ioredis": "^1.6.1",
     "laravel-elixir": "^2.0.0",
     "laravel-elixir-wiredep": "^0.1.2",

@@ -17,10 +17,12 @@ class ViewInstrument extends Event implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($instrument_id, $market_id)
     {
         $this->data = array(
-
+            'instrument_id' => $instrument_id,
+            'market_id' => $market_id,
+            'price' => 1337
         );
     }
 
@@ -31,6 +33,6 @@ class ViewInstrument extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return [];
+        return ['test'];
     }
 }

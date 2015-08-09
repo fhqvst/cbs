@@ -11,9 +11,12 @@
     <link rel='stylesheet' href='/bower_components/ionicons/css/ionicons.css' />
     <!-- endbower -->
 
+    <!-- CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
-	<!-- Fonts -->
+    <!-- JS -->
+
+    <!-- Fonts -->
 	{{--<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>--}}
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -42,8 +45,6 @@
 
     </div>
 
-
-
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
@@ -51,6 +52,8 @@
     <!-- endbower -->
     <script src="{{ asset('/js/highstock.js') }}"></script>
     <script src="{{ asset('/js/bundle.js') }}"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
 
 </body>
 </html>

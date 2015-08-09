@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ViewInstrument;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,17 +15,6 @@ class InstrumentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
     }
 
     /**
@@ -56,8 +46,11 @@ class InstrumentController extends Controller
      */
     public function show($id)
     {
+        $instrument = Instrument::findOrFail($id);
+
+        event(new ViewInstrument($id, $instrument->markets));
         return view('instrument')
-            ->with('instrument', Instrument::findOrFail($id))
+            ->with('instrument', $instrument)
             ->with('instrument_meta', []);
     }
 

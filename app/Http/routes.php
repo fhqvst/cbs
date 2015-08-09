@@ -14,7 +14,6 @@
 
 // Dashboard
 Route::get('dashboard', 'DashboardController@index');
-Route::get('/', 'DashboardController@index');
 
 // API
 Route::controller('nordnet', '\App\Nordnet\Controllers\NordnetController');

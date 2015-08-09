@@ -1,9 +1,12 @@
 var React = require('react');
+var io = require('socket.io-client');
 
 (function($) {
 
     "use strict";
 
+    // Initialize
+    $(document).ready(initialize);
     function initialize() {
 
         $('.block__header').click(function() {
@@ -16,50 +19,20 @@ var React = require('react');
             $(this).parents('.notice').remove();
         });
 
-        //
-        // Synchronization
-        //
-        $('#action__synchronize').click(function() {
-            $.ajax(window.location.origin + '/nordnet/synchronize', {
-                method: 'GET',
-                success: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-
-        $('#action__update-instrument').click(function() {
-            $.ajax(window.location.origin + '/nordnet/update/16281393', {
-                method: 'GET',
-                success: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-
-        $('#action__get-tradables').click(function() {
-            $.ajax('http://borsdata.se/progress/comp/volv', {
-                method: 'GET',
-                success: function(data, response) {
-                    console.log(data);
-                }
-            });
-        });
-
-        var colors = {
-            red: "#FB0E29",
-            green: "#38BBA5",
-            blue: "#38a5bb",
-            black: "#333",
-            white: "#fff",
-            gray: "#ccc",
-            offWhite: "#eee",
-            orange: "#FF6E4C"
-        };
-
         /*
 
         $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-ohlc.json&callback=?', function (data) {
+
+             var colors = {
+                 red: "#FB0E29",
+                 green: "#38BBA5",
+                 blue: "#38a5bb",
+                 black: "#333",
+                 white: "#fff",
+                 gray: "#ccc",
+                 offWhite: "#eee",
+                 orange: "#FF6E4C"
+             };
 
             Highcharts.theme = {
                 title: {
@@ -212,26 +185,83 @@ var React = require('react');
 
     }
 
-    var smoothState = $('#site')
-        .smoothState({
-            // Runs when a link has been activated
-            onStart: {
-                duration: 500, // Duration of our animation
-                render: function (container) {
-                    container.addClass('is-loading');
-                }
-            },
-            onReady: {
-                duration: 0,
-                render: function (container, newContent) {
-                    container.removeClass('is-loading');
-                    container.html(newContent);
-                    initialize();
-                }
-            },
-            prefetch: false
-        }).data('smoothState');
+    // Smoothstate
+    var smoothState = $('#site').smoothState({
+        // Runs when a link has been activated
+        onStart: {
+            duration: 500, // Duration of our animation
+            render: function (container) {
+                container.addClass('is-loading');
+            }
+        },
+        onReady: {
+            duration: 0,
+            render: function (container, newContent) {
+                container.removeClass('is-loading');
+                container.html(newContent);
+                initialize();
+            }
+        },
+        prefetch: false
+    }).data('smoothState');
 
-    $(document).ready(initialize);
+
+
+    // Socket
+    var socket = io('http://localhost:3000');
+
+
+    var orders;
+    socket.on('test:App\\Events\\ViewInstrument', function(data) {
+        orders.push(data);
+    });
+
+
+    // React
+    var Orderbook = React.createClass({
+        getInitialState: function() {
+            return {orders: []};
+        },
+        componentDidMount: function() {
+            this.set
+        },
+        render: function() {
+
+            var orderNodes = this.props.orders.map(function(order) {
+                return <Order price="{order.price}"></Order>
+            });
+
+            return (
+               <table class="orderbook__book">
+                   <thead>
+                       <tr>
+                           <th>Köp</th>
+                           <th>Sälj</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr>
+                            {orderNodes}
+                       </tr>
+                   </tbody>
+               </table>
+            );
+        }
+    });
+
+    var Order = React.createClass({
+        render: function() {
+            return (
+                <td>
+                    <p class="orderbook__order">{this.props.price}</p>
+                </td>
+            );
+        }
+    });
+
+    React.render(
+        <Orderbook orders="{orders}" />,
+        document.getElementsByClassName('orderbook')[0]
+    );
 
 })(jQuery);
