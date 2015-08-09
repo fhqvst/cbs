@@ -11,7 +11,6 @@
     <link rel='stylesheet' href='/bower_components/ionicons/css/ionicons.css' />
     <!-- endbower -->
 
-    {{--<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">--}}
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
@@ -28,21 +27,26 @@
 
     <div class="background"></div>
 
-	<div class="site">
+    <div id="site">
 
-		@include('header')
+        @include('header')
 
-		@yield('content')
+        <div id="content">
+            @yield('content')
 
-		@include('footer')
+        </div>
 
-		@include('modal')
+        @include('footer')
 
-	</div>
+        @include('modal')
+
+    </div>
+
+
 
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/jquery-pjax/jquery.pjax.js"></script>
+    <script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
     <script src="/bower_components/pace/pace.js"></script>
     <!-- endbower -->
     <script src="{{ asset('/js/highstock.js') }}"></script>

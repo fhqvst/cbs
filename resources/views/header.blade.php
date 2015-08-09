@@ -10,7 +10,10 @@
             <div class="topbar__navigation">
                 <nav>
                     @if(Auth::check())
-                        <a href="/profile">Profil</a>
+                        <a href="/dashboard">Dashboard</a>
+                        <a href="/market">Marknaden</a>
+                        <a href="/news">Nyheter</a>
+                        <a href="/account">Profil</a>
                         <a href="/logout">Logga ut</a>
                     @else
                         <a href="/register">Registrera</a>

@@ -124,3 +124,11 @@ input {
     border-color: $color-blue;
   }
 }
+
+input[type=checkbox] {
+  float: left;
+  & + label {
+    margin-left: $padding-small;
+    line-height: 0.1;
+  }
+}

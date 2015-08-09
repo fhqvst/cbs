@@ -38,7 +38,7 @@
 						</div>
 
 						<div class="form__group">
-							<input type="checkbox" name="remember"> Kom ihåg mig
+							<input type="checkbox" name="remember" id="remember"><label for="remember">Kom ihåg mig</label>
 						</div>
 
 						<div class="form__group">

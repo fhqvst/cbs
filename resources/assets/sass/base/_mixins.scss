@@ -11,3 +11,9 @@
     @content;
   }
 }
+
+%no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}

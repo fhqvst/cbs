@@ -1,5 +1,18 @@
 .form {
   @include row;
+
+  &--full-width {
+    @extend .form;
+    input[type=text],
+    input[type=password],
+    input[type=number],
+    input[type=email],
+    input[type=url],
+    select {
+      width: 100%;
+    }
+  }
+
 }
 
 .form__group {

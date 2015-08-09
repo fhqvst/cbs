@@ -205,17 +205,32 @@ var React = require('react');
 
         */
 
-        // PJAX
-        $(document).pjax('a', '.site');
+        // SMOOTHSTATE
 
-        $(document).on('pjax:send', function() {
-            $('.site').addClass('is-loading');
-        });
-        $(document).on('pjax:complete', function() {
-            $('.site').removeClass('is-loading');
-            initialize();
-        });
+        //.data('smoothState') makes public methods available
+
+
     }
+
+    var smoothState = $('#site')
+        .smoothState({
+            // Runs when a link has been activated
+            onStart: {
+                duration: 500, // Duration of our animation
+                render: function (container) {
+                    container.addClass('is-loading');
+                }
+            },
+            onReady: {
+                duration: 0,
+                render: function (container, newContent) {
+                    container.removeClass('is-loading');
+                    container.html(newContent);
+                    initialize();
+                }
+            },
+            prefetch: false
+        }).data('smoothState');
 
     $(document).ready(initialize);
 

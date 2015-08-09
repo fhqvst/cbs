@@ -44,8 +44,12 @@
   border-bottom: 1px solid $color-almost-white;
   padding: $vertical-spacing $horizontal-spacing;
   position: relative;
+  @extend %no-select;
   &:hover {
     cursor: pointer;
+    .block__toggle {
+      opacity: 1;
+    }
   }
 }
 
@@ -71,9 +75,4 @@
   top: 50%;
   transform: translateY(-50%);
   vertical-align: middle;
-  &:hover {
-    background: none;
-    color: initial;
-    opacity: 1;
-  }
 }

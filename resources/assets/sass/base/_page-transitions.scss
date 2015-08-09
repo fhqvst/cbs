@@ -2,9 +2,7 @@
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+  @extend %no-select;
 }
 
 .pace-inactive {
@@ -21,12 +19,14 @@
   height: 4px;
 }
 
-// Pjax
-.site {
+// Smoothstate
+#site {
+  transform: translateZ(0);
   opacity: 1;
-  transition: opacity 0.25s;
-  position: relative;
-  &.is-loading {
-    opacity: 0.75;
-  }
+  transition: 0.25s;
+}
+
+#site.is-loading {
+  transform: translateZ(0);
+  opacity: 0;
 }

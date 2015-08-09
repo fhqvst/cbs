@@ -31,3 +31,6 @@ Route::resource('instrument', 'InstrumentController');
 
 // Orders
 Route::resource('order', 'OrderController');
+
+// Account
+Route::resource('account', 'AccountController');
