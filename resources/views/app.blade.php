@@ -29,7 +29,7 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
-    <script src="/bower_components/react/react.js"></script>
+    <script src="/bower_components/pace/pace.js"></script>
     <!-- endbower -->
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script src="{{ asset('/js/highstock.js') }}"></script>
