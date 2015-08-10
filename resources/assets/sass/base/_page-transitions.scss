@@ -20,13 +20,36 @@
 }
 
 // Smoothstate
-#site {
-  transform: translateZ(0);
+//#site {
+//  -webkit-transform:translate3d(0, 0, 0);
+//  opacity: 1;
+//  transition: 0.25s;
+//}
+//
+//#site.is-loading {
+//  transform: translateZ(0);
+//  opacity: 0;
+//}
+
+#content {
+  transform: translate3d(0, 0, 0);
+  animation-duration: 0.3s;
+  transition-timing-function: linear;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
   opacity: 1;
-  transition: 0.25s;
 }
 
-#site.is-loading {
-  transform: translateZ(0);
-  opacity: 0;
+#side.is-ready #content {
+  -webkit-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

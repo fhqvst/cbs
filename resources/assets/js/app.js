@@ -1,5 +1,3 @@
-var React = require('react');
-var io = require('socket.io-client');
 
 (function($) {
 
@@ -9,31 +7,28 @@ var io = require('socket.io-client');
     $(document).ready(initialize);
     function initialize() {
 
-        $('.block__header').click(function() {
+        $('.block__header').click(function () {
             $(this).parents('.block').toggleClass('is-minimized');
             $(this).find('i').toggleClass('ion-ios-minus-empty');
             $(this).find('i').toggleClass('ion-ios-plus-empty');
         });
 
-        $('.notice__close').click(function() {
+        $('.notice__close').click(function () {
             $(this).parents('.notice').remove();
         });
 
-        /*
 
         $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-ohlc.json&callback=?', function (data) {
-
-             var colors = {
-                 red: "#FB0E29",
-                 green: "#38BBA5",
-                 blue: "#38a5bb",
-                 black: "#333",
-                 white: "#fff",
-                 gray: "#ccc",
-                 offWhite: "#eee",
-                 orange: "#FF6E4C"
-             };
-
+            var colors = {
+                red: "#FB0E29",
+                green: "#38BBA5",
+                blue: "#38a5bb",
+                black: "#333",
+                white: "#fff",
+                gray: "#ccc",
+                offWhite: "#eee",
+                orange: "#FF6E4C"
+            };
             Highcharts.theme = {
                 title: {
                     style: {
@@ -47,7 +42,6 @@ var io = require('socket.io-client');
                         font: 'bold 12px serif'
                     }
                 },
-
                 plotOptions: {
                     candlestick: {
                         color: colors.orange,
@@ -61,16 +55,14 @@ var io = require('socket.io-client');
                         }
                     }
                 },
-
                 tooltip: {
-                   backgroundColor: "rgba(255,255,255,0.75)",
+                    backgroundColor: "rgba(255,255,255,0.75)",
                     borderColor: "rgba(0,0,0,0.25)",
                     borderWidth: 1,
                     borderRadius: 0,
                     shape: "square",
                     shadow: false
                 },
-
                 rangeSelector: {
                     buttonTheme: { // styles for the buttons
                         fill: 'none',
@@ -108,7 +100,6 @@ var io = require('socket.io-client');
                     },
                     selected: 1
                 },
-
                 legend: {
                     itemStyle: {
                         font: '9pt Calibri, Roboto, sans-serif',
@@ -118,18 +109,13 @@ var io = require('socket.io-client');
                         color: '#38BBA5'
                     }
                 },
-
-
                 navigator: {
                     outlineColor: colors.gray
                 }
             };
-
             Highcharts.setOptions(Highcharts.theme);
-
             // create the chart
             $('.instrument__chart__inner').highcharts('StockChart', {
-
                 rangeSelector : {
                     selected : 1
                 },
@@ -157,7 +143,6 @@ var io = require('socket.io-client');
                     gridLineColor: colors.offWhite,
                     gridLineWidth: 1
                 },
-
                 credits: {
                     enabled: false
                 },
@@ -172,17 +157,8 @@ var io = require('socket.io-client');
                 scrollbar: {
                     enabled: false
                 }
-
             });
         });
-
-        */
-
-        // SMOOTHSTATE
-
-        //.data('smoothState') makes public methods available
-
-
     }
 
     // Smoothstate
@@ -191,76 +167,20 @@ var io = require('socket.io-client');
         onStart: {
             duration: 250, // Duration of our animation
             render: function (container) {
-                container.addClass('is-loading');
+                container.addClass('is-ready');
+                container.restartCSSAnimations();
             }
         },
         onReady: {
             duration: 0,
             render: function (container, newContent) {
-                container.removeClass('is-loading');
+                container.removeClass('is-ready');
                 container.html(newContent);
                 initialize();
             }
         },
-        prefetch: false
+        prefetch: false,
+        forms: '[type=submit]'
     }).data('smoothState');
-
-
-
-    // Socket
-    var socket = io('http://localhost:3000');
-
-
-    var orders;
-    socket.on('test:App\\Events\\ViewInstrument', function(data) {
-        orders.push(data);
-    });
-
-
-    // React
-    var Orderbook = React.createClass({
-        getInitialState: function() {
-            return {orders: []};
-        },
-        componentDidMount: function() {
-        },
-        render: function() {
-
-            var orderNodes = this.props.orders.map(function(order) {
-                return <Order price="{order.price}"></Order>
-            });
-
-            return (
-               <table class="orderbook__book">
-                   <thead>
-                       <tr>
-                           <th>Köp</th>
-                           <th>Sälj</th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       <tr>
-                            {orderNodes}
-                       </tr>
-                   </tbody>
-               </table>
-            );
-        }
-    });
-
-    var Order = React.createClass({
-        render: function() {
-            return (
-                <td>
-                    <p class="orderbook__order">{this.props.price}</p>
-                </td>
-            );
-        }
-    });
-
-    React.render(
-        <Orderbook orders="{orders}" />,
-        document.getElementsByClassName('orderbook')[0]
-    );
 
 })(jQuery);

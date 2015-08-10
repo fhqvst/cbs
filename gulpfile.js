@@ -3,9 +3,19 @@ var elixir = require('laravel-elixir');
 require('laravel-elixir-wiredep');
 
 elixir(function(mix) {
+
+    // SASS and Bower
     mix
-        .browserify('main.js')
         .sass('app.scss')
-        //.scripts(['main.js'], 'public/js/app.js')
         .wiredep({src: 'app.blade.php'});
+
+    // Merge JS
+    mix
+        .scripts([
+            'app.js',
+            'components/orders.js'
+        ]);
+    mix.browserify('../../../public/js/all.js', 'public/js/all.js')
+
+
 });

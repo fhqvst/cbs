@@ -25,6 +25,16 @@
 		<!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
 		<!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
 	<![endif]-->
+
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
+    <script src="/bower_components/react/react.js"></script>
+    <!-- endbower -->
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="{{ asset('/js/highstock.js') }}"></script>
+    <script src="{{ asset('/js/all.js') }}"></script>
+
 </head>
 <body>
 
@@ -36,7 +46,6 @@
 
         <div id="content">
             @yield('content')
-
         </div>
 
         @include('footer')
@@ -45,14 +54,6 @@
 
     </div>
 
-    <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
-    <script src="/bower_components/pace/pace.js"></script>
-    <!-- endbower -->
-    <script src="{{ asset('/js/highstock.js') }}"></script>
-    <script src="{{ asset('/js/bundle.js') }}"></script>
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
 
 
 </body>
