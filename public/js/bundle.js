@@ -175,7 +175,7 @@ var io = require('socket.io-client');
     var smoothState = $('#site').smoothState({
         // Runs when a link has been activated
         onStart: {
-            duration: 500, // Duration of our animation
+            duration: 250, // Duration of our animation
             render: function render(container) {
                 container.addClass('is-loading');
             }
@@ -194,6 +194,7 @@ var io = require('socket.io-client');
     // Socket
     var socket = io('http://localhost:3000');
 
+    var orders;
     socket.on('test:App\\Events\\ViewInstrument', function (data) {
         orders.push(data);
     });
@@ -202,6 +203,10 @@ var io = require('socket.io-client');
     var Orderbook = React.createClass({
         displayName: 'Orderbook',
 
+        getInitialState: function getInitialState() {
+            return { orders: [] };
+        },
+        componentDidMount: function componentDidMount() {},
         render: function render() {
 
             var orderNodes = this.props.orders.map(function (order) {
@@ -258,7 +263,6 @@ var io = require('socket.io-client');
         }
     });
 
-    var orders = [];
     React.render(React.createElement(Orderbook, { orders: '{orders}' }), document.getElementsByClassName('orderbook')[0]);
 })(jQuery);
 

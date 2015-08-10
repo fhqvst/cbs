@@ -189,7 +189,7 @@ var io = require('socket.io-client');
     var smoothState = $('#site').smoothState({
         // Runs when a link has been activated
         onStart: {
-            duration: 500, // Duration of our animation
+            duration: 250, // Duration of our animation
             render: function (container) {
                 container.addClass('is-loading');
             }
@@ -223,7 +223,6 @@ var io = require('socket.io-client');
             return {orders: []};
         },
         componentDidMount: function() {
-            this.set
         },
         render: function() {
 
