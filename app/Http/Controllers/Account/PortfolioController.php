@@ -1,22 +1,35 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Account;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AccountController extends Controller
+class PortfolioController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('account');
+        $redis = Redis::connection();
+        $orders = $redis->lRange('order:1337', 0, -1);
+
+        $orders = array_map(function($order) {
+            $order = json_decode($order);
+            $order->instrument = Instrument::find($order->instrument)->first();
+            return $order;
+
+        }, $orders);
+
+        return view('dashboard')
+            ->with('instruments', Instrument::all())
+            ->with('portfolio', $request->user()->portfolio)
+            ->with('orders', $orders);
     }
 
     /**

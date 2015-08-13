@@ -1,33 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Market;
 
-use App\Events\ViewInstrument;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Instrument;
-use DB;
+use App\Http\Controllers\Controller;
 
-class InstrumentController extends Controller
+class MarketController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
-     * Show a list of the resources.
+     * Display a listing of the resource.
      *
-     * @param  Request  $request
      * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $instruments = Instrument::all();
-        return view('market')
-            ->with('instruments', $instruments);
+        //
     }
 
     /**
@@ -37,7 +26,7 @@ class InstrumentController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -59,12 +48,7 @@ class InstrumentController extends Controller
      */
     public function show($id)
     {
-        $instrument = Instrument::findOrFail($id);
-
-        event(new ViewInstrument($id, $instrument->markets));
-        return view('instrument')
-            ->with('instrument', $instrument)
-            ->with('instrument_meta', []);
+        //
     }
 
     /**

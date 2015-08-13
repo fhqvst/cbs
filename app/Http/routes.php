@@ -1,25 +1,16 @@
 <?php
 
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 // Frontpage
 Route::get('/', 'HomeController@index');
 
 // Market
-Route::get('market', 'InstrumentController@index');
+Route::get('market', 'Market\MarketController@index');
+Route::resource('market/instruments', 'Market\InstrumentController');
+Route::resource('market/news', 'Market\NewsController');
 
 // Settings
-Route::resource('account', 'AccountController@index');
+Route::resource('account', 'Account\AccountController');
+Route::resource('account/portfolio', 'Account\PortfolioController');
 
 // API
 Route::controller('nordnet', '\App\Nordnet\Controllers\NordnetController');
