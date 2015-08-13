@@ -1,7 +1,7 @@
 <?php
 
 // Frontpage
-Route::get('/', 'HomeController@index');
+Route::get('/', 'FrontController@index');
 
 // Market
 Route::get('market', 'Market\MarketController@index');

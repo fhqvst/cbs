@@ -13,11 +13,6 @@ use DB;
 class InstrumentController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show a list of the resources.
      *

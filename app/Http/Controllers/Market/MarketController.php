@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Market;
 
 use Illuminate\Http\Request;
+use App\Instrument;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,8 @@ class MarketController extends Controller
      */
     public function index()
     {
-        //
+        return view('market.market')
+            ->with('instruments', Instrument::all());
     }
 
     /**

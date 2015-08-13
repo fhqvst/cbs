@@ -26,7 +26,7 @@ class PortfolioController extends Controller
 
         }, $orders);
 
-        return view('dashboard')
+        return view('account.portfolio')
             ->with('instruments', Instrument::all())
             ->with('portfolio', $request->user()->portfolio)
             ->with('orders', $orders);

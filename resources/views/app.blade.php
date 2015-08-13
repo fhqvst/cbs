@@ -36,12 +36,6 @@
     <script src="{{ asset('/js/bundle.js') }}"></script>
     <script src="{{ asset('/js/all.js') }}"></script>
 
-    @if ( Config::get('app.debug') )
-        <script type="text/javascript">
-            document.write('<script src="//localhost:35729/livereload.js?snipver=1" type="text/javascript"><\/script>')
-        </script>
-    @endif
-
 </head>
 <body>
 
@@ -49,18 +43,15 @@
 
     <div id="site">
 
-
-        @include('header')
+        @include('_includes.header')
 
         @yield('content')
 
-        @include('footer')
+        @include('_includes.footer')
 
-        @include('modal')
+        @include('_includes.modal')
 
     </div>
-
-
 
 </body>
 </html>
