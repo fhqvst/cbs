@@ -1,9 +1,9 @@
+var React = require('react');
 var io = require('socket.io-client')('http://localhost:3000');
 io.on('test:App\\Events\\ViewInstrument', function(data) {
     console.log(data);
 });
 
-/* LJAWDBKAJWGDV
 
 var Order = React.createClass({
     render: function () {
@@ -18,26 +18,8 @@ var Order = React.createClass({
 });
 
 var Orderbook = React.createClass({
-
-    getInitialState: function() {
-        var orders = {};
-
-        socket.onChange(function(order) {
-            orders.push(order);
-            this.setState(
-                {orders: orders}
-            );
-        }.bind(this));
-
-        return {orders: orders};
-    },
     render: function () {
-        var items = [];
-
-        this.props.orders.forEach(function(element, index) {
-            var order = this.props.orders[index];
-            items.push(<Order volume={order.symbol} price={order.price} order={order} />);
-        });
+        var items = [{name: "derp"}];
 
         return (
             <div className="row">
@@ -57,4 +39,7 @@ var Orderbook = React.createClass({
         );
     }
 });
-    */
+
+if(document.getElementById('orderbook')) {
+    React.render(<Orderbook />, document.getElementById('orderbook'));
+}

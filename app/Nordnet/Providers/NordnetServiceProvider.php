@@ -21,9 +21,6 @@ class NordnetServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Instrument::updated(function($instrument) {
-            Event::fire(new InstrumentUpdated($instrument));
-        });
     }
 
     /**

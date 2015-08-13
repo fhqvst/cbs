@@ -11,11 +11,7 @@ elixir(function(mix) {
 
     // Merge JS
     mix
-        .scripts([
-            'app.js',
-            'components/orders.js'
-        ]);
-    mix.browserify('../../../public/js/all.js', 'public/js/all.js')
-
+        .browserify('orders.js')
+        .scripts(['app.js']);
 
 });

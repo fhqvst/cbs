@@ -23,3 +23,7 @@ io.on('disconnect', function(socket) {
 http.listen(3000, function(){
     console.log('Socket.io server listening at port 3000 on all channels.');
 });
+
+http.on("/get/hej", function() {
+    io.emit();
+});

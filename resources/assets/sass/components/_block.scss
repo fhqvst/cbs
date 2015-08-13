@@ -5,6 +5,14 @@
     @include span-columns(6);
   }
 
+  &--third {
+    @include span-columns(4);
+  }
+
+  &--two-thirds {
+    @include span-columns(8);
+  }
+
   & + .block {
     margin-top: $vertical-spacing;
   }
@@ -64,6 +72,7 @@
 }
 
 .block__toggle {
+  background: transparent;
   border: 0;
   color: $color-almost-black;
   display: inline;
@@ -75,4 +84,7 @@
   top: 50%;
   transform: translateY(-50%);
   vertical-align: middle;
+  &:hover {
+    background: transparent;
+  }
 }

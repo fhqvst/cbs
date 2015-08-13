@@ -33,7 +33,14 @@
     <!-- endbower -->
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script src="{{ asset('/js/highstock.js') }}"></script>
+    <script src="{{ asset('/js/bundle.js') }}"></script>
     <script src="{{ asset('/js/all.js') }}"></script>
+
+    @if ( Config::get('app.debug') )
+        <script type="text/javascript">
+            document.write('<script src="//localhost:35729/livereload.js?snipver=1" type="text/javascript"><\/script>')
+        </script>
+    @endif
 
 </head>
 <body>
@@ -42,11 +49,10 @@
 
     <div id="site">
 
+
         @include('header')
 
-        <div id="content">
-            @yield('content')
-        </div>
+        @yield('content')
 
         @include('footer')
 

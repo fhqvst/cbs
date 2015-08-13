@@ -12,6 +12,9 @@
 |
 */
 
+// Home
+Route::get('/', 'HomeController@index');
+
 // Dashboard
 Route::get('dashboard', 'DashboardController@index');
 

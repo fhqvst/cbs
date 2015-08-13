@@ -1,8 +1,18 @@
 .button {
 
-  @extend button;
+  background: transparent;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: .125s;
+  padding: $padding-small $padding-large;
+  outline: 0;
   border: 2px solid $color-almost-black;
   font-weight: bold;
+  transform: translateZ(0);
+  &:hover {
+    background: $color-almost-black;
+    color: $color-almost-white;
+  }
 
   @include modifier('tiny') {
     padding: $padding-small/2;
