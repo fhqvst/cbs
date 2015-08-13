@@ -18,13 +18,26 @@ class InstrumentController extends Controller
     }
 
     /**
+     * Show a list of the resources.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        $instruments = Instrument::all();
+        return view('market')
+            ->with('instruments', $instruments);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
     public function create()
     {
-        //
+
     }
 
     /**

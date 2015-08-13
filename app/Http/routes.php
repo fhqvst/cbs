@@ -12,14 +12,14 @@
 |
 */
 
-// Home
+// Frontpage
 Route::get('/', 'HomeController@index');
 
-// Dashboard
-Route::get('dashboard', 'DashboardController@index');
-
 // Market
-Route::get('market', 'MarketController@index');
+Route::get('market', 'InstrumentController@index');
+
+// Settings
+Route::resource('account', 'AccountController@index');
 
 // API
 Route::controller('nordnet', '\App\Nordnet\Controllers\NordnetController');
@@ -30,12 +30,3 @@ Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
-
-// Instrument
-Route::resource('instrument', 'InstrumentController');
-
-// Orders
-Route::resource('order', 'OrderController');
-
-// Account
-Route::resource('account', 'AccountController');
