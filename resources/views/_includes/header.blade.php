@@ -11,8 +11,8 @@
                 <nav>
                     @if(Auth::check())
                         <a href="/">Hem</a>
-                        <a href="/dashboard">Konto</a>
                         <a href="/market">Marknaden</a>
+                        <a href="/account">Konto</a>
                         <a href="/logout">Logga ut</a>
                     @else
                         <a href="/register">Registrera</a>
