@@ -41,3 +41,34 @@
   }
 
 }
+
+.form__select {
+  @extend .form__control;
+  position: relative;
+  &:after {
+    @include icon("\f123");
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  select {
+    -webkit-appearance: none;
+  }
+}
+
+
+select {
+  background: $color-white;
+  border: 2px solid $color-off-white;
+  border-radius: 0;
+  outline: 0;
+  padding: 0.5rem;
+  &:hover {
+    border-color: $color-light-gray;
+    cursor: pointer;
+  }
+}

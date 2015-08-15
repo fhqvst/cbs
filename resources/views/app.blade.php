@@ -45,7 +45,9 @@
 
         @include('_includes.header')
 
-        @yield('content')
+        <div id="content">
+            @yield('content')
+        </div>
 
         @include('_includes.footer')
 

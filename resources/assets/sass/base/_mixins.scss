@@ -12,6 +12,19 @@
   }
 }
 
+@mixin icon($content) {
+  content: $content;
+  display: block;
+  font-family: "Ionicons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+}
+
 %no-select {
   -webkit-user-select: none;
   -moz-user-select: none;

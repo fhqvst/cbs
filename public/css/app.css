@@ -265,7 +265,7 @@ h6 {
 
 .logotype {
   font-weight: bold;
-  color: #38a5bb;
+  color: #F6F6F6;
   margin: 0; }
   .logotype:after {
     display: inline-block;
@@ -344,7 +344,7 @@ input[type=checkbox] {
   .button--small {
     font-size: 0.625rem;
     padding: 0.5rem; }
-  .button--big {
+  .button--large {
     font-size: 0.875rem;
     padding: 0.5rem 1rem; }
   .button--huge {
@@ -457,8 +457,42 @@ input[type=checkbox] {
 
 .form__label {
   display: block; }
-  .form__label + .form__control {
+  .form__label + .form__control, .form__label + .form__select {
     margin-top: 0.5rem; }
+
+.form__select {
+  position: relative; }
+  .form__select:after {
+    content: "";
+    display: block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  .form__select:hover {
+    cursor: pointer; }
+  .form__select select {
+    -webkit-appearance: none; }
+
+select {
+  background: #FFF;
+  border: 2px solid #EEE;
+  border-radius: 0;
+  outline: 0;
+  padding: 0.5rem; }
+  select:hover {
+    border-color: #DDD;
+    cursor: pointer; }
 
 @media screen and (min-width: 961px) {
   .main-content {
@@ -498,13 +532,15 @@ input[type=checkbox] {
   display: none; }
 
 .pace .pace-progress {
-  background: #38a5bb;
+  background: rgba(255, 255, 255, 0.5);
   position: fixed;
   z-index: 2000;
   top: 0;
   right: 100%;
   width: 100%;
-  height: 4px; }
+  height: 4px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
 
 #content {
   -webkit-transform: translate3d(0, 0, 0);
@@ -534,9 +570,43 @@ input[type=checkbox] {
   100% {
     opacity: 1; } }
 
+.highcharts-range-selector {
+  margin-top: 1px !important;
+  margin-left: 1px !important;
+  border: 0px solid #EEE !important;
+  font-size: 12px !important;
+  color: #333 !important; }
+
+.highcharts-input-group {
+  text-transform: uppercase !important; }
+  .highcharts-input-group text:hover {
+    cursor: pointer; }
+
+.highcharts-navigator path {
+  stroke: white; }
+
+.colors {
+  font-size: 0; }
+  .colors span {
+    display: inline-block;
+    height: 0.25rem;
+    width: 16.6666667%; }
+    .colors span:nth-child(1) {
+      background: #CE1F55; }
+    .colors span:nth-child(2) {
+      background: #FB0E29; }
+    .colors span:nth-child(3) {
+      background: #FF6E4C; }
+    .colors span:nth-child(4) {
+      background: #FD9C3C; }
+    .colors span:nth-child(5) {
+      background: #23A4A9; }
+    .colors span:nth-child(6) {
+      background: #38BBA5; }
+
 .topbar {
   background: #333;
-  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.025);
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
   color:   #F6F6F6;
   height: 6rem; }
   .topbar__logotype {
@@ -564,6 +634,12 @@ input[type=checkbox] {
         color: #FFF; }
         .topbar__navigation nav a:hover {
           color: #38a5bb; }
+
+.subnav {
+  background: #FFF;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.025);
+  color:   #333;
+  height: 3rem; }
 
 .block-wrapper {
   float: left;
@@ -822,11 +898,11 @@ input[type=checkbox] {
     opacity: 1; }
 
 .instrument__chart {
-  background: #38a5bb;
   box-sizing: border-box;
   overflow: hidden; }
 
 .instrument__chart__inner {
+  padding-bottom: 1.5625rem;
   border-bottom: 1px solid #F6F6F6; }
 
 .instrument__meta__table {
@@ -853,17 +929,19 @@ input[type=checkbox] {
   .instrument__meta__table .unit {
     vertical-align: middle; }
 
-.order__form .order__form__buy-sell button {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 48.82117%; }
-  .order__form .order__form__buy-sell button:last-child {
-    margin-right: 0; }
-  .order__form .order__form__buy-sell button:nth-child(2n) {
-    margin-right: 0; }
-  .order__form .order__form__buy-sell button:nth-child(2n+1) {
-    clear: left; }
+.order__form .order__form__buy-sell {
+  padding-top: 1.5rem; }
+  .order__form .order__form__buy-sell button {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .order__form .order__form__buy-sell button:last-child {
+      margin-right: 0; }
+    .order__form .order__form__buy-sell button:nth-child(2n) {
+      margin-right: 0; }
+    .order__form .order__form__buy-sell button:nth-child(2n+1) {
+      clear: left; }
 
 .breadcrumbs {
   float: left;

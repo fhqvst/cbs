@@ -42,7 +42,7 @@ class OrderController extends Controller
             'expires_at' => date("Y-m-d H:i:s"),
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
-            'instrument_id' => $request->input('instrument'),
+            'instrument_id' => $request->input('instrument_id'),
             'status' => '0',
             'queue_position' => 0,
             'type' => $request->input('type')

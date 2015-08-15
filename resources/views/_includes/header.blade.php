@@ -1,3 +1,12 @@
+<div class="colors">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
 <header class="topbar">
 
     <div class="container">
@@ -25,3 +34,6 @@
     </div>
 
 </header>
+<div class="subnav">
+
+</div>

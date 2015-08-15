@@ -15,11 +15,32 @@
             });
 
             var initialText = $(this).html();
-
-            $.post('/market/instrument/')
+            var form = $('#order-form');
+            var button = $(this);
 
             $(this).addClass('is-loading');
-            $(this).html('<span class="button__loader"></span>')
+            $(this).html('<span class="button__loader"></span>');
+
+            $.ajax({
+                type: 'POST',
+                url: '/market/instrument/order',
+                data: {
+                    _token: $('[name=_token]').val(),
+                    instrument_id: $('[name="instrument"]').val(),
+                    price: $('[name="price"]').val(),
+                    volume: $('[name="volume"]').val(),
+                    side: button.val(),
+                    type: 0
+                },
+                complete: function(response) {
+                    button.removeClass('is-loading');
+                    button.html(initialText);
+                    button.siblings('button').each(function(index, element) {
+                        $(element).removeAttr('disabled');
+                    });
+                }
+            });
+
         });
 
         $('.block__header').click(function () {
@@ -44,23 +65,16 @@
                 orange: "#FF6E4C"
             };
             Highcharts.theme = {
-                title: {
-                    style: {
-                        color: '#333',
-                        font: 'bold 16px DIN Pro, Roboto, Helvetica, sans-serif'
-                    }
-                },
-                subtitle: {
-                    style: {
-                        color: '#333',
-                        font: 'bold 12px serif'
-                    }
+                lang:{
+                    rangeSelectorZoom: false,
+                    rangeSelectorFrom: false,
+                    rangeSelectorTo: '-'
                 },
                 plotOptions: {
                     candlestick: {
-                        color: colors.orange,
+                        color: colors.red,
                         upColor: colors.blue,
-                        lineColor: colors.orange,
+                        lineColor: colors.red,
                         upLineColor: colors.blue,
                         states: {
                             hover: {
@@ -70,24 +84,24 @@
                     }
                 },
                 tooltip: {
-                    backgroundColor: "rgba(255,255,255,0.75)",
-                    borderColor: "rgba(0,0,0,0.25)",
+                    backgroundColor: "rgba(255,255,255,0.85)",
+                    borderColor: "rgba(0,0,0,0.15)",
                     borderWidth: 1,
                     borderRadius: 0,
                     shape: "square",
                     shadow: false
                 },
                 rangeSelector: {
-                    buttonTheme: { // styles for the buttons
+                    buttonTheme: {
                         fill: 'none',
                         stroke: 'none',
-                        'stroke-width': 0,
                         style: {
                             color: colors.gray,
                             background: 'transparent',
                             textTransform: 'uppercase',
-                            fontFamily: 'DIN Pro',
-                            letterSpacing: '0.05em'
+                            fontFamily: 'Yantramanav',
+                            letterSpacing: '0.05em',
+                            fontSize: 14
                         },
                         states: {
                             hover: {
@@ -105,34 +119,35 @@
                             }
                         }
                     },
-                    inputStyle: {
-                        color: '#039',
-                        fontWeight: 'bold'
+                    inputBoxWidth: 72,
+                    inputBoxHeight: 15,
+                    inputDateFormat: "%Y-%m-%d",
+                    inputBoxStyle: {
+                        stroke: 'none',
+                        color: colors.red
                     },
-                    labelStyle: {
-                        left: 50
-                    },
-                    selected: 1
-                },
-                legend: {
-                    itemStyle: {
-                        font: '9pt Calibri, Roboto, sans-serif',
-                        color: 'black'
-                    },
-                    itemHoverStyle:{
-                        color: '#38BBA5'
-                    }
+                    inputBoxBorderColor: 'transparent'
                 },
                 navigator: {
-                    outlineColor: colors.gray
+                    maskFill: 'rgba(255, 255, 255, 0.5)',
+                    series: {
+                        type: 'areaspline',
+                        color: '#EEE',
+                        fillOpacity: 0.05,
+                        dataGrouping: {
+                            smoothed: true
+                        },
+                        lineWidth: 1,
+                        lineColor: '#DDD',
+                        marker: {
+                            enabled: false
+                        }
+                    }
                 }
             };
             Highcharts.setOptions(Highcharts.theme);
             // create the chart
             $('.instrument__chart__inner').highcharts('StockChart', {
-                rangeSelector : {
-                    selected : 1
-                },
                 series : [{
                     type : 'candlestick',
                     name : 'AAPL Stock Price',
@@ -151,19 +166,22 @@
                 }],
                 xAxis: {
                     gridLineColor: colors.offWhite,
-                    gridLineWidth: 1
+                    gridLineWidth: 1,
+                    lineColor: colors.offWhite,
+                    tickColor: colors.offWhite
                 },
                 yAxis: {
                     gridLineColor: colors.offWhite,
-                    gridLineWidth: 1
+                    gridLineWidth: 1,
+                    tickAmount: 6
                 },
                 credits: {
                     enabled: false
                 },
                 chart: {
-                    marginTop: 0,
-                    marginLeft: 0,
-                    marginRight: 0,
+                    marginTop: 25,
+                    marginLeft: 25,
+                    marginRight: 25,
                     marginBottom: 25,
                     spacingRight: 25,
                     spacingBottom: 0

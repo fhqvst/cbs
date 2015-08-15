@@ -35,7 +35,7 @@
     padding: $padding-small;
   }
 
-  @include modifier('big') {
+  @include modifier('large') {
     font-size: 0.875rem;
     padding: $padding-small $padding-large;
   }

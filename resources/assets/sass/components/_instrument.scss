@@ -1,11 +1,11 @@
 .instrument__chart {
-  background: $color-primary;
   box-sizing: border-box;
   overflow: hidden; // Remove margin collapse from child
 }
 
 .instrument__chart__inner {
 //  margin: $vertical-spacing $horizontal-spacing;
+  padding-bottom: $vertical-spacing;
   border-bottom: 1px solid $color-almost-white;
 }
 
@@ -42,6 +42,7 @@
 .order__form {
 
   .order__form__buy-sell {
+    padding-top: 1.5rem;
 
     button {
       @include span-columns(6);
