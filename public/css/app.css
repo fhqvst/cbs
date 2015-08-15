@@ -319,7 +319,7 @@ input[type=checkbox] {
   background: transparent;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: .125s;
+  transition: background 0.125s, color 0.125s, border-color 0.125s;
   padding: 0.5rem 1rem;
   outline: 0;
   border: 2px solid #333;
@@ -329,6 +329,16 @@ input[type=checkbox] {
   .button:hover {
     background: #333;
     color: #F6F6F6; }
+  .button[disabled=disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #FFF;
+    border-color: #CCC;
+    color: #CCC; }
+    .button[disabled=disabled]:hover {
+      background: #FFF;
+      border-color: #CCC;
+      color: #CCC; }
   .button--tiny, .stocks-table td.buy-sell-buttons button {
     padding: 0.25rem; }
   .button--small {
@@ -338,6 +348,7 @@ input[type=checkbox] {
     font-size: 0.875rem;
     padding: 0.5rem 1rem; }
   .button--huge {
+    min-height: 3.5rem;
     font-size: 1rem;
     padding: 1rem;
     width: 100%; }
@@ -361,6 +372,51 @@ input[type=checkbox] {
     .button--green:hover {
       background: #38a5bb;
       color: #EEE; }
+  .button--tiny.is-loading,
+  .stocks-table td.buy-sell-buttons button.is-loading,
+  .button--small.is-loading,
+  .button--big.is-loading,
+  .button--huge.is-loading {
+    padding: 0; }
+
+.button__loader {
+  margin: 0px auto;
+  font-size: 1rem;
+  position: relative;
+  display: inline-block;
+  text-indent: -9999em;
+  border-color: inherit;
+  border-top: 0.25em solid transparent;
+  border-right: 0.25em solid transparent;
+  border-bottom: 0.25em solid transparent;
+  border-left: 0.25em solid;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear; }
+
+.button__loader,
+.button__loader:after {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem; }
+
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 
 .form, .form--full-width {
   display: block; }
@@ -595,6 +651,7 @@ input[type=checkbox] {
 .block__toggle {
   background: transparent;
   border: 0;
+  outline: 0;
   color: #333;
   display: inline;
   font-size: 2rem;
@@ -796,16 +853,16 @@ input[type=checkbox] {
   .instrument__meta__table .unit {
     vertical-align: middle; }
 
-.instrument__form .instrument__form__buy-sell button {
+.order__form .order__form__buy-sell button {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 48.82117%; }
-  .instrument__form .instrument__form__buy-sell button:last-child {
+  .order__form .order__form__buy-sell button:last-child {
     margin-right: 0; }
-  .instrument__form .instrument__form__buy-sell button:nth-child(2n) {
+  .order__form .order__form__buy-sell button:nth-child(2n) {
     margin-right: 0; }
-  .instrument__form .instrument__form__buy-sell button:nth-child(2n+1) {
+  .order__form .order__form__buy-sell button:nth-child(2n+1) {
     clear: left; }
 
 .breadcrumbs {

@@ -5,8 +5,9 @@ Route::get('/', 'FrontController@index');
 
 // Market
 Route::get('market', 'Market\MarketController@index');
-Route::resource('market/instruments', 'Market\InstrumentController');
+Route::resource('market/instrument', 'Market\InstrumentController');
 Route::resource('market/news', 'Market\NewsController');
+Route::resource('market/instrument/order', 'Market\OrderController');
 
 // Settings
 Route::resource('account', 'Account\AccountController');

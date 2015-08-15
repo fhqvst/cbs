@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Redis;
+use App\Order;
 use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
@@ -21,16 +22,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
@@ -43,20 +34,30 @@ class OrderController extends Controller
 
         // Create order parameters
         $order = array(
-            'portfolio' => $request->user()->portfolio(),
+            'portfolio_id' => $request->user()->portfolio->id,
             'price' => $request->input('price'),
             'volume' => $request->input('volume'),
             'visible_volume' => $request->input('volume'),
             'side' => $request->input('side'),
+            'expires_at' => date("Y-m-d H:i:s"),
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
-            'instrument' => $request->input('instrument'),
-            'status' => 'ON_MARKET',
+            'instrument_id' => $request->input('instrument'),
+            'status' => '0',
+            'queue_position' => 0,
             'type' => $request->input('type')
         );
-        $order_id = $redis->incr('order:id => 1000');
 
-        return $redis->lPush('order:1337', json_encode($order));
+        $order = Order::create($order);
+        if($order) {
+
+            // Put order id last in instrument order queue list
+            $redis->rPush('orders:' . $order->instrument_id, $order->id);
+
+            // Store the order as hash
+            $redis->hmSet('order:' . $order->id, $order->toArray());
+        }
+        return response(null, 200);
     }
 
     /**

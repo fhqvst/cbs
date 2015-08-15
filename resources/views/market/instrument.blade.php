@@ -100,7 +100,7 @@
                             <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
                         </header>
                         <main class="block__content">
-                            <form class="form--full-width instrument__form" role="form" method="POST" action="{{ url('order') }}">
+                            <form id="order-form" class="form--full-width order__form" role="form" method="POST" action="{{ url('market/instrument/order') }}">
 
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="instrument" value="{{ $instrument->id }}">
@@ -121,7 +121,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form__group instrument__form__buy-sell">
+                                <div class="form__group order__form__buy-sell">
                                     <button type="submit" name="side" value="1" class="button button--huge button--green">
                                         Köp
                                     </button>

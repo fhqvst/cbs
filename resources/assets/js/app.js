@@ -1,4 +1,3 @@
-
 (function($) {
 
     "use strict";
@@ -6,6 +5,22 @@
     // Initialize
     $(document).ready(initialize);
     function initialize() {
+
+        $('#order-form').on('click', 'button', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            $(this).siblings('button').each(function(index, element) {
+                $(element).attr('disabled', 'disabled');
+            });
+
+            var initialText = $(this).html();
+
+            $.post('/market/instrument/')
+
+            $(this).addClass('is-loading');
+            $(this).html('<span class="button__loader"></span>')
+        });
 
         $('.block__header').click(function () {
             $(this).parents('.block').toggleClass('is-minimized');
@@ -16,7 +31,6 @@
         $('.notice__close').click(function () {
             $(this).parents('.notice').remove();
         });
-
 
         $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-ohlc.json&callback=?', function (data) {
             var colors = {
@@ -180,11 +194,8 @@
             }
         },
         prefetch: false,
+        blacklist: '.no-ss',
         forms: '[type=submit]'
     }).data('smoothState');
-
-
-    // Orders
-
 
 })(jQuery);
