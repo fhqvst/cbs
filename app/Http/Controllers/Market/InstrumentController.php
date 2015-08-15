@@ -58,7 +58,7 @@ class InstrumentController extends Controller
         $instrument = Instrument::findOrFail($id);
 
         event(new ViewInstrument($id, $instrument->markets));
-        return view('instrument')
+        return view('market.instrument')
             ->with('instrument', $instrument)
             ->with('instrument_meta', []);
     }

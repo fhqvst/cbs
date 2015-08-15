@@ -183,5 +183,9 @@
         forms: '[type=submit]'
     }).data('smoothState');
 
+
+    // Orders
+
+
 })(jQuery);
 //# sourceMappingURL=all.js.map

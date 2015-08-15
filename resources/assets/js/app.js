@@ -183,4 +183,8 @@
         forms: '[type=submit]'
     }).data('smoothState');
 
+
+    // Orders
+
+
 })(jQuery);

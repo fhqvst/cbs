@@ -21,8 +21,7 @@ class ViewInstrument extends Event implements ShouldBroadcast
     {
         $this->data = array(
             'instrument_id' => $instrument_id,
-            'market_id' => $market_id,
-            'price' => 1337
+            'market_id' => $market_id
         );
     }
 
@@ -33,6 +32,6 @@ class ViewInstrument extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['test'];
+        return ['global'];
     }
 }
