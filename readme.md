@@ -28,4 +28,4 @@ Den gråmarkerade tabellen (orders) kommer troligtvis bara existera mha. Redis e
 
 Detta beror helt enkelt på att man för att få tag på ordrar måste ansluta till en stream och prenumerera per instrument, vilket kan bli enormt krävande om man prenumererar på ett stort antal instrument samtidigt. Därför visas och behandlas bara orderdata när det behövs. För annan typ av prisdata används istället quotes-tabellen, som regelbundet uppdateras med OHLC-värden. 
 
-![database.png](https://raw.githubusercontent.com/fhqvst/cbs/master/database.png?token=AGsEwykhPbOBr9-8bs5aNkmriCcTVe6Vks5VyScwwA%3D%3D)
+![database.png](https://raw.githubusercontent.com/fhqvst/cbs/master/database.jpg?token=AGsEww-IJrnltZG__fzT7qOnLj3vy8X0ks5V2PUNwA%3D%3D)
