@@ -68,7 +68,7 @@ class NordnetController extends Controller {
 
                 $instrument = Instrument::firstOrCreate([
                     'symbol' => $nn_instrument->symbol,
-                    'name' => $nn_instrument->name,
+                    'name' => $nicename,
                     'nordnet_id' => $nn_instrument->instrument_id,
                     'listing_id' => Listing::where('nordnet_id', $listing)->first()->id,
                 ]);
