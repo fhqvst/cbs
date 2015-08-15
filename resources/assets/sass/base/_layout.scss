@@ -6,9 +6,15 @@
 
 .sidebar {
   @include media($desktop) {
-    @include span-columns(3);
+    @include span-columns(2);
   }
   margin-top: $vertical-spacing;
+
+  & + .main-content {
+    @include media($desktop) {
+      @include span-columns(10);
+    }
+  }
 }
 
 .block.register-form {

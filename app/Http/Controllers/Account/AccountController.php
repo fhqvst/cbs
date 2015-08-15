@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use Illuminate\Http\Request;
-
+use Redis;
+use App\Instrument;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,9 +15,23 @@ class AccountController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('account.account');
+
+        $redis = Redis::connection();
+        $orders = $redis->lRange('order:1337', 0, -1);
+
+        $orders = array_map(function($order) {
+            $order = json_decode($order);
+            $order->instrument = Instrument::find($order->instrument)->first();
+            return $order;
+
+        }, $orders);
+
+        return view('account.account')
+            ->with('instruments', Instrument::all())
+            ->with('portfolio', $request->user()->portfolio)
+            ->with('orders', $orders);
     }
 
     /**

@@ -1,0 +1,47 @@
+.sidebar__section {
+  & + & {
+    margin-top: $vertical-spacing;
+  }
+}
+
+.sidebar__header {
+  color: $color-gray;
+  margin-bottom: $vertical-spacing/2;
+  text-transform: uppercase;
+  h2 {
+    font-size: 0.875rem;
+  }
+}
+
+.sidebar__navigation {
+  a {
+    display: block;
+    padding: 0.25rem 0;
+    position: relative;
+    color: $color-dark-gray;
+//    &:after {
+//      @include icon("\f125");
+//      position: absolute;
+//      font-size: 0.75rem;
+//      right: 0;
+//      top: 50%;
+//      transform: translateY(-50%);
+//    }
+    &:hover {
+      color: $color-primary;
+    }
+    &.is-active {
+      color: $color-primary;
+      padding-left: 1rem;
+      &:before {
+        display: block;
+        content: "●";
+        position: absolute;
+        font-size: 0.75rem;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
