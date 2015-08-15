@@ -103,6 +103,7 @@
                             </header>
                             <main class="block__content">
                                 <div id="orderbook"></div>
+                                <script src="{{ asset('/js/orders.js') }}"></script>
                             </main>
                         </section>
 

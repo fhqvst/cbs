@@ -37,6 +37,7 @@
 
   @include modifier('large') {
     font-size: 0.875rem;
+    min-height: 2.5rem;
     padding: $padding-small $padding-large;
   }
 
@@ -80,7 +81,7 @@
 
   &--tiny,
   &--small,
-  &--big,
+  &--large,
   &--huge {
     &.is-loading {
       padding: 0;
@@ -92,7 +93,7 @@
 
 .button__loader {
   margin: 0px auto;
-  font-size: 1rem;
+  font-size: 0.875rem;
   position: relative;
   display: inline-block;
   text-indent: -9999em;
@@ -110,8 +111,8 @@
 .button__loader,
 .button__loader:after {
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  width: 1rem;
+  height: 1rem;
 }
 @-webkit-keyframes load8 {
   0% {

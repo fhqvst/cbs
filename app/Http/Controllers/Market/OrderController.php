@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Market;
 
+use App\Events\PutOrder;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -56,6 +57,9 @@ class OrderController extends Controller
 
             // Store the order as hash
             $redis->hmSet('order:' . $order->id, $order->toArray());
+
+            // Send an event to redis -> socket
+            event(new PutOrder($order));
         }
         return response(null, 200);
     }

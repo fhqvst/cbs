@@ -10,7 +10,7 @@ class PutOrder extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
-    public $order;
+    public $data;
 
     /**
      * Create a new event instance.
@@ -19,7 +19,7 @@ class PutOrder extends Event implements ShouldBroadcast
      */
     public function __construct($order)
     {
-        $this->order = $order;
+        $this->data = $order;
     }
 
     /**

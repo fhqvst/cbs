@@ -10,7 +10,8 @@ class ViewInstrument extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
-    public $data;
+    public $instrument_id;
+    public $market_id;
 
     /**
      * Create a new event instance.
@@ -19,10 +20,8 @@ class ViewInstrument extends Event implements ShouldBroadcast
      */
     public function __construct($instrument_id, $market_id)
     {
-        $this->data = array(
-            'instrument_id' => $instrument_id,
-            'market_id' => $market_id
-        );
+        $this->instrument_id = $instrument_id;
+        $this->market_id = $market_id;
     }
 
     /**

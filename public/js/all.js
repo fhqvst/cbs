@@ -200,7 +200,7 @@
             duration: 250, // Duration of our animation
             render: function (container) {
                 container.addClass('is-ready');
-                container.restartCSSAnimations();
+                smoothState.restartCSSAnimations();
             }
         },
         onReady: {

@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Instrument;
-use DB;
 
 class InstrumentController extends Controller
 {

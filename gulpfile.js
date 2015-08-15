@@ -10,8 +10,7 @@ elixir(function(mix) {
         .wiredep({src: 'app.blade.php'});
 
     // Merge JS
-    mix
-        .browserify('orders.js')
-        .scripts(['app.js']);
+    mix.scripts(['app.js']);
+    mix.browserify('orders.js', 'public/js/orders.js');
 
 });

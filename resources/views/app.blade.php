@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title><?php #TODO: Add title ?> </title>
+	<title>CBSx</title>
 
     <!-- bower:css -->
     <link rel='stylesheet' href='/bower_components/ionicons/css/ionicons.css' />
@@ -26,16 +26,6 @@
 		<!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
 	<![endif]-->
 
-    <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
-    <script src="/bower_components/pace/pace.js"></script>
-    <!-- endbower -->
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script src="{{ asset('/js/highstock.js') }}"></script>
-    <script src="{{ asset('/js/bundle.js') }}"></script>
-    <script src="{{ asset('/js/all.js') }}"></script>
-
 </head>
 <body>
 
@@ -54,6 +44,16 @@
         @include('_includes.modal')
 
     </div>
+
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
+    <script src="/bower_components/pace/pace.js"></script>
+    <script src="/bower_components/react/react.min.js"></script>
+    <script src="/bower_components/react/JSXTransformer.js"></script>
+    <!-- endbower -->
+    <script src="{{ asset('/js/highstock.js') }}"></script>
+    <script src="{{ asset('/js/all.js') }}"></script>
 
 </body>
 </html>

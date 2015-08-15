@@ -346,6 +346,7 @@ input[type=checkbox] {
     padding: 0.5rem; }
   .button--large {
     font-size: 0.875rem;
+    min-height: 2.5rem;
     padding: 0.5rem 1rem; }
   .button--huge {
     min-height: 3.5rem;
@@ -375,13 +376,13 @@ input[type=checkbox] {
   .button--tiny.is-loading,
   .stocks-table td.buy-sell-buttons button.is-loading,
   .button--small.is-loading,
-  .button--big.is-loading,
+  .button--large.is-loading,
   .button--huge.is-loading {
     padding: 0; }
 
 .button__loader {
   margin: 0px auto;
-  font-size: 1rem;
+  font-size: 0.875rem;
   position: relative;
   display: inline-block;
   text-indent: -9999em;
@@ -399,8 +400,8 @@ input[type=checkbox] {
 .button__loader,
 .button__loader:after {
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem; }
+  width: 1rem;
+  height: 1rem; }
 
 @-webkit-keyframes load8 {
   0% {
