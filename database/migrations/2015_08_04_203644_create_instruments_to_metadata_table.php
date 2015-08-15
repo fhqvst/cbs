@@ -13,8 +13,8 @@ class CreateInstrumentsToMetadataTable extends Migration
     public function up()
     {
         Schema::create('instruments_metadata', function (Blueprint $table) {
-            $table->integer('instrument_id');
-            $table->bigInteger('metadata_id');
+            $table->integer('instrument_id')->unsigned();
+            $table->bigInteger('metadata_id')->unsigned();
             $table->primary(['instrument_id', 'metadata_id']);
         });
     }

@@ -13,11 +13,13 @@ class CreateInstrumentsTable extends Migration
     public function up()
     {
         Schema::create('instruments', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->string('symbol');
             $table->text('name');
             $table->integer('nordnet_id')->default(0);
-            $table->integer('listing_id');
+            $table->integer('listing_id')->unsigned();
             $table->timestamps();
         });
     }

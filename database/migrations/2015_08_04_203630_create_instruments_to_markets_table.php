@@ -13,8 +13,8 @@ class CreateInstrumentsToMarketsTable extends Migration
     public function up()
     {
         Schema::create('instruments_markets', function (Blueprint $table) {
-            $table->integer('instrument_id');
-            $table->integer('market_id');
+            $table->integer('instrument_id')->unsigned();
+            $table->integer('market_id')->unsigned();
             $table->primary(['instrument_id', 'market_id']);
         });
     }
