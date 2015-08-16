@@ -23,7 +23,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/market/instrument/order',
+                url: '/market/order',
                 data: {
                     _token: $('[name=_token]').val(),
                     instrument_id: $('[name="instrument"]').val(),

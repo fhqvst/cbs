@@ -15,27 +15,31 @@ var Orderbook = React.createClass({
         };
     },
 
-    _getOrders: function _getOrders(message) {
-        this.setState({
-            orders: message.data.orders
-        });
+    _updateOrders: function _updateOrders(order) {
+        var orders = this.state.orders;
+
+        orders.push(order.data);
+        this.setState({ orders: orders });
     },
 
     componentDidMount: function componentDidMount() {
-        socket.on('global:App\\Events\\PutOrder', this._getOrders(message));
+        socket.on('global:App\\Events\\ViewInstrument', function (message) {
+            console.log(message);
+        });
+        socket.on('global:App\\Events\\OrderCreated', this._updateOrders);
+        socket.on('global:App\\Events\\TradeConfirmed', this._updateOrders);
     },
 
     render: function render() {
         return React.createElement(
             'table',
-            null,
+            { className: 'orderbook__orders' },
             React.createElement(
                 'tbody',
                 null,
-                this.props.orders.map(function (order, index) {
-                    return React.createElement(Order, { price: '{order.price}' });
-                }),
-                ';'
+                this.state.orders.map(function (order, index) {
+                    return React.createElement(Order, { key: order.id, price: order.price });
+                })
             )
         );
     }
@@ -44,15 +48,8 @@ var Orderbook = React.createClass({
 var Order = React.createClass({
     displayName: 'Order',
 
-    getInitialState: function getInitialState() {
-        return { price: 25 };
-    },
-
     _updateStock: function _updateStock(message) {
-
-        this.setState({
-            price: message.data.price
-        });
+        console.log("ORDER: " + message);
     },
 
     componentDidMount: function componentDidMount() {
@@ -61,14 +58,18 @@ var Order = React.createClass({
 
     render: function render() {
         return React.createElement(
-            'h1',
-            null,
-            this.state.price
+            'div',
+            { className: 'orderbook__order' },
+            React.createElement(
+                'h1',
+                null,
+                this.props.price
+            )
         );
     }
 });
 
-React.render(React.createElement(Order, { price: '13.37', side: '1' }), document.getElementById('orderbook'));
+React.render(React.createElement(Orderbook, null), document.getElementById('orderbook'));
 
 },{"react":157,"socket.io-client":158}],2:[function(require,module,exports){
 // shim for using process in browser

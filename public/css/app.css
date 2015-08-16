@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Yantramanav:400,300,700);
 html {
   box-sizing: border-box; }
 
@@ -233,7 +234,7 @@ input[type=button] {
     display: table; }
 
 body {
-  font-family: "DIN Pro", "San Fransisco", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Yantramanav", "San Fransisco", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   color: #333; }
 
@@ -314,6 +315,45 @@ input[type=checkbox] {
   input[type=checkbox] + label {
     margin-left: 0.5rem;
     line-height: 0.1; }
+
+.loader {
+  margin: 0 auto;
+  font-size: 0.875rem;
+  position: relative;
+  display: inline-block;
+  text-indent: -9999em;
+  border-color: inherit;
+  border-top: 0.25em solid transparent;
+  border-right: 0.25em solid transparent;
+  border-bottom: 0.25em solid transparent;
+  border-left: 0.25em solid;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load 1.1s infinite linear;
+  animation: load 1.1s infinite linear; }
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem; }
+
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 
 .button {
   background: transparent;
@@ -538,10 +578,15 @@ select {
   pointer-events: none; }
 
 .pace-inactive {
-  display: none; }
+  opacity: 0;
+  transition: 0.5s; }
+
+.pace-active {
+  opacity: 1;
+  transition: 0s; }
 
 .pace .pace-progress {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   position: fixed;
   z-index: 2000;
   top: 0;
@@ -943,7 +988,23 @@ select {
 
 .instrument__chart__inner {
   padding-bottom: 1.5625rem;
-  border-bottom: 1px solid #F6F6F6; }
+  border-bottom: 1px solid #F6F6F6;
+  min-height: 28rem;
+  text-align: center;
+  width: 100%; }
+  .instrument__chart__inner .loader {
+    display: inline-block;
+    margin: 12rem auto 0;
+    -webkit-transform: translateZ(0) translateY(1000%);
+    -ms-transform: translateZ(0) translateY(1000%);
+    transform: translateZ(0) translateY(1000%);
+    font-size: 1rem;
+    border-color: #EEE;
+    border-left: 0.25em solid #38a5bb; }
+  .instrument__chart__inner .loader,
+  .instrument__chart__inner .loader:after {
+    width: 4rem;
+    height: 4rem; }
 
 .instrument__meta__table {
   float: left;

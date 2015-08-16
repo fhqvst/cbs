@@ -7,7 +7,7 @@ Route::get('/', 'FrontController@index');
 Route::get('market', 'Market\MarketController@index');
 Route::resource('market/instrument', 'Market\InstrumentController');
 Route::resource('market/news', 'Market\NewsController');
-Route::resource('market/instrument/order', 'Market\OrderController');
+Route::resource('market/order', 'Market\OrderController');
 
 // Settings
 Route::resource('account', 'Account\AccountController');

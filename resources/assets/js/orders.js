@@ -8,30 +8,34 @@ var Orderbook = React.createClass({
     getInitialState() {
         return {
             orders: []
-        };
+        }
     },
 
-    _getOrders: function(message) {
-        this.setState({
-            orders: message.data.orders
+    _updateOrders(order) {
+        var {orders} = this.state;
+        orders.push(order.data);
+        this.setState({orders});
+    },
+
+    componentDidMount() {
+        socket.on('global:App\\Events\\ViewInstrument', function(message) {
+            console.log(message);
         });
+        socket.on('global:App\\Events\\OrderCreated', this._updateOrders);
+        socket.on('global:App\\Events\\TradeConfirmed', this._updateOrders);
     },
 
-    componentDidMount: function() {
-        socket.on('global:App\\Events\\PutOrder', this._getOrders(message));
-    },
-
-    render: function(){
+    render() {
         return (
-            <table>
+            <table className="orderbook__orders">
                 <tbody>
                     {
-                        this.props.orders.map((order, index) => {
+                        this.state.orders.map((order, index) => {
                             return (
-                                <Order price="{order.price}" />
-                            );
+                                <Order key={order.id} price={order.price} />
+                            )
                         })
-                    };
+                    }
                 </tbody>
             </table>
         );
@@ -40,15 +44,8 @@ var Orderbook = React.createClass({
 
 var Order = React.createClass({
 
-    getInitialState() {
-        return {price: 25};
-    },
-
     _updateStock: function(message) {
-
-        this.setState({
-            price: message.data.price
-        });
+        console.log("ORDER: " + message);
     },
 
     componentDidMount: function() {
@@ -57,13 +54,14 @@ var Order = React.createClass({
 
     render: function(){
         return (
-            <h1>{this.state.price}</h1>
+            <div className="orderbook__order">
+                <h1>{this.props.price}</h1>
+            </div>
         );
     }
 });
 
-
 React.render(
-    <Order price="13.37" side="1"/>,
+    <Orderbook/>,
     document.getElementById('orderbook')
 );

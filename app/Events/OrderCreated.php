@@ -6,7 +6,7 @@ use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class PutOrder extends Event implements ShouldBroadcast
+class OrderCreated extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 

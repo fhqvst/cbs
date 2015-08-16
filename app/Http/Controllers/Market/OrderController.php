@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Market;
 
-use App\Events\PutOrder;
+use App\Events\OrderCreated;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,6 +19,25 @@ class OrderController extends Controller
      */
     public function index()
     {
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id) {
+        $redis = Redis::connection();
+        $order_ranks = $redis->zRevRange('orders:' . $id, 0, -1);
+
+        $orders = [];
+        foreach($order_ranks as $index => $order) {
+            $orders[$index] = $redis->hVals('order:' . $order);
+        }
+
+        return $orders;
 
     }
 
@@ -53,13 +72,13 @@ class OrderController extends Controller
         if($order) {
 
             // Put order id last in instrument order queue list
-            $redis->rPush('orders:' . $order->instrument_id, $order->id);
+            $redis->zIncrBy('orders:' . $order->instrument_id, $order->price, $order->id);
 
             // Store the order as hash
-            $redis->hmSet('order:' . $order->id, $order->toArray());
+            $redis->hMset('order:' . $order->id, $order->toArray());
 
             // Send an event to redis -> socket
-            event(new PutOrder($order));
+            event(new OrderCreated($order));
         }
         return response(null, 200);
     }

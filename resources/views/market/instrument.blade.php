@@ -24,7 +24,11 @@
                         <section class="block">
                             <figure class="block__content block__content--no-padding">
                                 <div class="instrument__chart">
-                                    <div class="instrument__chart__inner"></div>
+                                    <div class="instrument__chart__inner">
+                                        <div class="loader">
+
+                                        </div>
+                                    </div>
                                 </div>
                             </figure>
                             <header class="block__header">
@@ -102,7 +106,7 @@
                                 <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
                             </header>
                             <main class="block__content">
-                                <div id="orderbook"></div>
+                                <div id="orderbook">asd</div>
                                 <script src="{{ asset('/js/orders.js') }}"></script>
                             </main>
                         </section>
