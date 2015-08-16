@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Instrument;
-
+use Redis;
 class InstrumentController extends Controller
 {
 

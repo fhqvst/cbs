@@ -9,6 +9,7 @@
     "highstock-release": "^2.1.7",
     "hiredis": "^0.4.0",
     "ioredis": "^1.6.1",
+    "jquery": "^2.1.4",
     "laravel-elixir": "2.0.0",
     "laravel-elixir-livereload": "0.0.5",
     "laravel-elixir-wiredep": "^0.1.2",

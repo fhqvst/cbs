@@ -1,6 +1,6 @@
 var React = require('react');
 var socket = require('socket.io-client')('http://localhost:3000');
-
+var $ = require('jquery');
 "use strict";
 
 var Orderbook = React.createClass({
@@ -18,6 +18,16 @@ var Orderbook = React.createClass({
     },
 
     componentDidMount() {
+
+        var instrumentId = window.location.href.split('/').pop();
+        $.get('/market/order/' + instrumentId, function(orders) {
+            if(this.isMounted()) {
+                this.setState({
+                    orders: orders
+                });
+            }
+        }.bind(this));
+
         socket.on('global:App\\Events\\ViewInstrument', function(message) {
             console.log(message);
         });
@@ -62,6 +72,6 @@ var Order = React.createClass({
 });
 
 React.render(
-    <Orderbook/>,
-    document.getElementById('orderbook')
+    <Orderbook />,
+        document.getElementById('orderbook')
 );

@@ -106,7 +106,7 @@
                                 <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>
                             </header>
                             <main class="block__content">
-                                <div id="orderbook">asd</div>
+                                <div id="orderbook"></div>
                                 <script src="{{ asset('/js/orders.js') }}"></script>
                             </main>
                         </section>

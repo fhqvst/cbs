@@ -33,12 +33,18 @@ class OrderController extends Controller
         $order_ranks = $redis->zRevRange('orders:' . $id, 0, -1);
 
         $orders = [];
-        foreach($order_ranks as $index => $order) {
-            $orders[$index] = $redis->hVals('order:' . $order);
+        foreach($order_ranks as $order) {
+
+            // Get hash keys and values
+            $keys = $redis->hKeys('order:' . $order);
+            $values = $redis->hVals('order:' . $order);
+
+            // Combine them into an associative array
+            $orders[] = array_combine($keys, $values);
         }
 
-        return $orders;
-
+        return response($orders)
+            ->header('Content-Type', 'application/json');
     }
 
     /**
