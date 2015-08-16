@@ -907,6 +907,24 @@ select {
     .setting .setting__actions:last-child {
       margin-right: 0; }
 
+.orderbook {
+  position: relative; }
+
+.orderbook__titles__buy {
+  background: #38a5bb; }
+
+.orderbook__titles__sell {
+  background: #FB0E29; }
+
+.orderbook__buy:first-child,
+.orderbook__buy:last-child,
+.orderbook__sell:first-child,
+.orderbook__sell:last-child {
+  padding: 0; }
+
+.orderbook__buy {
+  border-right: 1px solid #EEE; }
+
 .overlay {
   background: rgba(0, 0, 0, 0.75);
   display: none;

@@ -1,0 +1,22 @@
+.orderbook {
+  position: relative;
+}
+.orderbook__titles__buy {
+  background: $color-blue;
+}
+.orderbook__titles__sell {
+  background: $color-red;
+}
+
+
+.orderbook__buy,
+.orderbook__sell {
+  &:first-child,
+  &:last-child {
+    padding: 0;
+  }
+}
+
+.orderbook__buy {
+  border-right: 1px solid $color-off-white;
+}

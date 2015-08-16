@@ -11,22 +11,30 @@ var Orderbook = React.createClass({
         }
     },
 
-    _updateOrders(order) {
-        var {orders} = this.state;
-        orders.push(order.data);
-        this.setState({orders});
-    },
-
-    componentDidMount() {
+    _updateOrders() {
 
         var instrumentId = window.location.href.split('/').pop();
         $.get('/market/order/' + instrumentId, function(orders) {
+
+            var fillerOrders = 5 - orders.length;
+            for(var i = 0; i < fillerOrders; i++) {
+                orders.push({
+                    price: '-',
+                    volume: '-'
+                });
+            }
+
             if(this.isMounted()) {
                 this.setState({
                     orders: orders
                 });
             }
         }.bind(this));
+    },
+
+    componentDidMount() {
+
+        this._updateOrders();
 
         socket.on('global:App\\Events\\ViewInstrument', function(message) {
             console.log(message);
@@ -37,17 +45,60 @@ var Orderbook = React.createClass({
 
     render() {
         return (
-            <table className="orderbook__orders">
-                <tbody>
-                    {
-                        this.state.orders.map((order, index) => {
-                            return (
-                                <Order key={order.id} price={order.price} />
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
+        <table className="orderbook">
+            <thead>
+                <tr className="orderbook__titles">
+                    <th className="orderbook__titles__buy">
+                        Köp
+                    </th>
+                    <th className="orderbook__titles__sell">
+                        Sälj
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td className="orderbook__buy">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pris</th>
+                                    <th>Antal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    this.state.orders.map((order, index) => {
+                                        return (
+                                            <Order key={order.id} price={order.price} volume={order.volume} />
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </td>
+                    <td className="orderbook__sell">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pris</th>
+                                    <th>Antal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    this.state.orders.map((order, index) => {
+                                        return (
+                                            <Order key={order.id} price={order.price} volume={order.volume} />
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         );
     }
 });
@@ -64,9 +115,10 @@ var Order = React.createClass({
 
     render: function(){
         return (
-            <div className="orderbook__order">
-                <h1>{this.props.price}</h1>
-            </div>
+            <tr className="orderbook__order">
+                <td>{this.props.price}</td>
+                <td>{this.props.volume}</td>
+            </tr>
         );
     }
 });

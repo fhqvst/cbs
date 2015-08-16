@@ -124,7 +124,7 @@
 
                                     <div class="form__group form__group--half">
                                         <label class="form__label">Pris</label>
-                                        <input class="form__control" type="text" name="price" value="{{ old('price') }}">
+                                        <input class="form__control" type="number" name="price" value="{{ old('price') }}">
                                     </div>
                                     <div class="form__group form__group--half">
                                         <label class="form__label">Volym</label>
