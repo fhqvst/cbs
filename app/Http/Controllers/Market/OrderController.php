@@ -26,22 +26,33 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     * @param  int  $side
      * @return Response
      */
     public function show($id) {
         $redis = Redis::connection();
-        $order_ranks = $redis->zRevRange('orders:' . $id, 0, -1);
 
-        $orders = [];
-        foreach($order_ranks as $order) {
+        $buy_orders = $redis->zRevRange('orders:' . $id . ':1', 0, -1);
+        $sell_orders = $redis->zRange('orders:' . $id . ':0', 0, -1);
 
-            // Get hash keys and values
+        $buy_side = [];
+        foreach($buy_orders as $order) {
             $keys = $redis->hKeys('order:' . $order);
             $values = $redis->hVals('order:' . $order);
-
-            // Combine them into an associative array
-            $orders[] = array_combine($keys, $values);
+            $buy_side[] = array_combine($keys, $values);
         }
+
+        $sell_side = [];
+        foreach($sell_orders as $order) {
+            $keys = $redis->hKeys('order:' . $order);
+            $values = $redis->hVals('order:' . $order);
+            $sell_side[] = array_combine($keys, $values);
+        }
+
+        $orders = array(
+            'buyOrders' => $buy_side,
+            'sellOrders' => $sell_side
+        );
 
         return response($orders)
             ->header('Content-Type', 'application/json');
@@ -78,7 +89,8 @@ class OrderController extends Controller
         if($order) {
 
             // Put order id last in instrument order queue list
-            $redis->zIncrBy('orders:' . $order->instrument_id, $order->price, $order->id);
+            // Order:{instrument_id}:{side}
+            $redis->zIncrBy('orders:' . $order->instrument_id . ':' . $order->side, $order->price, $order->id);
 
             // Store the order as hash
             $redis->hMset('order:' . $order->id, $order->toArray());

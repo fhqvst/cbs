@@ -11,7 +11,8 @@ var Orderbook = React.createClass({
 
     getInitialState: function getInitialState() {
         return {
-            orders: []
+            buyOrders: [],
+            sellOrders: []
         };
     },
 
@@ -19,18 +20,10 @@ var Orderbook = React.createClass({
 
         var instrumentId = window.location.href.split('/').pop();
         $.get('/market/order/' + instrumentId, (function (orders) {
-
-            var fillerOrders = 5 - orders.length;
-            for (var i = 0; i < fillerOrders; i++) {
-                orders.push({
-                    price: '-',
-                    volume: '-'
-                });
-            }
-
             if (this.isMounted()) {
                 this.setState({
-                    orders: orders
+                    buyOrders: orders.buyOrders,
+                    sellOrders: orders.sellOrders
                 });
             }
         }).bind(this));
@@ -78,73 +71,63 @@ var Orderbook = React.createClass({
                     React.createElement(
                         'td',
                         { className: 'orderbook__buy' },
-                        React.createElement(
-                            'table',
-                            null,
-                            React.createElement(
-                                'thead',
-                                null,
-                                React.createElement(
-                                    'tr',
-                                    null,
-                                    React.createElement(
-                                        'th',
-                                        null,
-                                        'Pris'
-                                    ),
-                                    React.createElement(
-                                        'th',
-                                        null,
-                                        'Antal'
-                                    )
-                                )
-                            ),
-                            React.createElement(
-                                'tbody',
-                                null,
-                                this.state.orders.map(function (order, index) {
-                                    return React.createElement(Order, { key: order.id, price: order.price, volume: order.volume });
-                                })
-                            )
-                        )
+                        React.createElement(Orderlist, { orders: this.state.buyOrders, side: '1' })
                     ),
                     React.createElement(
                         'td',
                         { className: 'orderbook__sell' },
-                        React.createElement(
-                            'table',
-                            null,
-                            React.createElement(
-                                'thead',
-                                null,
-                                React.createElement(
-                                    'tr',
-                                    null,
-                                    React.createElement(
-                                        'th',
-                                        null,
-                                        'Pris'
-                                    ),
-                                    React.createElement(
-                                        'th',
-                                        null,
-                                        'Antal'
-                                    )
-                                )
-                            ),
-                            React.createElement(
-                                'tbody',
-                                null,
-                                this.state.orders.map(function (order, index) {
-                                    return React.createElement(Order, { key: order.id, price: order.price, volume: order.volume });
-                                })
-                            )
-                        )
+                        React.createElement(Orderlist, { orders: this.state.sellOrders, side: '0' })
                     )
                 )
             )
         );
     }
+});
+
+var Orderlist = React.createClass({
+    displayName: 'Orderlist',
+
+    render: function render() {
+
+        var orders = this.props.orders;
+        var renderOrders = [];
+        for (var i = 0; i < 5; i++) {
+            if (this.props.orders[i] !== undefined) {
+                renderOrders.push(React.createElement(Order, { key: this.props.orders[i].id, price: this.props.orders[i].price, volume: this.props.orders[i].volume, side: this.props.side }));
+            } else {
+                renderOrders.push(React.createElement(Order, { key: i, price: '-', volume: '-', side: this.props.side }));
+            }
+        }
+
+        return React.createElement(
+            'table',
+            null,
+            React.createElement(
+                'thead',
+                null,
+                React.createElement(
+                    'tr',
+                    null,
+                    React.createElement(
+                        'th',
+                        null,
+                        'Pris'
+                    ),
+                    React.createElement(
+                        'th',
+                        null,
+                        'Antal'
+                    )
+                )
+            ),
+            React.createElement(
+                'tbody',
+                null,
+                renderOrders
+            )
+        );
+    }
+
 });
 
 var Order = React.createClass({
@@ -159,20 +142,39 @@ var Order = React.createClass({
     },
 
     render: function render() {
-        return React.createElement(
-            'tr',
-            { className: 'orderbook__order' },
-            React.createElement(
-                'td',
-                null,
-                this.props.price
-            ),
-            React.createElement(
-                'td',
-                null,
-                this.props.volume
-            )
-        );
+
+        // Mirror td placement depending on side
+        if (this.props.side) {
+            return React.createElement(
+                'tr',
+                { className: 'orderbook__order' },
+                React.createElement(
+                    'td',
+                    null,
+                    this.props.price
+                ),
+                React.createElement(
+                    'td',
+                    null,
+                    this.props.volume
+                )
+            );
+        } else {
+            return React.createElement(
+                'tr',
+                { className: 'orderbook__order' },
+                React.createElement(
+                    'td',
+                    null,
+                    this.props.volume
+                ),
+                React.createElement(
+                    'td',
+                    null,
+                    this.props.price
+                )
+            );
+        }
     }
 });
 
