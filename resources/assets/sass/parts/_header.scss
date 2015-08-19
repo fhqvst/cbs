@@ -19,7 +19,7 @@
   color: $color-almost-white;
   height: 6rem;
 
-  @include element('logotype') {
+  &__logotype {
     @include span-columns(2);
     h1 {
       font-size: 1.25rem;
@@ -27,7 +27,7 @@
     }
   }
 
-  @include element('navigation') {
+  &__navigation {
     @include span-columns(10);
     nav {
       float: right;

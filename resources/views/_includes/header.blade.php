@@ -50,7 +50,6 @@
             <div class="topbar__logotype">
                 <h1 class="logotype">CBSx</h1>
             </div>
-
             <div class="topbar__navigation">
                 <nav>
                     @if(Auth::check())

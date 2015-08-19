@@ -916,11 +916,14 @@ select {
 .orderbook__titles__sell {
   background: #FB0E29; }
 
-.orderbook__buy:first-child,
-.orderbook__buy:last-child,
-.orderbook__sell:first-child,
-.orderbook__sell:last-child {
-  padding: 0; }
+.orderbook__buy,
+.orderbook__sell {
+  width: 50%; }
+  .orderbook__buy:first-child,
+  .orderbook__buy:last-child,
+  .orderbook__sell:first-child,
+  .orderbook__sell:last-child {
+    padding: 0; }
 
 .orderbook__buy {
   border-right: 1px solid #EEE; }
