@@ -1,15 +1,18 @@
 .colors {
   font-size: 0;
   span {
+    background: $color-yellow;
     display: inline-block;
     height: 0.25rem;
     width: 16.6666667%;
+
     &:nth-child(1) { background: $color-pink }
     &:nth-child(2) { background: $color-red }
     &:nth-child(3) { background: $color-orange }
     &:nth-child(4) { background: $color-yellow }
     &:nth-child(5) { background: $color-cyan }
     &:nth-child(6) { background: $color-green }
+
   }
 }
 
@@ -45,7 +48,6 @@
 
 .subnav {
   background: $color-white;
-  box-shadow: 1px 2px 2px rgba(0, 0, 0,.025);
   color: $color-almost-black;
-  height: 3rem;
+  height: 5rem;
 }

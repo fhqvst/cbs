@@ -79,6 +79,15 @@
     }
   }
 
+  &--yellow {
+    border-color: $color-yellow;
+    color: $color-yellow;
+    &:hover {
+      background: $color-yellow;
+      color: $color-off-white;
+    }
+  }
+
   &--tiny,
   &--small,
   &--large,

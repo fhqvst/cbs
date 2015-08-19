@@ -274,7 +274,7 @@ h6 {
     font-family: "Ionicons", sans-serif; }
 
 a {
-  color: #38a5bb;
+  color: #2E5998;
   text-decoration: none;
   transition: .125s; }
 
@@ -408,10 +408,16 @@ input[type=checkbox] {
       background: #FF6E4C;
       color: #EEE; }
   .button--green {
-    color: #38a5bb;
-    border-color: #38a5bb; }
+    color: #2E5998;
+    border-color: #2E5998; }
     .button--green:hover {
-      background: #38a5bb;
+      background: #2E5998;
+      color: #EEE; }
+  .button--yellow {
+    border-color: #FFB14A;
+    color: #FFB14A; }
+    .button--yellow:hover {
+      background: #FFB14A;
       color: #EEE; }
   .button--tiny.is-loading,
   .stocks-table td.buy-sell-buttons button.is-loading,
@@ -642,6 +648,7 @@ select {
 .colors {
   font-size: 0; }
   .colors span {
+    background: #FFB14A;
     display: inline-block;
     height: 0.25rem;
     width: 16.6666667%; }
@@ -652,7 +659,7 @@ select {
     .colors span:nth-child(3) {
       background: #FF6E4C; }
     .colors span:nth-child(4) {
-      background: #FD9C3C; }
+      background: #FFB14A; }
     .colors span:nth-child(5) {
       background: #23A4A9; }
     .colors span:nth-child(6) {
@@ -687,13 +694,12 @@ select {
         margin-left: 1.5625rem;
         color: #FFF; }
         .topbar__navigation nav a:hover {
-          color: #38a5bb; }
+          color: #2E5998; }
 
 .subnav {
   background: #FFF;
-  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.025);
   color:   #333;
-  height: 3rem; }
+  height: 5rem; }
 
 .sidebar__section + .sidebar__section {
   margin-top: 1.5625rem; }
@@ -711,9 +717,9 @@ select {
   position: relative;
   color: #888; }
   .sidebar__navigation a:hover {
-    color: #38a5bb; }
+    color: #2E5998; }
   .sidebar__navigation a.is-active {
-    color: #38a5bb;
+    color: #2E5998;
     padding-left: 1rem; }
     .sidebar__navigation a.is-active:before {
       display: block;
@@ -764,8 +770,7 @@ select {
   width: 100%;
   background: #FFF;
   overflow: hidden;
-  border-bottom: 1px solid #DDD;
-  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.025);
+  border-radius: 0.25rem;
   margin-top: 1.5625rem; }
   .block:last-child {
     margin-right: 0; }
@@ -967,8 +972,8 @@ select {
     background: #38a5bb;
     border-color: #3294a7; }
   .notice--success {
-    background: #38a5bb;
-    border-color: #3294a7; }
+    background: #2E5998;
+    border-color: #284e84; }
   .notice--warning {
     background: #38a5bb; }
   .notice--danger {
@@ -1021,7 +1026,7 @@ select {
     transform: translateZ(0) translateY(1000%);
     font-size: 1rem;
     border-color: #EEE;
-    border-left: 0.25em solid #38a5bb; }
+    border-left: 0.25em solid #2E5998; }
   .instrument__chart__inner .loader,
   .instrument__chart__inner .loader:after {
     width: 4rem;
@@ -1100,6 +1105,85 @@ select {
     float: right; }
   .breadcrumbs__right li {
     float: left; }
+
+.background__left,
+.background__right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%; }
+
+.background__left {
+  background: #2E5998 url("/images/background.png");
+  left: 0; }
+
+.background__right {
+  background: #F6F6F6 linear-gradient(#DDD 0%, #F6F6F6 2.5%);
+  right: 0; }
+
+.frontpage__content {
+  position: relative;
+  margin-bottom: 1.5625rem;
+  overflow: hidden; }
+
+.frontpage__text {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  color: #EEE;
+  margin: 6.25rem 0;
+  position: relative; }
+  .frontpage__text:last-child {
+    margin-right: 0; }
+
+.frontpage__title h1 {
+  margin: 0;
+  margin-bottom: 1.5625rem; }
+
+.frontpage__subtitle {
+  font-size: 1.25rem; }
+
+.frontpage__cta {
+  margin-top: 1.5625rem; }
+  .frontpage__cta button {
+    background: #FFB14A;
+    border-radius: 4px;
+    border: 0;
+    color: #F6F6F6;
+    padding: 0.75rem 1.5rem;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0); }
+    .frontpage__cta button + button {
+      margin-left: 1.5625rem; }
+    .frontpage__cta button:hover {
+      background: #ffbc64; }
+    .frontpage__cta button:first-child {
+      box-shadow: 0 3px 20px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 1s, background 0.15s; }
+      .frontpage__cta button:first-child:hover {
+        box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3); }
+
+.frontpage__paragraphs {
+  margin-top: 9.375rem; }
+  .frontpage__paragraphs h2 {
+    font-weight: bold; }
+  .frontpage__paragraphs p {
+    margin-top: 1.5625rem;
+    opacity: 0.75; }
+  .frontpage__paragraphs article + article {
+    margin-top: 1.5625rem; }
+
+.frontpage__window {
+  position: absolute;
+  background: #FFF;
+  border-radius: 0.5rem;
+  border-top: 1.5rem #EEE solid;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  top: 3.125rem;
+  bottom: 3.125rem;
+  width: 1200px;
+  left: 45%; }
 
 html, body {
   background: #EEE;

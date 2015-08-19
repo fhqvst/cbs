@@ -28,6 +28,9 @@
 @import 'components/instrument';
 @import 'components/breadcrumbs';
 
+// Views
+@import 'views/frontpage';
+
 html, body {
   background: $color-off-white;
   position: relative;

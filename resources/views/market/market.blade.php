@@ -16,6 +16,26 @@
                 <h1 class="page-title">Marknaden</h1>
 
                 <section class="block">
+                    <main class="block__content">
+
+                        <select name="market" id="">
+                            <option value="">Aktietorget</option>
+                            <option value="">NGM</option>
+                            <option value="">Nasdaq OMX Large Cap</option>
+                            <option value="">Nasdaq OMX Mid Cap</option>
+                            <option value="">Nasdaq OMX Small Cap</option>
+                        </select>
+                        <select name="country" id="">
+                            <option value="">Sverige</option>
+                            <option value="">Norge</option>
+                            <option value="">Danmark</option>
+                            <option value="">Finland</option>
+                            <option value="">USA</option>
+                        </select>
+                    </main>
+                </section>
+
+                <section class="block">
                     <header class="block__header">
                         <h1>Nasdaq OMX Stockholm Large Cap</h1>
                         <button class="block__toggle "><i class="icon ion-ios-minus-empty"></i></button>

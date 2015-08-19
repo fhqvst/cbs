@@ -140,12 +140,12 @@ class NordnetController extends Controller {
         return $nordnet->getMarkets();
     }
 
-    public function getBorsdata(Nordnet $nordnet) {
-        return $nordnet->getBorsdata();
+    public function getQuotes(Nordnet $nordnet, $market_id, $instrument_id) {
+        return $nordnet->getQuotes();
     }
 
-    public function postOrder(Nordnet $nordnet) {
-
+    public function getBorsdata(Nordnet $nordnet) {
+        return $nordnet->getBorsdata();
     }
 
     public function getKey() {
