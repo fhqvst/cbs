@@ -11,6 +11,7 @@
 
 .orderbook__buy,
 .orderbook__sell {
+  width: 50%;
   &:first-child,
   &:last-child {
     padding: 0;

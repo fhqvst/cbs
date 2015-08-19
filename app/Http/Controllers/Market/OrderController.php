@@ -26,7 +26,6 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @param  int  $side
      * @return Response
      */
     public function show($id) {
