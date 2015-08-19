@@ -5,5 +5,4 @@ public/bower_components
 .idea/
 .env
 .DS_STORE
-
-
+dump.rdb

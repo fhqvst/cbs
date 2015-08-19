@@ -28,7 +28,7 @@ class AccountController extends Controller
 
         }, $orders);
 
-        return view('account.account')
+        return view('account.overview')
             ->with('instruments', Instrument::all())
             ->with('portfolio', $request->user()->portfolio)
             ->with('orders', $orders);
