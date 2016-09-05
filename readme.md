@@ -1,4 +1,4 @@
-# Låtsasbörsen
+# PHP Börsen
 
 ## Installation
 1. `npm install`
